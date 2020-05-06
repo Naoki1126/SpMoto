@@ -20,11 +20,13 @@ Rails.application.routes.draw do
 
  #会員側
    root 'homes#top'
-   resources :users, only: [:index, :show, :edit, :update, :destroy]
+   resources :users, only: [:index, :show, :edit, :update, :destroy] do
+    get '/follows' => 'relationships#follows'
+    get '/followers' => 'relationships#followers'
+	end
   #フォロー関連
    resources :relationships, only: [:create, :destroy]
-   get 'users/:id/follows' => 'relationships#follows'
-   get 'users/:id/followers' => 'relationships#followers'
+   
  #投稿関連
    resources :post_images do
     resource :post_image_comments, only: [:create, :destroy]

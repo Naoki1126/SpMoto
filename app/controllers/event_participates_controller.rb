@@ -1,0 +1,2 @@
+class EventParticipatesController < ApplicationController
+end

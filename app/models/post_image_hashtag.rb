@@ -1,0 +1,2 @@
+class PostImageHashtag < ApplicationRecord
+end

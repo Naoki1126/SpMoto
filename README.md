@@ -1,6 +1,6 @@
 # README
 
-# <SpMoto>
+## <SpMoto>
 
 ## サイト概要
 SpMotoとはバイクが好きの人のための画像やblogを投稿できるサイトです。
@@ -38,7 +38,7 @@ SNSで知り合った人とツーリングができる。ツーリングメン�
 
 
 
-## 設計書
+設計書
 
 ### 機能一覧
 https://docs.google.com/spreadsheets/d/1Eemvw2TlYjF-qhinn5R2Jpb-ld0fOpk_cNxztskr-fc/edit?usp=sharing

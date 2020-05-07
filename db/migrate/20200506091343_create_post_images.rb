@@ -3,6 +3,7 @@ class CreatePostImages < ActiveRecord::Migration[5.2]
     create_table :post_images do |t|
       t.json :images
       t.text :body
+      t.string :user_id
 
       t.timestamps
     end

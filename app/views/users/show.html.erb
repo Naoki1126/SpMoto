@@ -1,0 +1,43 @@
+<div class= "row">
+	<!-- プロフィール左側 -->
+	<div class= "col-xs-3">
+		<div class= "user-box">
+			<%= attachment_image_tag @user, :profile_image, size:'100x100', format:'jpg',fallback: "no_image.jpg" %>
+			<table class="table table-hover table-inverse">
+				<tr>
+					<td>name:<%= @user.name %></td>
+				</tr>
+				<% unless @user.prefecture_name == nil %>
+				<tr>
+					<td>所属:<%= @user.prefecture_name %></td>
+				</tr>
+				<% end %>
+			</table>
+		</div>
+	</div>
+		<!-- プロフィール右側 -->
+		<div class= "col-xs-9">
+			<div class= "navbar">
+				<nav>
+					<ul class="nav navbar-nav navbar-right">
+						<li class="nav-link"><%= link_to "会員情報編集", edit_user_path(@user) %></li>
+						<li class="nav-link"><%= link_to "開催イベント", events_path(user_id: @user.id) %></li>
+						<li class="nav-link"><%= "投稿件数:#{@post_images.count}" %></li>
+						<li class="nav-link"><%= link_to "follow:#{@user.followings.count}", user_follows_path(@user) %></li>
+						<li class="nav-link"><%= link_to "follower:#{@user.followers.count}", user_followers_path(@user) %></li>
+					</ul>
+				</nav>
+		    </div>
+			<div class="user-introduction">
+				<%= @user.introduction %>
+			</div>
+		</div>
+</div>
+<div class= "row">
+	<div class= "contents-box">
+		<% @post_image.each do |postimage| %>
+			<%= image_tag postimage.images[0],class:"post-image" %>
+		    <% end %>
+	</div>
+		<%= paginate @post_image,class:"paginate" %>
+</div>

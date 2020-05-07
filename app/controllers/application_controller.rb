@@ -3,13 +3,15 @@ class ApplicationController < ActionController::Base
 
 	protected
 	def configure_permitted_parameters
-		devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :first_name_kana, :last_name_kana, :email, :postcode, :address, :phone_number ])
+		devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email, :prefecture_name])
 	end
 
 	def after_sign_in_path_for(resource)
+		post_images_path
 	end
 
 	def after_sign_out_path_for(resource)
+		root_path
 	end
 
 end

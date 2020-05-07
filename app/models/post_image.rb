@@ -1,5 +1,5 @@
 class PostImage < ApplicationRecord
-	mount_uploaders :images, ImageUploader
+	mount_uploaders :images, ImagesUploader
 	has_and_belongs_to_many :hashtags
 	belongs_to :user
 	has_many :post_image_comments, dependent: :destroy
@@ -23,6 +23,7 @@ class PostImage < ApplicationRecord
    		 hashtags = self.content.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
    		 hashtags.uniq.map do |hashtag|
    	         tag = Hashtag.find_or_create_by(hashname: hashtag.downcase.delete('#'))
-    	     micropost.hashtags << tag
+    	     post_image.hashtags << tag
+    	 end
     end
 end

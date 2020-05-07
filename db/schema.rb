@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 2020_05_06_092621) do
     t.date "date_and_time"
     t.text "meetingplace"
     t.time "meetingtime"
+    t.string "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -85,6 +86,7 @@ ActiveRecord::Schema.define(version: 2020_05_06_092621) do
   create_table "post_images", force: :cascade do |t|
     t.json "images"
     t.text "body"
+    t.string "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -110,6 +112,7 @@ ActiveRecord::Schema.define(version: 2020_05_06_092621) do
     t.string "profile_image_id"
     t.integer "prefecture_code"
     t.text "introduction"
+    t.string "name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

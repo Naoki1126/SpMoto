@@ -1,0 +1,34 @@
+<h3>users</h3>
+<div class= "row">
+	<table class="table table-hover table-inverse">
+		<thead>
+			<tr>
+				<th></th>
+				<th>name</th>
+				<th>prefecture</th>
+				<th>follow</th>
+				<th></th>
+				<th>follower</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<% @users.each do |user| %>
+				<td><%= link_to user_path(user) do %>
+					<%= attachment_image_tag user, :profile_image, size:'50x50', format:'jpg',fallback: "no_image.jpg" %>
+				    <% end %>
+				</td>
+				<td><%= link_to user.name, user_path(user)%></td>
+				<td><%= user.prefecture_name %></td>
+				<td><%= user.followings.count %></td>
+				<td id="follow-buton_<%= user.id %>">
+				</td>
+				<td><%= user.followers.count %>
+				</td>
+			</tr>
+		    <% end %>
+		    <%= paginate @users,class:"paginate" %>
+
+	   </tbody>
+	</table>
+</div>

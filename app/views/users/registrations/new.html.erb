@@ -1,33 +1,33 @@
-<h2>Sign up</h2>
+<h2>新規会員登録フォーム</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+    <%= f.label :name %>
+    <%= f.text_field :name, :placeholder => "表示名" ,autofocus: true, autocomplete: "name" %>
 
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :email %>
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
    <div class="field">
-    <%= f.label :prefecture_code%><br />
-    <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all,:name,:name, include_blank: true %>
+    <%= f.label :prefecture_name%>
+    <%= f.collection_select :prefecture_name, JpPrefecture::Prefecture.all,:name,:name, include_blank: true %>
+    <br>
+    <p>※都道府県は公開されますので登録は任意です</p>
   </div>
 
   <div class="field">
     <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    
+    <%= f.password_field :password, autocomplete: "new-password",placeholder:"6文字以上" %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password",placeholder:"確認用" %>
   </div>
 
   <div class="actions">

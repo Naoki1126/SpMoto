@@ -22,6 +22,10 @@ class UsersController < ApplicationController
 
 	end
 
+	def destroy_page
+		@user = User.find(params[:user_id])
+	end
+
 	def destroy
 		@user = User.find(params[:id])
 		@user.destroy

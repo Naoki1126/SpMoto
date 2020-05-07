@@ -22,7 +22,7 @@ Rails.application.routes.draw do
  #会員側
    root 'homes#top'
    resources :users, only: [:index, :show, :edit, :update, :destroy] do
-    get '/destroy' => 'users#destroy'
+    get '/destroy' => 'users#destroy_page'
     get '/follows' => 'relationships#follows'
     get '/followers' => 'relationships#followers'
 	end

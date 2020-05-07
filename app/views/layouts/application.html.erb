@@ -12,14 +12,15 @@
   <body>
     <header class="navbar navbar-fixed top navbar-inverse">
       <div class= "container">
-        <nav class="nav navbar-nav navbar-left">
-          <h4>SpMoto</h4>
+        <nav>
+          <ul class="nav navbar-nav navbar-left">
+            <li class="nav-link"><%=link_to "SpMoto", root_path %></li>
+          </ul>
         </nav>
 
         <% if user_signed_in? %>
         <nav>
           <ul class="nav navbar-nav navbar-right">
-            <li class="nav-link"><%=link_to "トップ", root_path %></li>
             <li class="nav-link"><%=link_to "マイページ", user_path(current_user) %></li>
             <li class="nav-link"><%=link_to "投稿一覧", post_images_path %></li>
             <li class="nav-link"><%=link_to "会員一覧", users_path %></li>

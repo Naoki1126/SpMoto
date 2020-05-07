@@ -13,6 +13,19 @@
 				</tr>
 				<% end %>
 			</table>
+				<% unless current_user == @user %>
+  					<% if current_user.following?(@user) %>
+    				<%= form_for(current_user.relationships.find_by(follow_id: @user.id), html: { method: :delete }) do |f| %>
+     				 <%= hidden_field_tag :follow_id, @user.id %>
+    			     <%= f.submit 'Unfollow', class: "btn btn-danger btn-block" %>
+   					 <% end %>
+				   <% else %>
+    			   <%= form_for(current_user.relationships.build) do |f| %>
+   		           <%= hidden_field_tag :follow_id, @user.id %>
+                   <%= f.submit 'Follow', class: "btn btn-primary btn-block" %>
+   				   <% end %>
+ 				   <% end %>
+ 				<% end %>
 		</div>
 	</div>
 		<!-- プロフィール右側 -->
@@ -23,8 +36,8 @@
 						<li class="nav-link"><%= link_to "会員情報編集", edit_user_path(@user) %></li>
 						<li class="nav-link"><%= link_to "開催イベント", events_path(user_id: @user.id) %></li>
 						<li class="nav-link"><%= "投稿件数:#{@post_images.count}" %></li>
-						<li class="nav-link"><%= link_to "follow:#{@user.followings.count}", user_follows_path(@user) %></li>
-						<li class="nav-link"><%= link_to "follower:#{@user.followers.count}", user_followers_path(@user) %></li>
+						<li class="nav-link"><%= link_to "follow:#{@user.followings.count}", user_follows_path(user_id: @user.id) %></li>
+						<li class="nav-link"><%= link_to "follower:#{@user.followers.count}", user_followers_path(user_id: @user.id) %></li>
 					</ul>
 				</nav>
 		    </div>

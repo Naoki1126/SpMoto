@@ -38,7 +38,16 @@ SNSで知り合った人とツーリングができる。ツーリングメン�
 
 
 
-設計書
+###設計書
+テーブル定義書
+https://docs.google.com/spreadsheets/d/1rHuIAc7UJ_hYn_TsUVkqeHudYR4St3-htZOYvS56QVQ/edit?usp=sharing
+
+ER図
+https://drive.google.com/file/d/1B4yhMifvERN7TIbgBMpOixRbSzTQbXwh/view?usp=sharing
+
+画面デザイン
+https://drive.google.com/file/d/1ymo3Py7Ahgk6va5FcG11Yqyq5Ho2A_Vz/view?usp=sharing
+
 
 ### 機能一覧
 https://docs.google.com/spreadsheets/d/1Eemvw2TlYjF-qhinn5R2Jpb-ld0fOpk_cNxztskr-fc/edit?usp=sharing

@@ -33,25 +33,39 @@ class EventsController < ApplicationController
     end
 
 	def show
+		@event = Event.find(params[:id])
+		@user = @event.user
 	end
 
 	def edit
+		@event = Event.find(params[:id])
+		@user = @event.user
 	end
 
 	def create
+		@eventnew = Event.new(event_params)
+		@eventnew.user_id = params[:user_id]
+		@eventnew.save
+		redirect_to events_path
 	end
 
 	def update
 	end
 
-	def destroy
+	def destroy_page
+		@event = Event.find(params[:event_id])
 	end
-end
 
-private
+	def destroy
+		@event = Event.find(params[:id])
+		@event.destroy
+		redirect_to events_path
+	end
+
+    private
 
 	def event_params
-		params.require(:event).permit(:title,:body,:prefecture_code,:capacity,:date_and_time,:meetingplace,:meetingtime,:user_id)
+		params.require(:event).permit(:title,:body,:prefecture_name,:capacity,:date_and_time,:meetingplace,:meetingfinishtime,:user_id)
 	end
 
 end

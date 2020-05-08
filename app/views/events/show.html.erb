@@ -1,0 +1,35 @@
+<div class="row">
+	<div class="col-xs-6">
+		<div class="title-box">
+			<h3>Title</h3>
+			<%= @event.title %>
+		</div>
+		<div class="body-box">
+			<h3>イベント概要</h3>
+			<%= @event.body %>
+		</div>
+		<div class= "event-user">
+			<h4>主催者    <%= attachment_image_tag @user, :profile_image,size:'50x50',fallback:"no_image.jpg" %>   <%= @user.name %></h4>
+		</div>
+		<div class="prefecture">
+			<h4>開催エリア:
+			<%= @event.prefecture_name %></h4>
+		</div>
+		<div class="date-and-time">
+			<h4>開催日時:<%= @event.date_and_time %></h4>
+		</div>
+		<div class="meeting-finish-time">
+			<h4>終了時刻:<%= @event.meetingfinishtime %></h4>
+		</div>
+		<div class="meetingplace">
+			<h4>集合場所<%= @event.meetingplace %></h4>
+		</div>
+		<div class = "capacity">
+			<h4>定員:<%= @event.capacity %></h4>
+		</div>
+		<div class="bth">
+			<%= link_to "このイベントを編集する",edit_event_path(@event),class:"btn btn-default" %>
+	</div>
+	<div class="col-xs-6">
+	</div>
+</div>

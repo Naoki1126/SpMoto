@@ -36,6 +36,7 @@ Rails.application.routes.draw do
    end
  #イベント関連
    resources :events do
+    get '/destroy' => "events#destroy_page"
    	resource :event_comments, only: [:create, :destroy]
    	resource :event_participates, only: [:create, :destroy]
    end

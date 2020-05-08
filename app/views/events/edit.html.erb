@@ -2,14 +2,14 @@
 	<div class="col-xs-2">
 	</div>
 	<div class="col-xs-8">
-	<%= form_for(@eventnew) do |f| %>
+	<%= form_for(@event) do |f| %>
 		<div class="title-box">
 			<h3>Title</h3>
 			<%= f.text_field :title %>
 		</div>
 		<div class="body-box">
 			<h3>イベント概要</h3>
-			<%= f.text_area :body,placeholder: "イベントの詳細を記入して下さい" %>
+			<%= f.text_area :body %>
 		</div>
 		<div class="prefecture">
 			<h4>開催エリア:</h4>
@@ -25,11 +25,12 @@
 			<h4>集合場所</h4><%= f.text_field :meetingplace %>
 		</div>
 		<div class = "capacity">
-			<h4>定員:<%= f.number_field :capacity,placeholder: "指定なし" %></h4>
+			<h4>定員:<%= f.number_field :capacity %></h4>
 		</div>
 		<%= hidden_field_tag(:user_id, @user.id) %>
-		<%= f.submit "上記内容で新規イベントを作成",class:'btn btn-default' %>
+		<%= f.submit "変更を保存する",class:'btn btn-default' %>
 		<% end %>
+		<%= link_to "このイベントを削除する",event_destroy_path(event_id:@event.id),class:"btn btn-default" %>
 	</div>
 	<div class="col-xs-2">
 	</div>

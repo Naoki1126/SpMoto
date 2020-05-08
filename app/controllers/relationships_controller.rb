@@ -1,11 +1,5 @@
 class RelationshipsController < ApplicationController
 	
-	def follows
-	end
-
-	def followers
-	end
-
 	def create
 		user = User.find(params[:follow_id])
 		following = current_user.follow(user)

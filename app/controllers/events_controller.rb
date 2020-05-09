@@ -50,6 +50,10 @@ class EventsController < ApplicationController
 	end
 
 	def update
+		@event = Event.find(params[:id])
+		@event.user_id = params[:user_id]
+		@event.update(event_params)
+		redirect_to events_path
 	end
 
 	def destroy_page

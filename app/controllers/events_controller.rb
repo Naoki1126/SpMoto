@@ -15,16 +15,16 @@ class EventsController < ApplicationController
    		  	#ユーザーIDがパラメータに含まれているか判別
    		  	#含まれていなければ未来の全てのイベント情報。含まれていればユーザー主催の未来のイベントを表示
     		if params[:user_id] == nil
-      	   	   @events = Event.where("Date(date_and_time) <= '#{Date.today}'")
+      	   	   @events = Event.where("Date(date_and_time) >= '#{Date.today}'")
       		else 
-      	       @events = Event.where(user_id: params[:user_id]).where("Date(date_and_time) <= '#{Date.today}'")
+      	       @events = Event.where(user_id: params[:user_id]).where("Date(date_and_time) >= '#{Date.today}'")
       	    end
       	#今日より過去のイベント情報の表示
     	  when "log"
 	  		if params[:user_id] == nil
-	  		   @events = Event.where("Date(date_and_time) >= '#{Date.today}'")
+	  		   @events = Event.where("Date(date_and_time) <= '#{Date.today}'")
 	  		else
-	  	       @events = Event.where(user_id: params[:user_id]).where("Date(date_and_time) >= '#{Date.today}'")
+	  	       @events = Event.where(user_id: params[:user_id]).where("Date(date_and_time) <= '#{Date.today}'")
 	  		end
 	  	#全てのイベント情報の取得
     	   when ""

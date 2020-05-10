@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_06_092621) do
+ActiveRecord::Schema.define(version: 2020_05_10_145342) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -52,11 +52,29 @@ ActiveRecord::Schema.define(version: 2020_05_06_092621) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "hashtag_post_images", force: :cascade do |t|
+    t.integer "post_image_id_id"
+    t.integer "hashtag_id_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["hashtag_id_id"], name: "index_hashtag_post_images_on_hashtag_id_id"
+    t.index ["post_image_id_id"], name: "index_hashtag_post_images_on_post_image_id_id"
+  end
+
   create_table "hashtags", force: :cascade do |t|
     t.string "hashname"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["hashname"], name: "index_hashtags_on_hashname", unique: true
+  end
+
+  create_table "hashtags_post_images", id: false, force: :cascade do |t|
+    t.integer "post_image_id_id"
+    t.integer "hashtag_id_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["hashtag_id_id"], name: "index_hashtags_post_images_on_hashtag_id_id"
+    t.index ["post_image_id_id"], name: "index_hashtags_post_images_on_post_image_id_id"
   end
 
   create_table "post_image_comments", force: :cascade do |t|
@@ -74,17 +92,14 @@ ActiveRecord::Schema.define(version: 2020_05_06_092621) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "post_image_hashtags", force: :cascade do |t|
-    t.integer "post_image_id_id"
-    t.integer "hashtag_id_id"
+  create_table "post_image_images", force: :cascade do |t|
+    t.integer "post_image_id"
+    t.string "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["hashtag_id_id"], name: "index_post_image_hashtags_on_hashtag_id_id"
-    t.index ["post_image_id_id"], name: "index_post_image_hashtags_on_post_image_id_id"
   end
 
   create_table "post_images", force: :cascade do |t|
-    t.json "images"
     t.text "body"
     t.string "user_id"
     t.datetime "created_at", null: false

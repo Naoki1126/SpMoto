@@ -7,8 +7,11 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
-		@post_image = @user.post_images.page(params[:page]).reverse_order
-		@post_images = @post_image.page(params[:page]).reverse_order
+		@post_image = @user.post_images
+		@post_image.each do |post|
+			@post = post.post_image_images
+		end
+		@post_images = @post.page(params[:page]).reverse_order
 	end
 
 	def edit

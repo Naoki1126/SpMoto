@@ -1,0 +1,16 @@
+<div class= "row">
+	<div class= "col-xs-2">
+	</div>
+	<div class= "col-xs-8">
+		<p>新規投稿</p>
+		<div class="previw">
+		</div>
+		<%= form_with model:@postimagenew do |f| %>
+		<%= f.attachment_field :post_image_images_images, multiple:true %>
+		<%= f.text_area :body %>
+		<%= f.submit "新規投稿" %>
+		<% end %>
+	</div>
+	<div class= "col-xs-2">
+	</div>
+</div>

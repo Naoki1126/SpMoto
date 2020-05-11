@@ -22,6 +22,8 @@ class PostImagesController < ApplicationController
 		@postimage = PostImage.find(params[:id])
 		@user = @postimage.user
 		@postimages = @postimage.post_image_images
+		@comment = PostImageComment.new
+		impressionist(@postimage)
 
 
 	end

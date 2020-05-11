@@ -6,6 +6,10 @@ class PostImage < ApplicationRecord
 	belongs_to :user
 	has_many :post_image_comments, dependent: :destroy
 	has_many :post_image_favorites, dependent: :destroy
+	def post_image_favorited_by?(user)
+		post_image_favorites.where(user_id: user.id).exists?
+	end
+	is_impressionable
 
 
 

@@ -1,7 +1,7 @@
 <div class="row">
 		<table class="table table-hover table-inverse">
 			<tr>
-				<td><%= attachment_image_tag @user,:profile_image,size:'60x45' %></td>
+				<td><%= attachment_image_tag @user,:profile_image,size:'100x75' %></td>
 				<td><%= @user.name %></td>
 				<td id="follow-buton_<%= @user.id %>">
 					<%= render 'relationships/followbutton', user: @user %>
@@ -9,15 +9,25 @@
  			</tr>
  		</table>
  		<div class="col-xs-8">
- 		<div class="form">
- 			<span><%= @postimage.created_at %></span>
- 			<% @postimages.each do |post| %>
- 			<%= attachment_image_tag post, :image,size:'300x200' %>
- 			<% end %>
- 			<%= @postimage.body %>
+ 			<div class="form">
+ 				<span><%= @postimage.created_at %></span>
+ 				<br>
+ 				<% @postimages.each do |post| %>
+ 				<%= attachment_image_tag post, :image,size:'500x375' %>
+ 				<% end %>
+ 				<br>
+ 				<%= @postimage.body %>
+ 			</div>
+ 			<div id="count" class= "btn btn-default">
+ 				<p><span>閲覧数：</span><%= @postimage.impressionist_count %></span></p>
+ 			</div>
+ 			<div id= "favorite-button_<%= @postimage.id %>" class= "btn btn-default">
+ 				<%= render partial: 'post_image_favorites/favorite', locals: { postimage: @postimage } %>
+ 			</div>
+ 			<div id ="post-image-comment_<%= @postimage.id %>" type="button">
+ 				<%= render 'post_image_comments/comment', postimage: @postimage, comment:@comment %>
+ 			</div>
+ 		<div class="col-xs-2">
+
  		</div>
- 	</div>
- 	<div class="col-xs-2">
- 	</div>
-	</div>
 </div>

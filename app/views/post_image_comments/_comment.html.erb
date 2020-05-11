@@ -1,0 +1,22 @@
+<div class= "form">
+	<%= form_with(model: [postimage,comment],　remote: true ) do |f| %>
+		<%= f.text_area :comment %>
+		<%= f.submit '送信する' %>
+	<% end %>	
+</div>
+
+<table>
+	<% postimage.post_image_comments.each do |post_image_comment| %>
+	<tr>
+	    <td><%= "ユーザー名:#{post_image_comment.user.name}" %></td>
+	    <td><%= post_image_comment.created_at %></td>
+	</tr>
+		<td><%= post_image_comment.comment %></td>
+	    <% if post_image_comment.user_id == current_user.id %>
+	    <td>
+	    	<%= link_to "削除", post_image_post_image_comments_path(post_image_comment.id), method: :delete, remote:true %>
+	   	<% end %>
+	    </td> 
+	</tr>
+    <% end %>
+</table>

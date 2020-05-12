@@ -21,11 +21,14 @@
  			<div id="count" class= "btn btn-default">
  				<p><span>閲覧数：</span><%= @postimage.impressionist_count %></span></p>
  			</div>
- 			<div id= "favorite-button_<%= @postimage.id %>" class= "btn btn-default">
+ 			<div id = "favorite-button_<%= @postimage.id %>" class= "btn btn-default">
  				<%= render partial: 'post_image_favorites/favorite', locals: { postimage: @postimage } %>
  			</div>
- 			<div id ="post-image-comment_<%= @postimage.id %>" type="button">
- 				<%= render 'post_image_comments/comment', postimage: @postimage, comment:@comment %>
+ 			<div class="form">
+ 				<%= render 'post_image_comments/form', postimage: @postimage, comment: @comment %>
+ 			</div>
+  			<div id ="post-image-comment_<%= @postimage.id %>" type="button">
+ 				<%= render 'post_image_comments/comment', postimage: @postimage %>
  			</div>
  		<div class="col-xs-2">
 

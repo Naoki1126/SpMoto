@@ -4,13 +4,15 @@ class PostImageCommentsController < ApplicationController
 		@postimage = PostImage.find(params[:post_image_id])
 		@comment = current_user.post_image_comments.new(comment_params)
 		@comment.post_image_id = @postimage.id
+		@postimage.id = @comment.post_image_id
 		@comment.save
 	end
 
 	def destroy
-		@post_image_comment = PostImageComment.find(params[:post_image_id])
-		@post_image = @post_image_comment.post_image
-		@post_image_comment.destroy
+		@postimagecomment = PostImageComment.find(params[:post_image_id])
+		@postimagecomment.post_image.id = @postimagecomment.post_image_id
+		@postimage = @postimagecomment.post_image
+		@postimagecomment.destroy
 	end
 
 	private

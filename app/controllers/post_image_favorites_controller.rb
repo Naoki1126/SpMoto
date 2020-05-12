@@ -2,15 +2,15 @@ class PostImageFavoritesController < ApplicationController
 
 	def create
 		@postimage = PostImage.find(params[:post_image_id])
-		@favorite = current_user.favorites.new(post_image_id: @postimage.id)
+		@favorite = current_user.post_image_favorites.new(post_image_id: @postimage.id)
 		@favorite.save
 	end
 
 	def destroy
 		@postimage = PostImage.find(params[:post_image_id])
-		@favorite = Favorite.find_by(
+		@favorite = PostImageFavorite.find_by(
 			user_id: current_user.id,
-			post_image_id: params[:post_image_id]
+			post_image_id: @postimage)
 		@favorite.destroy
 	end
 end

@@ -12,10 +12,8 @@ class PostImagesController < ApplicationController
 
 	end
 	def index
-		@postimage = PostImage.all
-		@postimage.each do |post|
-			@post = post.post_image_images
-		end
+		@postimage = PostImageImage.all
+		
 	end
 
 	def show
@@ -23,6 +21,7 @@ class PostImagesController < ApplicationController
 		@user = @postimage.user
 		@postimages = @postimage.post_image_images
 		@comment = PostImageComment.new
+		@favorite = PostImageFavorite.new
 		impressionist(@postimage)
 
 

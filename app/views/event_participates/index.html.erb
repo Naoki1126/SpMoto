@@ -6,37 +6,19 @@
 				<th></th>
 				<th>name</th>
 				<th>prefecture</th>
-				<th>follow</th>
 				<th></th>
-				<th>follower</th>
 			</tr>
 		</thead>
 		<tbody>
 			<% @participate.each do |participate| %>
-			<tr>	
+			<tr>
 				<td><%= link_to user_path(participate.user) do %>
 						<%= attachment_image_tag participate.user, :profile_image, size:'50x50', format:'jpg',fallback: "no_image.jpg" %>
 				    <% end %>
 				</td>
 				<td><%= link_to participate.user.name, user_path(participate.user)%></td>
 				<td><%= participate.user.prefecture_name %></td>
-				<td><%= participate.user.followings.count %></td>
-				<td id="follow-buton_<%= participate.user.id %>">
-				<% unless current_user == participate.user %>
-  					<% if current_user.following?(participate.user) %>
-    					<%= form_for(current_user.relationships.find_by(follow_id: user.id), html: { method: :delete }) do |f| %>
-     				 		<%= hidden_field_tag :follow_id, user.id %>
-    			     		<%= f.submit 'Unfollow', class: "btn btn-danger btn-block" %>
-   					 	<% end %>
-				   	<% else %>
-    			   		<%= form_for(current_user.relationships.build) do |f| %>
-   		           			<%= hidden_field_tag :follow_id, participate.user.id %>
-                   			<%= f.submit 'Follow', class: "btn btn-primary btn-block" %>
-   				   			<% end %>
- 				   		<% end %>
- 					<% end %>
-					</td>
-					<td><%= participate.user.followers.count %></td>
+				</td>
 			</tr>
 		    <% end %>
 	   </tbody>

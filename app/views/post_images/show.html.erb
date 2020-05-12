@@ -3,7 +3,7 @@
 			<tr>
 				<td><%= attachment_image_tag @user,:profile_image,size:'100x75' %></td>
 				<td><%= @user.name %></td>
-				<td id="follow-buton_<%= @user.id %>">
+				<td id="follow-button_<%= @user.id %>">
 					<%= render 'relationships/followbutton', user: @user %>
  				</td>
  			</tr>

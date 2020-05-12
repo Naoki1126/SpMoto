@@ -14,6 +14,7 @@
 			<tr>
 				<th>目的</th>
 				<th>開催日時</th>
+				<th>終了日時</th>
 				<th>都道府県</th>
 				<th>定員</th>
 				<th>現在の参加人数</th>
@@ -24,7 +25,8 @@
 				<tr>
 					<td><%= event.title %></td>
 					<td><%= event.date_and_time %></td>
-					<td><%= link_to event.prefecture_name,events_path(prefecture_name: event.prefecture_name) %></td>
+					<td><%= event.meetingfinishtime %></td>
+					<td><%= link_to event.prefecture_name,events_path(event_prefecture: 'name',prefecture_code: event.prefecture_code) %></td>
 					<td><%= "#{event.capacity}人" %></td>
 					<td><%= link_to "#{event.event_participates.count}人",event_event_paricipates_path(event) %></td>
 					<td><%= link_to "詳細",event_path(event) %></td>

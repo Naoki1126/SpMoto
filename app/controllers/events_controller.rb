@@ -22,14 +22,20 @@ class EventsController < ApplicationController
       	#今日より過去のイベント情報の表示
     	  when "log"
 	  		if params[:user_id] == nil
-	  		   @events = Event.where("Date(date_and_time) <= '#{Date.today}'")
+	  		   @events = Event.where("Date(meetingfinishtime) <= '#{Date.today}'")
 	  		else
-	  	       @events = Event.where(user_id: params[:user_id]).where("Date(date_and_time) <= '#{Date.today}'")
+	  	       @events = Event.where(user_id: params[:user_id]).where("Date(meetingfinishtime) <= '#{Date.today}'")
 	  		end
 	  	#全てのイベント情報の取得
     	   when ""
      		   @events = Event.all
     	   end
+    	#都道府県検索
+    	case params[:event_prefecture]
+
+    		when "name"
+    			@events = Event.where(prefecture_code: params[:prefecture_code])
+    		end
     end
 
 	def show

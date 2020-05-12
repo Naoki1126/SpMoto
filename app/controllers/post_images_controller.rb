@@ -9,6 +9,8 @@ class PostImagesController < ApplicationController
 		@user = current_user
 		@hashtag = Hashtag.find_by(hashname: params[:name])
 		@postimage = @hashtag.post_images
+		@hashtags = Hashtag.all
+		@count = @hashtags.count
 
 	end
 	def index

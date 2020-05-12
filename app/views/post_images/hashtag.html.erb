@@ -1,11 +1,20 @@
 <div class="row">
-	<h3>#<%= @hashtag.hashname %>:  <%= @postimage.count %> 件 </h3>
+	<div class= "col-xs-3">
+		<% @hashtags.each do |hash| %>
+			<div class= "hashname">
+				<%= link_to  "##{hash.hashname} (#{hash.post_images.count}) 件","/post_image/hashtag/#{hash.hashname}" %>
+			</div>
+		<% end %>
 
-	<% @postimage.each do |image| %>
-  		<%= link_to post_image_path(image) do %>
-  			<% image.post_image_images.each do |post| %>
-				<%= attachment_image_tag post, :image ,size:'150x120', format:'jpg',class:"image" %>
+	</div>
+	<div class= "col-xs-9">
+		<h3>#<%= @hashtag.hashname %>:  <%= @postimage.count %> 件 </h3>
+		<% @postimage.each do |image| %>
+  			<%= link_to post_image_path(image) do %>
+  				<% image.post_image_images.each do |post| %>
+					<%= attachment_image_tag post, :image ,size:'150x120', format:'jpg',class:"image" %>
 				<% end %>
-  		<% end %>
-	<% end %>
+  			<% end %>
+		<% end %>
+	</div>
 </div>

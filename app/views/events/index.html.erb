@@ -24,9 +24,9 @@
 				<tr>
 					<td><%= event.title %></td>
 					<td><%= event.date_and_time %></td>
-					<td><%= event.prefecture_name %></td>
+					<td><%= link_to event.prefecture_name,events_path(prefecture_name: event.prefecture_name) %></td>
 					<td><%= "#{event.capacity}人" %></td>
-					<td><%= "#{event.event_participates.count}人" %></td>
+					<td><%= link_to "#{event.event_participates.count}人",event_event_paricipates_path(event) %></td>
 					<td><%= link_to "詳細",event_path(event) %></td>
 				</tr>
 			<% end %>

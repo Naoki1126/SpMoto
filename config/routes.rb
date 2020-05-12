@@ -40,7 +40,9 @@ Rails.application.routes.draw do
     get '/destroy' => "events#destroy_page"
    	resource :event_comments, only: [:create, :destroy]
    	resource :event_participates, only: [:create, :destroy]
+    get '/event_paricipates' => 'event_participates#index'
    end
+
 
 
 

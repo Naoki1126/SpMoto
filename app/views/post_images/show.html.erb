@@ -14,10 +14,11 @@
  				<span><%= link_to "編集する",edit_post_image_path(@postimage) %></span>
  				<br>
  				<% @postimages.each do |post| %>
- 				<%= attachment_image_tag post, :image,size:'500x375' %>
+ 					<%= attachment_image_tag post, :image,size:'500x375' %>
  				<% end %>
  				<br>
  				<%= @postimage.body %>
+ 				<%= render_with_hashtags(@postimage.body) %>
  			</div>
  			<div id="count" class= "btn btn-default">
  				<p><span>閲覧数：</span><%= @postimage.impressionist_count %></span></p>

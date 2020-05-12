@@ -1,0 +1,11 @@
+<div class="row">
+	<h3>#<%= @hashtag.hashname %>:  <%= @postimage.count %> 件 </h3>
+
+	<% @postimage.each do |image| %>
+  		<%= link_to post_image_path(image) do %>
+  			<% image.post_image_images.each do |post| %>
+				<%= attachment_image_tag post, :image ,size:'150x120', format:'jpg',class:"image" %>
+				<% end %>
+  		<% end %>
+	<% end %>
+</div>

@@ -34,7 +34,7 @@ Rails.application.routes.draw do
     resource :post_image_comments, only: [:create, :destroy]
     resource :post_image_favorites, only: [:create, :destroy]
    end
-   get '/post/hashtag/:name' => 'post_images#hashtag'
+   get '/post_image/hashtag/:name' => 'post_images#hashtag'
  #イベント関連
    resources :events do
     get '/destroy' => "events#destroy_page"

@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 2020_05_11_050039) do
     t.date "date_and_time"
     t.text "meetingplace"
     t.date "meetingfinishtime"
-    t.string "user_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -36,7 +36,7 @@
 						<li class="nav-link"><%= link_to "会員情報編集", edit_user_path(@user) %></li>
 						<li class="nav-link"><%= link_to "主催イベント", events_path(event_case: "now",user_id: @user.id) %></li>
 						<li class="nav-link"><%= link_to "過去イベント", events_path(event_case: "log",user_id: @user.id) %></li>
-						<li class="nav-link"><%= "投稿件数:#{@post_image.count}" %></li>
+						<li class="nav-link"><%= "投稿件数:#{@post_images.count}" %></li>
 						<li class="nav-link"><%= link_to "follow:#{@user.followings.count}", user_follows_path(user_id: @user.id) %></li>
 						<li class="nav-link"><%= link_to "follower:#{@user.followers.count}", user_followers_path(user_id: @user.id) %></li>
 					</ul>
@@ -49,11 +49,13 @@
 </div>
 <div class= "row">
 	<div class= "contents-box">
-		<% @post.each do |postimage| %>
-		  <%= link_to post_image_path(postimage.post_image_id) do %>
-			<%= attachment_image_tag postimage, :image,size:'150x120' %>
-			<% end %>
-		 <% end %>
+		<% @post_images.each do |postimage| %>
+		    <%= link_to post_image_path(postimage) do %>
+		   	    <% postimage.post_image_images.each do |postimageimage| %>
+			  		<%= attachment_image_tag postimageimage, :image,size:'150x120' %>
+				<% end %>
+		 	<% end %>
+		<% end %>
 	</div>
-		<%= paginate @post_images,class:"paginate" %>
+	<%= paginate @post_images,class:"paginate" %>
 </div>

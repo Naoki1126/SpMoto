@@ -27,9 +27,22 @@
 		<div class = "capacity">
 			<h4>定員:<%= @event.capacity %></h4>
 		</div>
+		<div id="participates-button_<%= @event.id %>">
+			<%= render 'event_participates/participate', event: @event %>
+		</div>
+
 		<div class="bth">
 			<%= link_to "このイベントを編集する",edit_event_path(@event),class:"btn btn-default" %>
+		</div>
 	</div>
 	<div class="col-xs-6">
+		<h3>infomation</h3>
+		<div class="form">
+			<p>コメントフォーム</p>
+			<%= render "event_comments/form", event:@event,comment:@comment %>
+		</div>
+		<div id ="event-comment_<%= @event.id %>">
+			<%= render "event_comments/comment", event:@event %>
+		</div>
 	</div>
 </div>

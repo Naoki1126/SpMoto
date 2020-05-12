@@ -8,7 +8,7 @@ class CreateEvents < ActiveRecord::Migration[5.2]
       t.date :date_and_time
       t.text :meetingplace
       t.date :meetingfinishtime
-      t.string :user_id
+      t.integer :user_id
 
       t.timestamps
     end

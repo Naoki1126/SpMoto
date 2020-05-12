@@ -23,11 +23,11 @@ class PostImagesController < ApplicationController
 		@comment = PostImageComment.new
 		@favorite = PostImageFavorite.new
 		impressionist(@postimage)
-
-
 	end
 
 	def edit
+		@postimage = PostImage.find(params[:id])
+		@postimages = @postimage.post_image_images
 	end
 
 	def create

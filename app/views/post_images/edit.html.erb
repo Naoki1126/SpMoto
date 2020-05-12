@@ -1,0 +1,20 @@
+<div class= "row">
+	<div class= "col-xs-2">
+	</div>
+	<div class= "col-xs-8">
+		<p>投稿編集</p>
+		<div class= "contents-box">
+		<% @postimages.each do |postimage| %>
+			  <%= attachment_image_tag postimage, :image,size:'100x75' %>
+		<% end %>
+		</div>
+		<%= form_with model:@postimage do |f| %>
+			<%= f.text_area :body %>
+			<%= f.submit "保存" %>
+			<% end %>
+		<div class = "destroy">
+			<%= link_to "削除", post_image_path(@postimage),method: :delete,class:"btn btn-default" %>
+		</div>
+	<div class= "col-xs-2">
+	</div>
+</div>

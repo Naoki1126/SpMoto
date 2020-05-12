@@ -1,0 +1,15 @@
+<table>
+	<% event.event_comments.each do |event_comment| %>
+	<tr>
+	    <td><%= "ユーザー名:#{event_comment.user.name}" %></td>
+	    <td><%= event_comment.created_at %></td>
+	</tr>
+		<td><%= event_comment.comment %></td>
+	    <% if event_comment.user_id == current_user.id %>
+	    <td>
+	    	<%= link_to "削除", event_event_comments_path(event_comment), method: :delete, remote:true %>
+	   	<% end %>
+	    </td> 
+	</tr>
+    <% end %>
+</table>

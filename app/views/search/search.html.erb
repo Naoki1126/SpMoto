@@ -1,0 +1,121 @@
+<div class= "search-form">
+  <%= form_tag(search_path, method: :get) do %>
+    <%= text_field_tag 'search[content]' %>
+    <%= select_tag 'search[model]',options_for_select({"会員" => "会員","イベント（目的）" => "イベント（目的）","投稿内容" => "投稿内容","ハッシュタグ" => "ハッシュタグ"})%>
+    <%= select_tag 'search[how]',options_for_select({"完全一致" => "match","部分一致" => "partical"}) %>
+      <%= submit_tag '検索', class:"btn btn-primary" %>
+  <% end %>
+</div>
+
+<% if @model == nil %>
+
+
+
+<% else %>
+<h2>search for "<%= @model %>"</h2>
+<table class="table table-hover table-inverse">
+  <thead>
+    <% if @model == "会員" %>
+    <tr>
+      <th>image</th>
+      <th>name</th>
+      <th>prefecture</th>
+      <th></th>
+    </tr>
+    <% elsif @model == "イベント（県）" %>
+    <tr>
+        <th>目的</th>
+        <th>開催日時</th>
+        <th>終了日時</th>
+        <th>都道府県</th>
+        <th>定員</th>
+        <th>現在の参加人数</th>
+    </tr>
+    <% elsif @model == "イベント（目的）" %>
+    <tr>
+        <th>目的</th>
+        <th>開催日時</th>
+        <th>終了日時</th>
+        <th>都道府県</th>
+        <th>定員</th>
+        <th>現在の参加人数</th>
+    </tr>
+<!--     <% elsif @model == "投稿日時" %>
+    <tr>
+      <th>image</th>
+      <th>name</th>
+      <th>prefecture</th>
+      <th></th>
+    </tr>
+    <% elsif @model =="投稿内容" %>
+     <tr>
+      <th>image</th>
+      <th>name</th>
+      <th>prefecture</th>
+      <th></th>
+    </tr>
+    <% elsif @model == "ハッシュタグ" %>
+    <tr>
+      <th>image</th>
+      <th>name</th>
+      <th>prefecture</th>
+      <th></th>
+    </tr> 
+    <% end %> -->
+  </thead>
+  <tbody>
+    <% @datas.each do |data| %>
+      <% if @model == "会員" %>
+        <tr>
+          <td><%= attachment_image_tag data, :profile_image,size:"100x75" %></td>
+          <td><%= data.name %></td>
+          <td><%= data.prefecture_name %>
+          <td id="follow-button_<%= data.id %>">
+          <%= render 'relationships/followbutton', user: data %>
+        </tr>
+      <% elsif @model == "イベント（目的）" %>
+        <tr>
+          <td><%= data.title %></td>
+          <td><%= data.date_and_time %></td>
+          <td><%= data.meetingfinishtime %></td>
+          <td><%= link_to data.prefecture_name,events_path(event_prefecture: 'name',prefecture_code: data.prefecture_code) %></td>
+          <td><%= "#{data.capacity}人" %></td>
+          <td><%= link_to "#{data.event_participates.count}人",event_event_paricipates_path(data) %></td>
+          <td><%= link_to "詳細",event_path(data) %></td>
+        </tr>
+      <% elsif @model == "イベント（県）" %>
+        <tr>
+          <td><%= data.title %></td>
+          <td><%= data.date_and_time %></td>
+          <td><%= data.meetingfinishtime %></td>
+          <td><%= link_to data.prefecture_name,events_path(event_prefecture: 'name',prefecture_code: data.prefecture_code) %></td>
+          <td><%= "#{data.capacity}人" %></td>
+          <td><%= link_to "#{data.event_participates.count}人",event_event_paricipates_path(data) %></td>
+          <td><%= link_to "詳細",event_path(data) %></td>
+        </tr>
+<!--       <% elsif @model == "投稿日時" %>
+        <tr>
+          <td><%= data.body %></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      <% elsif @model == "投稿概要" %>
+        <tr>
+          <td><%= data.body %></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      <% elsif @model == "ハッシュタグ" %>
+       <tr>
+          <td><%= data.body %></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr> -->
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+<% end %>

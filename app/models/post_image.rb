@@ -6,9 +6,11 @@ class PostImage < ApplicationRecord
 	belongs_to :user
 	has_many :post_image_comments, dependent: :destroy
 	has_many :post_image_favorites, dependent: :destroy
+#いいね機能実装ののために必要
 	def post_image_favorited_by?(user)
 		post_image_favorites.where(user_id: user.id).exists?
 	end
+#PV数表示のための表記
 	is_impressionable
 
 
@@ -16,9 +18,10 @@ class PostImage < ApplicationRecord
 
 	after_create do
 		post_image = PostImage.find_by(id: self.id)
+	#hashbodyに打ち込まれたハッシュタグを検出
 		hashtags = self.hashbody.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
 		hashtags.uniq.map do |hashtag|
-			#ハッシュタグは先頭の#を外した上で保存
+	#ハッシュタグは先頭の#を外した上で保存
 			tag = Hashtag.find_or_create_by(hashname: hashtag.downcase.delete('#'))
 			post_image.hashtags << tag
 		end

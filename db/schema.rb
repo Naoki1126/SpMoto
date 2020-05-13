@@ -116,6 +116,7 @@ ActiveRecord::Schema.define(version: 2020_05_11_050039) do
 
   create_table "post_images", force: :cascade do |t|
     t.text "body"
+    t.text "hashbody"
     t.string "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

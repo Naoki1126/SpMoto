@@ -7,7 +7,12 @@
 		</div>
 		<%= form_with model:@postimagenew do |f| %>
 		<%= f.attachment_field :post_image_images_images, multiple:true %>
+		<p>投稿の詳細を入力してください</p>
 		<%= f.text_area :body %>
+		<br>
+		<p>ハッシュタグ入力欄</p>
+		<%= f.text_area :hashbody %>
+
 		<%= f.submit "新規投稿" %>
 		<% end %>
 	</div>

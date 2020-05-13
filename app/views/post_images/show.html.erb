@@ -18,7 +18,8 @@
  				<% end %>
  				<br>
  				<%= @postimage.body %>
- 				<%= render_with_hashtags(@postimage.body) %>
+ 				<br>
+ 				<%= render_with_hashtags(@postimage.hashbody) %>
  			</div>
  			<div id="count" class= "btn btn-default">
  				<p><span>閲覧数：</span><%= @postimage.impressionist_count %></span></p>

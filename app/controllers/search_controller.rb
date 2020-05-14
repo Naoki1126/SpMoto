@@ -4,6 +4,11 @@ class SearchController < ApplicationController
 		@user = current_user
 		if params[:search_case] == "header"
 
+		elsif @model == "イベント（県）"
+		@model = params["search"]["model"]
+		@content = params["search"]["content"]
+		@how = params["search"]["how"]
+		@datas = search_for(@how,@model,@content)
 		else
 		@model = params["search"]["model"]
 		@content = params["search"]["content"]
@@ -15,6 +20,8 @@ class SearchController < ApplicationController
 
 	private
   # モデルと条件を指定
+
+  #完全一致
  	def match(model,content)
 		if model == "会員"
 			User.where(name: content)
@@ -29,12 +36,12 @@ class SearchController < ApplicationController
     	end
  	end
 
-  # 完全一致
+  # 曖昧検索
 	def partical(model,content)
 		if model == "会員"
-			User.Where("name LIKE ?", "%#{content}%")
+			User.where("name LIKE ?", "%#{content}%")
 		elsif model == "イベント（県）"
-			Event.where("prefecture_code LIKE ?", "%{content}%")
+			Event.where("prefecture_code LIKE ?", "%#{content}%")
 		elsif model == "イベント（目的）"
 			Event.where("title LIKE ?", "%#{content}%")
 		elsif model == "投稿内容"

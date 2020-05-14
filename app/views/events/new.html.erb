@@ -13,7 +13,7 @@
 		</div>
 		<div class="prefecture">
 			<h4>開催エリア:</h4>
-			<%= f.collection_select :prefecture_name, JpPrefecture::Prefecture.all,:name,:name, include_blank: true %>
+			<%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all,:code,:name, include_blank: true %>
 		</div>
 		<div class="date-and-time">
 			<h4>開催日時:</h4><%= f.datetime_field :date_and_time %>

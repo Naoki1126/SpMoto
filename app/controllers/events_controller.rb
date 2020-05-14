@@ -35,7 +35,7 @@ class EventsController < ApplicationController
 
     		when "name"
     			@events = Event.where(prefecture_code: params[:prefecture_code])
-    		end
+    	end
     end
 
 	def show
@@ -77,7 +77,7 @@ class EventsController < ApplicationController
     private
 
 	def event_params
-		params.require(:event).permit(:title,:body,:prefecture_name,:capacity,:date_and_time,:meetingplace,:meetingfinishtime,:user_id)
+		params.require(:event).permit(:title,:body,:prefecture_code,:capacity,:date_and_time,:meetingplace,:meetingfinishtime,:user_id)
 	end
 
 end

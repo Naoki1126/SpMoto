@@ -46,4 +46,7 @@ Rails.application.routes.draw do
 
  #チャット関連
  resources :rooms, only: [:index,:show,:create]
+
+ #お知らせ関連
+ resources :notifications, only: [:index]
 end

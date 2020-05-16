@@ -2,6 +2,7 @@ class Event < ApplicationRecord
 	belongs_to :user
 	has_many :event_comments, dependent: :destroy
 	has_many :event_participates, dependent: :destroy
+  has_many :notifications, dependent: :destroy
   def participated_by?(user)
       event_participates.where(user_id: user.id).exists?
   end

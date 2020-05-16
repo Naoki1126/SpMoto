@@ -6,6 +6,7 @@ class PostImageCommentsController < ApplicationController
 		@comment.post_image_id = @postimage.id
 		@postimage.id = @comment.post_image_id
 		@comment.save
+		@post.create_notification_comment!(current_user, @comment.id)
 	end
 
 	def destroy

@@ -1,0 +1,16 @@
+<div class="row">
+	<p>メンバー</p>
+	<% @entriys.each do |entriy| %>
+	<%= link_to entriy.user.name, user_path(entriy.user) %>
+	<% end %>
+
+	<form>
+		<label>post</label>
+		<input type="text" data-behavior="room_speaker">
+	</form>
+
+	<div id = "messages", data-room_id="<%= @room.id %>"> 
+	<%= render @messages %>
+	</div>
+</div>
+

@@ -8,10 +8,25 @@ class UsersController < ApplicationController
 	def show
 		@user = User.find(params[:id])
 		@post_images = @user.post_images.page(params[:page]).reverse_order
-		# @post_image.each do |post|
-		# 　@post =	post.post_image_images
-		# end
-	end
+
+		#DM機能
+    	@currententry = Entry.where(user_id: current_user.id)
+    	@userentry = Entry.where(user_id: @user.id)
+    	unless @user.id == current_user.id
+    	  @currententry.each do |ce|
+    	    @userentry.each do |ue|
+    	      if ce.room_id == ue.room_id then
+    	        @isroom = true
+    	        @roomid = ce.room_id
+    	      end
+    	    end
+    	  end
+    	  unless @isroom
+    	    @room = Room.new
+    	    @entry = Entry.new
+    	  end
+    	end
+  	end
 
 	def edit
 		@user = User.find(params[:id])

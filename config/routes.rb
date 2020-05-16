@@ -44,4 +44,6 @@ Rails.application.routes.draw do
     get '/event_paricipates' => 'event_participates#index'
   end
 
+ #チャット関連
+ resources :rooms, only: [:index,:show,:create]
 end

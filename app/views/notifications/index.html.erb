@@ -1,11 +1,17 @@
 <div class="row">
-	<% notifications = @notifications.where.not(visitor_id: current_user.id) %>
-	<% if notifications.exists? %>
-		<%= render notifications %>
+	<div class="col-xs-1">
+	</div>
+	<div class = "col-xs-10">
+		<%= link_to "通知削除", notification_path(@notifications), method: :delete ,class: "fas fa-trash" %>
+		<% if @notifications.exists? %>
+			<%= render @notifications %>
 
-	<% else %>
-		<p>通知はありません</p>
+		<% else %>
+			<p>通知はありません</p>
 
-	<% end %>
+		<% end %>
+	</div>
+	<div class = "col-xs-1">
+	</div>
 </div>
 

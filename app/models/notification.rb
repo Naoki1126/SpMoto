@@ -3,8 +3,8 @@ class Notification < ApplicationRecord
 	belongs_to :post_image, optional: true
 	belongs_to :post_image_comment, optional: true
 	belongs_to :event, optional: true
-	belongs_tp :event_comment, optional: true
-
+	belongs_to :event_comment, optional: true
+	belongs_to :message,optional: true
 	belongs_to :visitor, class_name: 'User', foreign_key: 'visitor_id', optional: true
 	belongs_to :visited, class_name: 'User', foreign_key: 'visited_id', optional: true
 

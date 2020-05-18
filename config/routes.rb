@@ -49,4 +49,8 @@ Rails.application.routes.draw do
 
  #お知らせ関連
  resources :notifications, only: [:index, :destroy]
+
+#地図
+  get '/map_request', to: 'events#map', as: 'map_request'
+
 end

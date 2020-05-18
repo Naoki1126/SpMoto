@@ -1,5 +1,14 @@
 class EventsController < ApplicationController
 
+	def map
+		results = Geocoder.search(params[:address])
+		@latlng = results.first.coordinates
+
+		respond_to do |format|
+			format.js
+		end
+	end
+
 	def new
 		@user = current_user
 		@eventnew = Event.new
@@ -41,6 +50,8 @@ class EventsController < ApplicationController
 	def show
 		@event = Event.find(params[:id])
 		@user = @event.user
+		@latitude = @event.latitude
+		@longitude = @event.longitude
 		@participates = EventParticipate.new
 		@comment = EventComment.new
 	end
@@ -77,7 +88,7 @@ class EventsController < ApplicationController
     private
 
 	def event_params
-		params.require(:event).permit(:title,:body,:prefecture_code,:capacity,:date_and_time,:meetingplace,:meetingfinishtime,:user_id)
+		params.require(:event).permit(:title,:body,:prefecture_code,:capacity,:date_and_time,:meetingplace,:meetingfinishtime,:user_id, :latitude, :longitude)
 	end
 
 end

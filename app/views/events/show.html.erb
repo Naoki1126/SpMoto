@@ -36,8 +36,39 @@
 		</div>
 	</div>
 	<div class="col-xs-6">
-		<h3>infomation</h3>
+		<div id="map"></div>
+			<style>
+			#map{
+  				height: 500px;
+  				width: 500px;
+				}
+			</style>
+			<script>
+				let mapInstance;
+
+		  		function initMap(){
+					mapInstance = new google.maps.Map(document.getElementById('map'), {
+					center: {lat: <%= @latitude %>, lng: <%= @longitude %>},
+					zoom: 8
+					});
+
+					let pos = new google.maps.LatLng(
+   					<%= @latitude %>, //latitude
+  				 	<%= @longitude %>  //longitude
+  					);
+
+  					mapInstance.setCenter(pos)
+  					marker = new google.maps.Marker({
+    				map: mapInstance,
+    				position: pos
+					});
+				}
+			</script>
+			<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY'] %>&callback=initMap" async defer></script>
+
+	
 		<div class="form">
+			<h3>infomation</h3>
 			<p>コメントフォーム</p>
 			<%= render "event_comments/form", event:@event,comment:@comment %>
 		</div>

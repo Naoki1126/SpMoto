@@ -1,20 +1,57 @@
-<h2>~ To everyone who loves motercycles ~</h2>
-	<div class= "container">
-
-		<% if user_signed_in? %>
-		<button type="button" class="btn btn-default">
-			<h3>SpMoto とは</h3>
-		</button>
-		<% else %>
-
-		<br>
-		<button type="button" class="btn btn-default">
-			<h3>SpMoto とは</h3>
-		<button type="button" class="btn btn-default">
-			<%= link_to "新規登録",new_user_registration_path %>
-		</button>
-		<button type="button" class="btn btn-default">
-			<%= link_to "ログイン",new_user_session_path %>
-		</button>
-		<% end %>
-	</div>
+<div class="row">
+			<div class="image">
+				<div class="theTarget">
+					<div class="slide" style= "background-image: url(<%= asset_path "bike-1.jpg" %>); buckground-size:cover;">
+						<h2>~ To everyone who loves motercycles ~</h2>
+            			<% if user_signed_in? %>
+							<button type="button" class="btn btn-default">
+								<h3>SpMoto とは</h3>
+							</button>
+						<% else %>
+						<br>
+							<button type="button" class="btn btn-default">
+								<h3>SpMoto とは</h3>
+							</button>
+							<button type="button" class="btn btn-default">
+								<%= link_to "新規登録",new_user_registration_path %>
+							</button>
+							<button type="button" class="btn btn-default">
+								<%= link_to "ログイン",new_user_session_path %>
+							</button>
+							<% end %>
+					</div>
+					<div class="slide" style= "background-image: url(<%= asset_path "bike-2.jpg" %>); buckground-size:cover;"></div>
+        			<div class="slide" style= "background-image: url(<%= asset_path "bike-3.jpg" %>); buckground-size:cover;"></div>
+        			<div class="slide" style= "background-image: url(<%= asset_path "bike-4.jpg" %>); buckground-size:cover;"></div>
+        			<div class="slide" style= "background-image: url(<%= asset_path "bike-5.jpg" %>); buckground-size:cover;"></div>
+        			<div class="slide" style= "background-image: url(<%= asset_path "bike-6.jpg" %>); buckground-size:cover;"></div>
+				</div>
+       		</div>
+    </div>
+    <script src="assets/skippr.min.js"></script>
+<link rel="stylesheet" href="assets/skippr.css">
+<link rel="stylesheet" href="assets/style.css">
+<script>
+  $(".theTarget").skippr({
+    // スライドショーの変化（"fade" or "slide"）
+    transition : 'fade',
+    // 変化にかかる時間（ミリ秒）
+    speed : 1000,
+    // easingの種類
+    easing : 'easeOutQuart',
+    // ナビゲーションの形（"block" or "bubble"）
+    navType : 'block',
+    // 子要素の種類（"div" or "img"）
+    childrenElementType : 'div',
+    // ナビゲーション矢印の表示（trueで表示）
+    arrows : true,
+    // スライドショーの自動再生（falseで自動再生なし）
+    autoPlay : false,
+    // 自動再生時のスライド切替間隔（ミリ秒）
+    autoPlayDuration : 2000,
+    // キーボードの矢印キーによるスライド送りの設定（trueで有効）
+    keyboardOnAlways : true,
+    // 1枚目のスライド表示時に戻る矢印を表示するかどうか [false]:矢印を隠さない [true]:矢印を隠す
+    hidePrevious : false
+});
+</script>

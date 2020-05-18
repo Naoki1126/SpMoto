@@ -14,7 +14,7 @@
  				<span><%= link_to "編集する",edit_post_image_path(@postimage) %></span>
  				<br>
  				<% @postimages.each do |post| %>
- 					<%= attachment_image_tag post, :image,size:'500x375' %>
+ 					<%= attachment_image_tag post, :image,size:'500x375',class:'theTarget' %>
  				<% end %>
  				<br>
  				<%= @postimage.body %>

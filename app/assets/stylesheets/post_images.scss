@@ -1,3 +1,69 @@
 // Place all the styles related to the post_images controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.showimage{
+	width:100%;
+}
+
+
+.profile-image{
+	margin-top: 15px;
+}
+
+.form{
+	border: solid;
+	border-color:#808080;
+	height:600px;
+}
+
+.show-table{
+	margin: 0 auto;
+}
+
+.count{
+	border: solid;
+	border-color: #EEEEEE;
+	width: 20%;
+	height: 50px;
+	float: left;
+}
+
+.favorite{
+	border: solid;
+	border-color: #EEEEEE;
+	width: 20%;
+	height: 50px;
+	float: left;
+}
+
+.pv{
+	text-align: center;
+}
+
+.comment{
+	border: solid;
+	border-color: #EEEEEE;
+	float: left;
+	height: 50px;
+}
+
+.comment-form {
+	display: none;
+}
+
+.editlink{
+	text-align: right;
+	float: right;
+}
+
+
+.form{
+	background-color: white;
+}
+
+
+
+
+

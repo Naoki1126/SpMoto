@@ -16,5 +16,6 @@
 //= require jquery
 //= require rails-ujs
 //= require bootstrap-sprockets
+//= require bxslider
 //= require_tree .
 

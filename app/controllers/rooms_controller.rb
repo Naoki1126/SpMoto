@@ -2,9 +2,9 @@ class RoomsController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    @user = current_user
   	@rooms = Room.all
   end
-
   def create
   	@room = Room.create
     @entry1 = Entry.create(room_id: @room.id, user_id: current_user.id)

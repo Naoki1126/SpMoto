@@ -1,39 +1,50 @@
-<div class="row">
-		<table class="table table-hover table-inverse">
+<div class="row" style= "background-image: url(<%= asset_path "image-2.jpg" %>); background-size:cover;">
+	<div class= "col-xs-2">
+	</div>
+	<div class="col-xs-8">
+		<table class="show-table">
 			<tr>
-				<td><%= attachment_image_tag @user,:profile_image,size:'100x75' %></td>
-				<td><%= @user.name %></td>
-				<td id="follow-button_<%= @user.id %>">
+				<td width="200px"><%= attachment_image_tag @user,:profile_image,size:'100x75',fallback:"no_image.jpg" %></td>
+				<td align="left" valign="middle" width="200px"><%= "投稿者: #{@user.name}" %></td>
+				<td id="follow-button_<%= @user.id %>" align="right" width="200px">
 					<%= render 'relationships/followbutton', user: @user %>
  				</td>
  			</tr>
  		</table>
- 		<div class="col-xs-8">
+ 			<br>
  			<div class="form">
- 				<span><%= @postimage.created_at %></span>
- 				<span><%= link_to "編集する",edit_post_image_path(@postimage) %></span>
- 				<br>
- 				<% @postimages.each do |post| %>
- 					<%= attachment_image_tag post, :image,size:'500x375',class:'theTarget' %>
- 				<% end %>
+ 				<p><%= @postimage.created_at.strftime("%Y-%m-%d(%a)")%></p>
+ 				<div class="editlink">
+ 				<%= link_to "編集する",edit_post_image_path(@postimage), class:"glyphicon glyphicon-wrench"%>
+ 				</div>
+ 				<ul class="bxslider">
+ 					<% @postimages.each do |post| %>
+ 					<li>
+ 						<%= attachment_image_tag post, :image, size:'400x300',class: 'showimage' %>
+ 						<% end %>
+ 					</li>
+ 				</ul>
  				<br>
  				<%= @postimage.body %>
  				<br>
- 				<%= render_with_hashtags(@postimage.hashbody) %>
+ 				<p>
+ 					<%= render_with_hashtags(@postimage.hashbody) %>
+ 				</p>
+ 			<div class="count">
+ 				<p class="pv"><%= "閲覧数： #{@postimage.impressionist_count}" %></p>
  			</div>
- 			<div id="count" class= "btn btn-default">
- 				<p><span>閲覧数：</span><%= @postimage.impressionist_count %></span></p>
- 			</div>
- 			<div id = "favorite-button_<%= @postimage.id %>" class= "btn btn-default">
+ 			<div id = "favorite-button_<%= @postimage.id %>" class= "favorite">
  				<%= render partial: 'post_image_favorites/favorite', locals: { postimage: @postimage } %>
  			</div>
- 			<div class="form">
- 				<%= render 'post_image_comments/form', postimage: @postimage, comment: @comment %>
+ 			<div class= "comment" class="btn btn-default">
+ 				<div class="comment-form">
+ 					<%= render 'post_image_comments/form', postimage: @postimage, comment: @comment %>
+ 				</div>
+  				<div id ="post-image-comment_<%= @postimage.id %>" type="button">
+ 					<%= render 'post_image_comments/comment', postimage: @postimage %>
+ 				</div>
  			</div>
-  			<div id ="post-image-comment_<%= @postimage.id %>" type="button">
- 				<%= render 'post_image_comments/comment', postimage: @postimage %>
- 			</div>
+ 		</div>
  		<div class="col-xs-2">
-
  		</div>
 </div>

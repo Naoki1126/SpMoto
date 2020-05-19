@@ -1,9 +1,8 @@
-<h1>Room Index</h1>
+<h1>DM 一覧</h1>
 
 <% @rooms.each do |room| %>
 	<div>
-		<%= link_to "Room#{room.id}", room_path(room) %>
+		<%= link_to room.name, room_path(room) %>
 	</div>
 <% end %>
 
-<%= link_to "create new Room", rooms_path, method: :post, class: "btn btn-default" %>

@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+	 before_action :authenticate_user!
+
 
 	def index
 		@user = current_user
@@ -67,5 +69,6 @@ class UsersController < ApplicationController
   		params.require(:user).permit(:nama,:prefecture_name, :introduction,:profile_image )
 
     end
+
 
 end

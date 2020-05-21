@@ -1,38 +1,44 @@
-<h2>新規会員登録フォーム</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name, :placeholder => "表示名" ,autofocus: true, autocomplete: "name" %>
-
-  <div class="field">
-    <%= f.label :email %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div class= "row">
+  <div class="col-xs-4">
   </div>
+  <div class="col-xs-4">
+    <h3>会員登録</h3>
 
-   <div class="field">
-    <%= f.label :prefecture_name%>
-    <%= f.collection_select :prefecture_name, JpPrefecture::Prefecture.all,:name,:name, include_blank: true %>
-    <br>
-    <p>※都道府県は公開されますので登録は任意です</p>
+    <div class= "new-box">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
+        <div class="field">
+          <%= f.label :name, "アカウント名" %><br>
+          <%= f.text_field :name, :placeholder => "表示名" ,autofocus: true, autocomplete: "name" %>
+        </div>
+        <div class="field">
+          <%= f.label :email,"メールアドレス" %><br>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        </div>
+        <br>
+        <div class="field">
+          <%= f.label :prefecture_name,"都道府県"%>
+          <%= f.collection_select :prefecture_name, JpPrefecture::Prefecture.all,:name,:name, include_blank: true %>
+          <br>
+          <p>※都道府県は公開されますので登録は任意です</p>
+        </div>
+        <div class="field">
+          <%= f.label :password,"パスワード" %><br>
+          <%= f.password_field :password, autocomplete: "new-password",placeholder:"6文字以上" %>
+        </div>
+        <div class="field">
+          <%= f.label :password_confirmation,"パスワード確認用" %><br>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password",placeholder:"確認用" %>
+        </div>
+        <br>
+        <div class="field upbutton">
+          <%= f.submit "Sign up" %>
+        </div>
+      <% end %>
+        <div class="field loginbutton">
+          <%= render "users/shared/links" %>
+        </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    
-    <%= f.password_field :password, autocomplete: "new-password",placeholder:"6文字以上" %>
+  <div class="col-xs-4">
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation, autocomplete: "new-password",placeholder:"確認用" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "users/shared/links" %>
+</div>

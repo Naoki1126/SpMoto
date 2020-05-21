@@ -1,9 +1,11 @@
 <div class="row">
-	<nav>
-		<ul class= "nav nav-pills nav-justified">
+	<nav class= "event-top">
+		<ul class= "nav nav-tabs">
 			<li class="active"><%= link_to "開催予定のイベント", events_path(event_case: "now") %></li>
-			<li class="active"><%= link_to "終了したイベント", events_path(event_case: "log") %></li>
-			<li class="active"><%= link_to "イベント作成", new_event_path %></li>
+			<li><%= link_to "終了したイベント", events_path(event_case: "log") %></li>
+			<% if user_signed_in? %>
+			<li><%= link_to "イベント作成", new_event_path %></li>
+			<% end %>
 		</ul>
 	</nav>
 	<div class= "col-xs-1">
@@ -29,7 +31,9 @@
 					<td><%= link_to event.prefecture_name,events_path(event_prefecture: 'name',prefecture_code: event.prefecture_code) %></td>
 					<td><%= "#{event.capacity}人" %></td>
 					<td><%= link_to "#{event.event_participates.count}人",event_event_paricipates_path(event) %></td>
+					<% if user_signed_in? %>
 					<td><%= link_to "詳細",event_path(event) %></td>
+					<% end %>
 				</tr>
 			<% end %>
 		</tbody>

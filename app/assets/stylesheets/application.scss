@@ -17,3 +17,52 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+*{
+	margin: 0;
+	padding:0;
+	box-sizing: border-box;
+	font-family:'Century Gothic';
+}
+
+
+header{
+	background-color: black;
+	color:white;
+	position:fixed;
+  	z-index:150;
+  	width:100%;
+}
+
+header a{
+	color:white;
+}
+
+footer{
+	width:100%;
+	background-color:black;
+	height:50px;
+}
+
+.foot{
+	color:white;
+	text-align: center;
+	padding-top:10px;
+}
+
+.field{
+	margin: 0 auto;
+}
+
+.container{
+	position: relative;
+	width: 100%;
+
+        /* コンテンツ部分の高さが画面に収まらない場合はコンテンツの高さに合わせる*/
+        height: auto !important;
+
+        /* コンテンツ部分の高さが画面より低い場合は画面の高さに合わせる*/
+        height: 100%;
+        min-height: 100%;
+}
+
+

@@ -1,4 +1,7 @@
 class EventsController < ApplicationController
+  before_action :authenticate_user!, only: [:map,:new,:show,:edit,:create,:update,:destroy_page,:destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
+
 
 	def map
 		results = Geocoder.search(params[:address])
@@ -90,5 +93,15 @@ class EventsController < ApplicationController
 	def event_params
 		params.require(:event).permit(:title,:body,:prefecture_code,:capacity,:date_and_time,:meetingplace,:meetingfinishtime,:user_id, :latitude, :longitude)
 	end
+
+	def correct_user
+    event = Event.find(params[:id])
+    if current_user != event.user
+      redirect_to root_path
+    end
+    # redirect_to books_path if current_user != user
+  end
+
+
 
 end

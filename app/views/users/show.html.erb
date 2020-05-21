@@ -2,14 +2,14 @@
 	<!-- プロフィール左側 -->
 	<div class= "col-xs-3">
 		<div class= "user-box">
-			<%= attachment_image_tag @user, :profile_image, size:'100x100', format:'jpg',fallback: "no_image.jpg" %>
-			<table class="table table-hover table-inverse">
+			<%= attachment_image_tag @user, :profile_image, size:'200x250', format:'jpg',fallback: "no_image.jpg" %>
+			<table class="table table-hover table-inverse" id="user-profile">
 				<tr>
-					<td>name:<%= @user.name %></td>
+					<td class="profile-name">name:<span><%= @user.name %></span></td>
 				</tr>
 				<% unless @user.prefecture_name == nil %>
 				<tr>
-					<td>所属:<%= @user.prefecture_name %></td>
+					<td class="profile-prefecture">所属:<span><%= @user.prefecture_name %></span></td>
 				</tr>
 				<% end %>
 			</table>
@@ -23,28 +23,33 @@
 			<div class= "navbar">
 				<nav>
 					<ul class="nav navbar-nav navbar-right">
-						<li class="nav-link"><%= link_to "会員情報編集", edit_user_path(@user) %></li>
-						<li class="nav-link"><%= link_to "主催イベント", events_path(event_case: "now",user_id: @user.id) %></li>
-						<li class="nav-link"><%= link_to "過去イベント", events_path(event_case: "log",user_id: @user.id) %></li>
-						<li class="nav-link"><%= "投稿件数:#{@post_images.count}" %></li>
-						<li class="nav-link"><%= link_to "follow:#{@user.followings.count}", user_follows_path(user_id: @user.id) %></li>
-						<li class="nav-link"><%= link_to "follower:#{@user.followers.count}", user_followers_path(user_id: @user.id) %></li>
+							<li class="profile-link"><%= link_to "主催イベント", events_path(event_case: "now",user_id: @user.id) %></li>
+							<li class="profile-link"><%= link_to "過去イベント", events_path(event_case: "log",user_id: @user.id) %></li>
+							<li class="postcount"><span><%= "投稿件数:#{@post_images.count}" %></span></li>
+							<li class="profile-link"><%= link_to "follow:#{@user.followings.count}", user_follows_path(user_id: @user.id) %></li>
+							<li class="profile-link"><%= link_to "follower:#{@user.followers.count}", user_followers_path(user_id: @user.id) %></li>
 						<% if @user.id == current_user.id %>
 
 						<% else %>
 							<% if @isroom == true %>
-								<li><a href="/rooms/<%= @roomid %>">DM</li>
+								<li class= "profile-link"><a href="/rooms/<%= @roomid %>">DM</li>
 							<% else %>
-								<li><%= form_for @room do |f| %>
+								<li class="profile-link">
+									<%= form_for @room do |f| %>
 										<%= fields_for @entry do |e| %>
 											<%= e.hidden_field :user_id, :value=> @user.id %>
 										<% end %>
-										<%= f.submit "DM" %>
+										<%= f.submit "DM", class:'dmbutton' %>
 									<% end %>
 								</li>
 							<% end %>
 						<% end %>
-						<li class="nav_link"><%=link_to "通知",notifications_path %></li>
+						<%if @user == current_user %>
+							<li class="profile-link"><%=link_to "通知",notifications_path %></li>
+						<% end %>
+							<% if @user == current_user %>
+							<li class="profile-link"><%= link_to "会員情報編集", edit_user_path(@user) %></li>
+							<% end %>
 					</ul>
 				</nav>
 		    </div>
@@ -57,9 +62,7 @@
 	<div class= "contents-box">
 		<% @post_images.each do |postimage| %>
 		    <%= link_to post_image_path(postimage) do %>
-		   	    <% postimage.post_image_images.each do |postimageimage| %>
-			  		<%= attachment_image_tag postimageimage, :image,size:'150x120' %>
-				<% end %>
+			  		<%= attachment_image_tag postimage.post_image_images[0], :image,size:'150x120' %>
 		 	<% end %>
 		<% end %>
 	</div>

@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
-		@post_images = @user.post_images.page(params[:page]).reverse_order
+		@post_images = @user.post_images.page(params[:page]).per(20).reverse_order
 
 		#DM機能
     	@currententry = Entry.where(user_id: current_user.id)

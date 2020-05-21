@@ -1,21 +1,30 @@
 <div class= "row">
-	<div class= "col-xs-2">
+	<div class="col-xs-2">
 	</div>
-	<div class= "col-xs-8">
-		<p>新規投稿</p>
-		<div class="previw">
+	<div class="col-xs-8">
+		<div class= "postimage-new-box">
+			<h3>新規投稿</h3>
+			<div class="previw">
+			</div>
+			<%= form_with model:@postimagenew do |f| %>
+				<div class="attachment-field">
+					<p>画像を選択（複数指定可）</p>
+					<%= f.attachment_field :post_image_images_images, multiple:true %>
+				</div>
+				<br>
+				<br>
+				<p>投稿の詳細を入力してください</p>
+				<%= f.text_area :body, size:"55x12" %>
+				<br>
+				<p>ハッシュタグ入力欄</p>
+				<%= f.text_area :hashbody, size:"55x3" %>
+				<br>
+				<div class= "postimage-new">
+				<%= f.submit "新規投稿" ,class:'postimage-new-button' %>
+				</div>
+			<% end %>
 		</div>
-		<%= form_with model:@postimagenew do |f| %>
-		<%= f.attachment_field :post_image_images_images, multiple:true %>
-		<p>投稿の詳細を入力してください</p>
-		<%= f.text_area :body %>
-		<br>
-		<p>ハッシュタグ入力欄</p>
-		<%= f.text_area :hashbody %>
-
-		<%= f.submit "新規投稿" %>
-		<% end %>
 	</div>
-	<div class= "col-xs-2">
+	<div class="col-xs-2">
 	</div>
 </div>

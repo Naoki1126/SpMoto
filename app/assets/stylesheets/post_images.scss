@@ -12,14 +12,18 @@
 	margin-top: 15px;
 }
 
-.form{
-	border: solid;
-	border-color:#808080;
-	height:600px;
+.image-show-form{
+	border:3px solid #EEEEEE;
+	box-shadow: 4px 4px 6px #EEEEEE;
+	height:100%;
+	width: 80%;
+	margin-top:10%;
+	margin-bottom:5%;
 }
 
 .show-table{
 	margin: 0 auto;
+	margin-top: 10%;
 }
 
 .count{
@@ -30,38 +34,19 @@
 	float: left;
 }
 
-.favorite{
-	border: solid;
-	border-color: #EEEEEE;
-	width: 20%;
-	height: 50px;
-	float: left;
-}
-
 .pv{
-	text-align: center;
 }
 
-.comment{
-	border: solid;
-	border-color: #EEEEEE;
-	float: left;
-	height: 50px;
+.image-show-comment-box{
+	margin-top: 20%
 }
 
-.comment-form {
-	display: none;
-}
 
 .editlink{
-	text-align: right;
-	float: right;
+	float:right;
 }
 
 
-.form{
-	background-color: white;
-}
 
 .postimage-new-box{
 	margin-top:10%;
@@ -127,4 +112,38 @@
 
 .postimage-destroy-button{
 	margin:2% 0 2% 0;
+}
+
+.show-image-user{
+
+}
+
+.image-show-comment-index table{
+	width: 400px;
+}
+
+.image-show-favorite span{
+	display: inline-block;
+	margin-left:10%;
+}
+
+.image-show-favorite{
+	font-size: 14px;
+}
+
+.show-image-user{
+	display: inline-block;
+}
+
+.image-show-body-hash{
+	border-top: 1px solid #EEEEEE;
+	padding:2% 2% 2% 0;
+}
+
+.image-show-command{
+	padding-left: 3%;
+}
+
+.image-show-day-edit{
+	padding-left: 2%;
 }

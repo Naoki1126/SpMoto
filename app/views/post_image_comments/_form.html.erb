@@ -1,4 +1,5 @@
 <%= form_with(model: [postimage,comment], url: post_image_post_image_comments_path(postimage), method: :post) do |f| %>
-		<%= f.text_area :comment %>
+		<%= f.text_area :comment,size:'40x3' %>
+		<br>
 		<%= f.submit '送信する' %>
 <% end %>	

@@ -15,7 +15,9 @@
     <header class="head">
         <nav>
           <ul class="nav navbar-nav navbar-left">
-            <li class="nav-link"><%=link_to "SpMoto", root_path %></li>
+            <li class="nav-link"><%=link_to root_path do %>
+              <span class="logo">SpMoto</span><% end %>
+            </li>
           </ul>
         </nav>
 

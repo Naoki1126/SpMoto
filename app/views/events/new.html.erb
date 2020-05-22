@@ -19,13 +19,13 @@
 			<h4>開催日時:  <%= f.datetime_field :date_and_time %></h4>
 		</div>
 		<div class="event-meeting-finish-time-new">
-			<h4>終了時刻:  <%= f.datetime_field :meetingfinishtime %></h4>
+			<h4>終了日時:  <%= f.datetime_field :meetingfinishtime %></h4>
 		</div>
 		<div class="event-meetingplace-new">
 			<h4>集合場所:  <%= f.text_field :meetingplace %></h4>
 		</div>
 		<div class = "event-capacity-new">
-			<h4>定員:  <%= f.number_field :capacity,value: "指定なし",,in: 1..5000 %></h4>
+			<h4>定員:  <%= f.number_field :capacity,value: "指定なし",in: 1..2000 %></h4>
 			<%= hidden_field_tag(:user_id, @user.id) %>
 		</div>
 			<div class="latitude-longitude-form">

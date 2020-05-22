@@ -1,50 +1,53 @@
-<div class="row" style= "background-image: url(<%= asset_path "image-2.jpg" %>); background-size:cover;">
-	<div class= "col-xs-2">
-	</div>
+<div class="row">
 	<div class="col-xs-8">
-		<table class="show-table">
-			<tr>
-				<td width="200px"><%= attachment_image_tag @user,:profile_image,size:'100x75',fallback:"no_image.jpg" %></td>
-				<td align="left" valign="middle" width="200px"><%= "投稿者: #{@user.name}" %></td>
-				<td id="follow-button_<%= @user.id %>" align="right" width="200px">
-					<%= render 'relationships/followbutton', user: @user %>
- 				</td>
- 			</tr>
- 		</table>
- 			<br>
- 			<div class="form">
- 				<p><%= @postimage.created_at.strftime("%Y-%m-%d(%a)")%></p>
- 				<div class="editlink">
- 				<%= link_to "編集する",edit_post_image_path(@postimage), class:"glyphicon glyphicon-wrench"%>
+ 			<div class="image-show-form">
+ 				<div class="image-show-day-edit">
+ 					<p><%= @postimage.created_at.strftime("%Y-%m-%d(%a)")%>
+ 						<span class="editlink">
+ 							<%= link_to "編集する",edit_post_image_path(@postimage), class:"glyphicon glyphicon-wrench"%>
+ 						</span>
+ 					</p>
  				</div>
  				<ul class="bxslider">
  					<% @postimages.each do |post| %>
  					<li>
- 						<%= attachment_image_tag post, :image, size:'400x300',class: 'showimage' %>
+ 						<%= attachment_image_tag post, :image, size:'700x500',class: 'showimage' %>
  						<% end %>
  					</li>
  				</ul>
- 				<br>
- 				<%= @postimage.body %>
- 				<br>
- 				<p>
- 					<%= render_with_hashtags(@postimage.hashbody) %>
- 				</p>
- 			<div class="count">
- 				<p class="pv"><%= "閲覧数： #{@postimage.impressionist_count}" %></p>
+ 				<div class="image-show-command">
+ 					<p id = "favorite-button_<%= @postimage.id %>" class= "image-show-favorite">
+ 						<%= render partial: 'post_image_favorites/favorite', locals: { postimage: @postimage } %>
+ 							<% if @user == current_user %>
+ 								<span class="pv"><%= "閲覧数： #{@postimage.impressionist_count}" %>
+ 								</span>
+ 							<% end %>
+ 								<span class="show-image-user">
+ 									投稿者:   <%=link_to user_path(@user) do %>
+ 									<%= @user.name %>
+ 									<% end %>
+ 								</span>
+ 					</p>
+ 				<div class="image-show-body-hash">
+ 					<p class="image-show-body"><%= @postimage.body %></p>
+ 					<div class="image-show-hash">
+ 						<p><%= render_with_hashtags(@postimage.hashbody) %>
+ 						</p>
+ 					</div>
+ 				</div>
+ 			
+ 				</div>
  			</div>
- 			<div id = "favorite-button_<%= @postimage.id %>" class= "favorite">
- 				<%= render partial: 'post_image_favorites/favorite', locals: { postimage: @postimage } %>
- 			</div>
- 			<div class= "comment" class="btn btn-default">
- 				<div class="comment-form">
+ 	</div>
+ 	<div class="col-xs-4">
+ 		<div class= "image-show-comment-box">
+ 			<div class="comment-form">
+ 				<h4>Comment-form</h4>
  					<%= render 'post_image_comments/form', postimage: @postimage, comment: @comment %>
- 				</div>
-  				<div id ="post-image-comment_<%= @postimage.id %>" type="button">
+ 			</div>
+  			<div id ="post-image-comment_<%= @postimage.id %>" class="image-show-comment-index">
  					<%= render 'post_image_comments/comment', postimage: @postimage %>
- 				</div>
  			</div>
  		</div>
- 		<div class="col-xs-2">
- 		</div>
+ 	</div>
 </div>

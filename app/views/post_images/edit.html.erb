@@ -2,19 +2,26 @@
 	<div class= "col-xs-2">
 	</div>
 	<div class= "col-xs-8">
-		<p>投稿編集</p>
-		<div class= "contents-box">
+		<div class= "postimage-update-box">
+		<h3>投稿編集</h3>
 		<% @postimages.each do |postimage| %>
-			  <%= attachment_image_tag postimage, :image,size:'100x75' %>
+			  <%= attachment_image_tag postimage, :image,size:'220x160' %>
 		<% end %>
-		</div>
 		<%= form_with model:@postimage do |f| %>
-			<%= f.text_area :body %>
-			<%= f.submit "保存" %>
+			<%= f.text_area :body, size:"55x12" %>
+			<br>
+			<p>ハッシュタグ入力欄</p>
+			<%= f.text_area :hashbody, size:"55x3" %>
+			<div class="postimage-update">
+				<%= f.submit "保存",class:"btn btn-default"%>
+			</div>
+		<% end %>
+		<div class = "postimage-destroy-button">
+			<%= link_to post_image_path(@postimage),method: :delete,class:"btn btn-danger" do %>
+				<p>削除</p>
 			<% end %>
-		<div class = "destroy">
-			<%= link_to "削除", post_image_path(@postimage),method: :delete,class:"btn btn-default" %>
 		</div>
+	</div>
 	<div class= "col-xs-2">
 	</div>
 </div>

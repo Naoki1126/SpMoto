@@ -1,5 +1,5 @@
 class SearchController < ApplicationController
-
+	before_action :authenticate_user!
 	def search
 		@user = current_user
 		if params[:search_case] == "header"

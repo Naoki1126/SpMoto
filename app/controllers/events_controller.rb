@@ -97,12 +97,11 @@ class EventsController < ApplicationController
 	end
 
 	def correct_user
-    event = Event.find(params[:id])
-    if current_user != event.user
-      redirect_to root_path
-    end
-    # redirect_to books_path if current_user != user
-  end
+    	event = Event.find(params[:id])
+    		if current_user != event.user
+      		redirect_to root_path
+    		end
+  	end
 
 
 

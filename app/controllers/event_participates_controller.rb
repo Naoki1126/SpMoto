@@ -1,5 +1,5 @@
 class EventParticipatesController < ApplicationController
-
+	before_action :authenticate_user!
 	def index
 		@event = Event.find(params[:event_id])
 		@participate = EventParticipate.where(event_id: @event.id)

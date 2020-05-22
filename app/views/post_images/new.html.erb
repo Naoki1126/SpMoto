@@ -13,16 +13,18 @@
 				</div>
 				<br>
 				<br>
-				<p>投稿の詳細を入力してください</p>
-				<%= f.text_area :body, size:"55x12" %>
-				<br>
-				<p>ハッシュタグ入力欄</p>
-				<%= f.text_area :hashbody, size:"55x3" %>
-				<br>
-				<div class= "postimage-new">
-				<%= f.submit "新規投稿" ,class:'postimage-new-button' %>
-				</div>
+				<div class= postimage-body-box>
+					<p>投稿の詳細を入力してください</p>
+					<%= f.text_area :body, size:"55x12" %>
+					<br>
+					<p>ハッシュタグ入力欄</p>
+					<%= f.text_area :hashbody, size:"55x3" %>
+					<br>
+					<div class= "postimage-new">
+					<%= f.submit "新規投稿" ,class:'postimage-new-button' %>
+					</div>
 			<% end %>
+				</div>
 		</div>
 	</div>
 	<div class="col-xs-2">

@@ -1,2 +1,9 @@
-<h3>このイベントを削除しますか</h3>
-<%= link_to "削除する", event_path(@event),method: :delete,class:'btn btn-default' %>
+<div class="last-destroy-page">
+	<h3>このイベントを本当に<span>削除</span>しますか？</h3>
+	<%= link_to  event_path(@event),method: :delete,class:'btn btn-danger', id:"destroy-destroy-button" do %>
+		<p>削除する</p>
+	<% end %>
+	<%= link_to event_path(@event), class:"btn btn-default",id:"destroy-back-button" do %>
+		<p>編集画面へ戻る</p>
+	<% end %>
+</div>

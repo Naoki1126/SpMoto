@@ -158,9 +158,12 @@
 .user-edit-sub-mit{
   margin-top:5%;
 }
-#edit-destroy-button{
-  margin-left:10%;
-  padding-top:3%;
+#event-destroy-button{
+  width: 300px;
+}
+
+#event-destroy-button span{
+  display: inline-block;
 }
 
 .edit-name span{
@@ -171,13 +174,46 @@
 .edit-prefecture span{
   display: inline-block;
   margin-left:3%;
+  font-weight: bold
 }
 
 .user-edit-table{
   margin-top: 8%;
 }
 
-.edit-profile-image{
+.last-destroy-page{
+  margin-top:20%;
+  text-align: center;
+}
+
+.last-destroy-page span{
+  color: red;
+}
+
+#destroy-destroy-button{
+  padding-top:2%;
   display: inline-block;
-  margin-top: 5%;
+  margin-top:5%;
+}
+
+#destroy-back-button{
+  padding-top: 2%;
+  display: inline-block;
+  margin-top:5%;
+
+}
+
+#edit-destroy-button{
+  display: inline-block;
+  margin-left:10%;
+}
+
+#edit-destroy-button p{
+  display: inline-block;
+  margin-top:5%;
+}
+
+.follow-button-space{
+  width: 100%;
+  text-align: center
 }

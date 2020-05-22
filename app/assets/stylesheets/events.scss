@@ -8,6 +8,8 @@
 
 .event-title-new{
 	margin-top:15%;
+	border: 1px solid #EEEEEE;
+	box-shadow: 1px 1px 3px #EEEEEE;
 }
 
 .latitude-longitude-form{
@@ -15,16 +17,121 @@
 }
 
 .new-map{
-	margin-top:15%
+	margin-top:15%;
 }
 
 .event-new-button{
 	width:100%;
 	padding-top:2%;
+	text-align: center
+
 }
 
 .event-new-button input[type="submit"]{
-	display:block;
-	margin: 0 auto;
+	width:300px;
+}
+
+.event-show-box span{
+	display: inline-block;
+	margin-left: 5%;
+}
+.event-body-show{
+	height:250px;
+	border: 1px solid #EEEEEE;
+	box-shadow: 1px 1px 3px #EEEEEE;
+	padding:5px;
+}
+.event-body-show p{
+	font-weight: bold;
+}
+
+.event-user-show{
+	width: 100%;
+	border:1px solid #EEEEEE;
+	box-shadow: 1px 1px 3px #EEEEEE;
+}
+
+.event-prefecture-new{
+	border:1px solid #EEEEEE;
+	box-shadow: 1px 1px 3px #EEEEEE;
+}
+.event-meetingplace-new{
+	border:1px solid #EEEEEE;
+	box-shadow: 1px 1px 3px #EEEEEE;
+}
+
+.event-date-and-time-new{
+	border:1px solid #EEEEEE;
+	box-shadow: 1px 1px 3px #EEEEEE;
+}
+
+.event-meeting-finish-time-new{
+	border:1px solid #EEEEEE;
+	box-shadow: 1px 1px 3px #EEEEEE;
+
+}
+.event-capacity-new{
+	border:1px solid #EEEEEE;
+	box-shadow: 1px 1px 3px #EEEEEE;
+
+}
+
+.event-participates-count{
+	display: inline-block;
+	margin-right: 5%;
+}
+.event-participates-show{
+	border:1px solid #EEEEEE;
+	box-shadow: 1px 1px 3px #EEEEEE;
+}
+
+.event-participates-show span{
+	font-size:25px;
+	display: inline-block;
+	padding-top: 2%;
+}
+.eventcomment-index{
+	width: 100%;
+}
+.eventcomment-index table{
+	width: 400px;
+}
+
+.event-comment-user-name span{
+	display: inline-block;
+	margin-left: 5%;
+}
+
+.comment-table-tr{
+	border-bottom: 1px solid;
+}
+
+.comment-table-tr span{
+	text-align: right;
+}
+
+.event-show-edit-button{
+	text-align: center;
+}
+
+.event-show-edit-button span{
+	display: inline-block;
+	padding-top:5%;
+}
+
+.edit-profile-image{
+  display: inline-block;
+  margin-top: 5%;
+}
+
+.event-title-edit{
+	margin-top:15%;
+}
+.event-new-button span{
+  display: inline-block;
+  padding-top: 5%;
+}
+
+#event-destroy-button{
 	width:300px;
 }

@@ -26,8 +26,8 @@
 			<% @events.each do |event| %>
 				<tr>
 					<td><%= event.title %></td>
-					<td><%= event.date_and_time %></td>
-					<td><%= event.meetingfinishtime %></td>
+					<td><%= event.date_and_time.strftime("%Y年%m月%d日") %></td>
+					<td><%= event.meetingfinishtime.strftime("%Y年%m月%d日") %></td>
 					<td><%= link_to event.prefecture_name,events_path(event_prefecture: 'name',prefecture_code: event.prefecture_code) %></td>
 					<td><%= "#{event.capacity}人" %></td>
 					<td><%= link_to "#{event.event_participates.count}人",event_event_paricipates_path(event) %></td>

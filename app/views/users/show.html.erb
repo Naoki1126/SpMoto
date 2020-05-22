@@ -13,7 +13,7 @@
 				</tr>
 				<% end %>
 			</table>
-			<div id ="follow-button_<%= @user.id %>">
+			<div id ="follow-button_<%= @user.id %>" class="follow-button-space">
 				<%= render 'relationships/followbutton', user: @user %>
 			</div>
 		</div>
@@ -45,7 +45,11 @@
 							<% end %>
 						<% end %>
 						<%if @user == current_user %>
-							<li class="profile-link"><%=link_to "通知",notifications_path %></li>
+							<li class="profile-link"><%=link_to "通知",notifications_path, class:"notification-btn" %>
+								<% if unchecked_notifications.any? %>
+									<i class="fa fa-circle notification-circle"></i>
+								<% end %>
+							</li>
 						<% end %>
 							<% if @user == current_user %>
 							<li class="profile-link"><%= link_to "会員情報編集", edit_user_path(@user) %></li>
@@ -60,10 +64,12 @@
 </div>
 <div class= "row">
 	<div class= "contents-box">
-		<% @post_images.each do |postimage| %>
-		    <%= link_to post_image_path(postimage) do %>
-			  		<%= attachment_image_tag postimage.post_image_images[0], :image,size:'150x120' %>
-		 	<% end %>
+		<% @post_images.each do |image| %>
+  			<%= link_to post_image_path(image) do %>
+  				<% image.post_image_images.each do |post| %>
+					<%= attachment_image_tag post, :image ,size:'150x120', format:'jpg',class:"image" %>
+				<% end %>
+  			<% end %>
 		<% end %>
 	</div>
 	<%= paginate @post_images,class:"paginate" %>

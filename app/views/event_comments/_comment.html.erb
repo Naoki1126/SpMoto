@@ -1,13 +1,14 @@
 <table>
 	<% event.event_comments.each do |event_comment| %>
 	<tr>
-	    <td><%= "ユーザー名:#{event_comment.user.name}" %></td>
-	    <td><%= event_comment.created_at %></td>
+	    <td class="event-comment-user-name"><%= event_comment.created_at.to_date %><span><%= event_comment.user.name %></span></td>
 	</tr>
+	<tr class= "comment-table-tr">
 		<td><%= event_comment.comment %></td>
 	    <% if event_comment.user_id == current_user.id %>
 	    <td>
-	    	<%= link_to "削除", event_event_comments_path(event_comment), method: :delete, remote:true %>
+	    	<span><%= link_to "削除", event_event_comments_path(event_comment), method: :delete, remote:true %>
+	    	</span>
 	   	<% end %>
 	    </td> 
 	</tr>

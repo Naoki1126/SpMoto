@@ -4,12 +4,12 @@ class UsersController < ApplicationController
 
 	def index
 		@user = current_user
-		@users = User.page(params[:page]).reverse_order
+		@users = User.page(params[:page]).per(50).reverse_order
 	end
 
 	def show
 		@user = User.find(params[:id])
-		@post_images = @user.post_images.page(params[:page]).per(20).reverse_order
+		@post_images = @user.post_images.page(params[:page]).per(25).reverse_order
 
 		#DM機能
     	@currententry = Entry.where(user_id: current_user.id)

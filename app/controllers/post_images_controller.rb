@@ -9,13 +9,13 @@ class PostImagesController < ApplicationController
 	def hashtag
 		@user = current_user
 		@hashtag = Hashtag.find_by(hashname: params[:name])
-		@postimage = @hashtag.post_images
+		@postimage = @hashtag.post_images.page(params[:page]).per(25).reverse_order
 		@hashtags = Hashtag.all
 		@count = @hashtags.count
 
 	end
 	def index
-		@postimage = PostImageImage.all
+		@postimage = PostImageImage.all.page(params[:page]).per(30).reverse_order
 		
 	end
 

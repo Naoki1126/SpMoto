@@ -1,37 +1,103 @@
 <div class="row">
-	<div class="col-xs-2">
-	</div>
-	<div class="col-xs-8">
+	<div class="col-xs-6">
 	<%= form_for(@event) do |f| %>
-		<div class="title-box">
-			<h3>Title</h3>
-			<%= f.text_field :title %>
+		<div class="event-title-edit">
+			<h3>イベント編集</h3>
+			<h4>Title</h4>
+			<%= f.text_field :title,size:"50x100" %>
 		</div>
-		<div class="body-box">
-			<h3>イベント概要</h3>
-			<%= f.text_area :body %>
+		<div class="event-body-new">
+			<h4>イベント概要</h4>
+			<%= f.text_area :body,placeholder: "イベントの詳細を記入して下さい",size:"50x10" %>
 		</div>
-		<div class="prefecture">
-			<h4>開催エリア:</h4>
-			<%= f.collection_select :prefecture_name, JpPrefecture::Prefecture.all,:name,:name, include_blank: true %>
+		<div class="event-prefecture-new">
+			<h4>開催エリア:  
+			<%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all,:code,:name, include_blank: true %>
+			</h4>
 		</div>
-		<div class="date-and-time">
-			<h4>開催日時:</h4><%= f.datetime_field :date_and_time %>
+		<div class="event-date-and-time-new">
+			<h4>開催日時:  <%= f.datetime_field :date_and_time %></h4>
 		</div>
-		<div class="meeting-finish-time">
-			<h4>終了時刻:</h4><%= f.datetime_field :meetingfinishtime %>
+		<div class="event-meeting-finish-time-new">
+			<h4>終了時刻:  <%= f.datetime_field :meetingfinishtime %></h4>
 		</div>
-		<div class="meetingplace">
-			<h4>集合場所</h4><%= f.text_field :meetingplace %>
+		<div class="event-meetingplace-new">
+			<h4>集合場所:  <%= f.text_field :meetingplace %></h4>
 		</div>
-		<div class = "capacity">
-			<h4>定員:<%= f.number_field :capacity %></h4>
+		<div class = "event-capacity-new">
+			<h4>定員:  <%= f.number_field :capacity,value: "指定なし",in: 1..5000 %></h4>
+			<%= hidden_field_tag(:user_id, @user.id) %>
 		</div>
-		<%= hidden_field_tag(:user_id, @user.id) %>
-		<%= f.submit "変更を保存する",class:'btn btn-default' %>
-		<% end %>
-		<%= link_to "このイベントを削除する",event_destroy_path(event_id:@event.id),class:"btn btn-default" %>
+			<div class="latitude-longitude-form">
+				<%= f.text_field :latitude %>
+				<%= f.text_field :longitude %>
+			</div>
+			<div class="event-new-button">
+				<p><%= f.submit "変更を保存する",class:'btn btn-default' %>
+	<% end %>
+				<%= link_to event_destroy_path(event_id:@event.id),class:"btn btn-danger", id:"event-destroy-button" do %>
+				<span>このイベントを削除する</span>
+				<% end %>
+				</p>
+			</div>
 	</div>
-	<div class="col-xs-2">
+	<div class="col-xs-6">
+		<div class="new-map">
+			<p class="make-map">地図情報の入力もお願いします</p>
+			<p>集合場所をクリックしてピンを立ててください</p>
+			<%= form_with url: map_request_path, method: :get do |m| %>
+  				<%= m.text_field :address %>
+  				<%= m.submit '地図表示' %>
+			<% end %>
+
+			<div id="map"></div>
+			<style>
+			#map{
+  				height: 500px;
+  				width: 500px;
+				}
+			</style>
+			<script>
+				let mapInstance;
+
+		  		function initMap(){
+					mapInstance = new google.maps.Map(document.getElementById('map'), {
+					center: {lat: <%= @latitude %>, lng: <%= @longitude %>},
+					zoom: 8
+					});
+
+					let pos = new google.maps.LatLng(
+   						<%= @latitude %>, //latitude
+  				 		<%= @longitude %>  //longitude
+  						);
+
+					mapInstance.addListener('click', function(e) {
+       					getClickLatLng(e.latLng, mapInstance);
+       				});
+				}
+
+				function getClickLatLng(lat_lng, mapInstance) {
+      				console.log(lat_lng.lat());
+      				console.log(lat_lng.lng());
+    				document.getElementById('event_latitude').value = lat_lng.lat();
+    				document.getElementById('event_longitude').value = lat_lng.lng();
+
+      // マーカーを設置
+      				if(marker!=null)
+      					marker.setMap(null)
+    				marker = new google.maps.Marker({
+    					position: lat_lng,
+    					map: mapInstance
+    				});
+      // 座標の中心をずらす
+    				mapInstance.panTo(lat_lng);
+					}
+			</script>
+			<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY'] %>&callback=initMap" async defer></script>
+		</div>
 	</div>
 </div>
+
+
+
+	

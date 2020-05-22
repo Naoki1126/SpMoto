@@ -23,8 +23,10 @@
 				</td>
 			</tr>
 		    <% end %>
-		    <%= paginate @users,class:"paginate" %>
 
 	   </tbody>
 	</table>
+	<div class="image-index-pagination">
+		<%= paginate @users,class:"paginate" %>
+	</div>
 </div>

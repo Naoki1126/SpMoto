@@ -2,6 +2,7 @@
 	<div class="col-xs-6">
 	<%= form_for(@eventnew) do |f| %>
 		<div class="event-title-new">
+			<h3>新規イベント</h3>
 			<h4>Title</h4>
 			<%= f.text_field :title,size:"50x100" %>
 		</div>
@@ -24,16 +25,22 @@
 			<h4>集合場所:  <%= f.text_field :meetingplace %></h4>
 		</div>
 		<div class = "event-capacity-new">
-			<h4>定員:  <%= f.number_field :capacity,value: "指定なし" %></h4>
+			<h4>定員:  <%= f.number_field :capacity,value: "指定なし",,in: 1..5000 %></h4>
 			<%= hidden_field_tag(:user_id, @user.id) %>
 		</div>
 			<div class="latitude-longitude-form">
 				<%= f.text_field :latitude %>
 				<%= f.text_field :longitude %>
 			</div>
+			<div class="event-new-button">
+				<%= f.submit "上記内容で新規イベントを作成",class:'btn btn-default' %>
+		<% end %>
+	</div>
 	</div>
 	<div class="col-xs-6">
 		<div class="new-map">
+			<p class="make-map">地図情報の入力もお願いします</p>
+			<p>集合場所をクリックしてピンを立ててください</p>
 			<%= form_with url: map_request_path, method: :get do |m| %>
   				<%= m.text_field :address %>
   				<%= m.submit '地図表示' %>
@@ -83,8 +90,5 @@
 	</div>
 </div>
 <div class="row">
-	<div class="event-new-button">
-		<%= f.submit "上記内容で新規イベントを作成",class:'btn btn-default' %>
-		<% end %>
-	</div>
+	
 </div>

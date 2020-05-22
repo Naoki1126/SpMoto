@@ -1,78 +1,87 @@
 <div class="row">
 	<div class="col-xs-6">
-		<div class="title-box">
-			<h3>Title</h3>
-			<%= @event.title %>
+		<div class="event-show-box">
+			<div class="event-title-new">
+				<h4>Title:  <%= @event.title %></h4>
+			</div>
+			<div class="event-body-new">
+				<div class="event-body-show">
+				<p>イベント概要</p>
+				<%= @event.body %>
+				</div>
+			</div>
+			<div class= "event-user-show">
+			<h4>主催者:
+				<%= link_to user_path(@user) do %>
+					<span><%= attachment_image_tag @user, :profile_image,size:'50x50',fallback:"no_image.jpg" %></span><span><%= @user.name %></span></h4>
+				<% end %>
+			</div>
+			<div class="event-prefecture-new">
+				<h4>開催エリア:<span>
+				<%= @event.prefecture_name %></span></h4>
+			</div>
+			<div class="event-meetingplace-new">
+				<h4>集合場所:<span><%= @event.meetingplace %></span></h4>
+			</div>
+			<div class="event-date-and-time-new">
+				<h4>開催日時:<span><%= @event.date_and_time.strftime("%Y年%m月%d日%H時%M分") %></span></h4>
+			</div>
+			<div class="event-meeting-finish-time-new">
+				<h4>終了日時:<span><%= @event.meetingfinishtime.strftime("%Y年%m月%d日%H時%M分") %></span></h4>
+			</div>
+			<div class = "event-capacity-new">
+				<h4>定員:<span><%= @event.capacity %></span></h4>
+			</div>
 		</div>
-		<div class="body-box">
-			<h3>イベント概要</h3>
-			<%= @event.body %>
-		</div>
-		<div class= "event-user">
-			<h4>主催者    <%= attachment_image_tag @user, :profile_image,size:'50x50',fallback:"no_image.jpg" %>   <%= @user.name %></h4>
-		</div>
-		<div class="prefecture">
-			<h4>開催エリア:
-			<%= @event.prefecture_name %></h4>
-		</div>
-		<div class="date-and-time">
-			<h4>開催日時:<%= @event.date_and_time %></h4>
-		</div>
-		<div class="meeting-finish-time">
-			<h4>終了時刻:<%= @event.meetingfinishtime %></h4>
-		</div>
-		<div class="meetingplace">
-			<h4>集合場所<%= @event.meetingplace %></h4>
-		</div>
-		<div class = "capacity">
-			<h4>定員:<%= @event.capacity %></h4>
-		</div>
-		<div id="participates-button_<%= @event.id %>">
+		<div id="participates-button_<%= @event.id %>" class="event-participates-show">
 			<%= render 'event_participates/participate', event: @event %>
 		</div>
-
-		<div class="bth">
-			<%= link_to "このイベントを編集する",edit_event_path(@event),class:"btn btn-default" %>
-		</div>
+		<%if @event.user == current_user %>
+			<div class="event-show-edit-button">
+				<%= link_to edit_event_path(@event),class:"btn btn-default" do %>
+					<span>このイベントを編集する</span>
+				<% end %>
+			</div>
+		<% end %>
 	</div>
 	<div class="col-xs-6">
-		<div id="map"></div>
-			<style>
-			#map{
-  				height: 500px;
-  				width: 500px;
-				}
-			</style>
-			<script>
-				let mapInstance;
+		<div class="new-map">
+			<div id="map"></div>
+				<style>
+				#map{
+  					height: 300px;
+  					width: 500px;
+					}
+				</style>
+				<script>
+					let mapInstance;
 
-		  		function initMap(){
-					mapInstance = new google.maps.Map(document.getElementById('map'), {
-					center: {lat: <%= @latitude %>, lng: <%= @longitude %>},
-					zoom: 8
-					});
+		  			function initMap(){
+						mapInstance = new google.maps.Map(document.getElementById('map'), {
+						center: {lat: <%= @latitude %>, lng: <%= @longitude %>},
+						zoom: 8
+						});
 
-					let pos = new google.maps.LatLng(
-   					<%= @latitude %>, //latitude
-  				 	<%= @longitude %>  //longitude
-  					);
+						let pos = new google.maps.LatLng(
+   						<%= @latitude %>, //latitude
+  				 		<%= @longitude %>  //longitude
+  						);
 
-  					mapInstance.setCenter(pos)
-  					marker = new google.maps.Marker({
-    				map: mapInstance,
-    				position: pos
-					});
-				}
-			</script>
-			<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY'] %>&callback=initMap" async defer></script>
-
-	
-		<div class="form">
+  						mapInstance.setCenter(pos)
+  						marker = new google.maps.Marker({
+    					map: mapInstance,
+    					position: pos
+						});
+					}
+				</script>
+				<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY'] %>&callback=initMap" async defer></script>
+		</div>
+		<div class="event-comment-form">
 			<h3>infomation</h3>
 			<p>コメントフォーム</p>
 			<%= render "event_comments/form", event:@event,comment:@comment %>
 		</div>
-		<div id ="event-comment_<%= @event.id %>">
+		<div id ="event-comment_<%= @event.id %>" class="eventcomment-index">
 			<%= render "event_comments/comment", event:@event %>
 		</div>
 	</div>

@@ -61,6 +61,8 @@ class EventsController < ApplicationController
 
 	def edit
 		@event = Event.find(params[:id])
+		@latitude = @event.latitude
+		@longitude = @event.longitude
 		@user = @event.user
 	end
 
@@ -73,7 +75,7 @@ class EventsController < ApplicationController
 
 	def update
 		@event = Event.find(params[:id])
-		@event.user_id = params[:user_id]
+		@event.user_id = current_user.id
 		@event.update(event_params)
 		redirect_to events_path
 	end

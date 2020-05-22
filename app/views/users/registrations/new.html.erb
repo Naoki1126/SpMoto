@@ -9,11 +9,11 @@
           <%= render "devise/shared/error_messages", resource: resource %>
         <div class="field">
           <%= f.label :name, "アカウント名" %><br>
-          <%= f.text_field :name, :placeholder => "表示名" ,autofocus: true, autocomplete: "name" %>
+          <%= f.text_field :name, :placeholder => "表示名" ,autofocus: true, autocomplete: "name",size:"30x10" %>
         </div>
         <div class="field">
           <%= f.label :email,"メールアドレス" %><br>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email",size:"30x10" %>
         </div>
         <br>
         <div class="field">
@@ -24,11 +24,11 @@
         </div>
         <div class="field">
           <%= f.label :password,"パスワード" %><br>
-          <%= f.password_field :password, autocomplete: "new-password",placeholder:"6文字以上" %>
+          <%= f.password_field :password, autocomplete: "new-password",placeholder:"6文字以上",size:"30x10" %>
         </div>
         <div class="field">
           <%= f.label :password_confirmation,"パスワード確認用" %><br>
-          <%= f.password_field :password_confirmation, autocomplete: "new-password",placeholder:"確認用" %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password",placeholder:"確認用",size:"30x10" %>
         </div>
         <br>
         <div class="field upbutton">

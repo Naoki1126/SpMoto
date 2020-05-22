@@ -1,20 +1,34 @@
 <div class="row">
-	<div class= "col-xs-3">
-		<% @hashtags.each do |hash| %>
-			<div class= "hashname">
-				<%= link_to  "##{hash.hashname} (#{hash.post_images.count}) 件","/post_image/hashtag/#{hash.hashname}" %>
-			</div>
-		<% end %>
-
+	<div class= "hashtag-name">
+		<div class= "col-xs-2">
+			<% @hashtags.each do |hash| %>
+				<div class= "hashname">
+					<%= link_to  "##{hash.hashname} (#{hash.post_images.count}) 件","/post_image/hashtag/#{hash.hashname}" %>
+				</div>
+			<% end %>
+		</div>
 	</div>
-	<div class= "col-xs-9">
-		<h3>#<%= @hashtag.hashname %>:  <%= @postimage.count %> 件 </h3>
-		<% @postimage.each do |image| %>
-  			<%= link_to post_image_path(image) do %>
-  				<% image.post_image_images.each do |post| %>
-					<%= attachment_image_tag post, :image ,size:'150x120', format:'jpg',class:"image" %>
+	<div class= "col-xs-10">
+		<div class= "hashtag-postimage-box">
+			<h3>#<%= @hashtag.hashname %>:  <%= @postimage.count %> 件 </h3>
+				<% @postimage.each do |postimage| %>
+		    		<%= link_to post_image_path(postimage) do %>
+			  			<%= attachment_image_tag postimage.post_image_images[0], :image,size:'250x200' %>
+		 			<% end %>
 				<% end %>
-  			<% end %>
-		<% end %>
+			<div class="image-index-pagination">
+				<%= paginate @postimage,class:"paginate" %>
+			</div>
+		</div>
+		
 	</div>
 </div>
+
+
+
+
+
+
+
+
+

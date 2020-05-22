@@ -4,11 +4,6 @@ class SearchController < ApplicationController
 		@user = current_user
 		if params[:search_case] == "header"
 
-		elsif @model == "イベント（県）"
-		@model = params["search"]["model"]
-		@content = params["search"]["content"]
-		@how = params["search"]["how"]
-		@datas = search_for(@how,@model,@content)
 		else
 		@model = params["search"]["model"]
 		@content = params["search"]["content"]
@@ -25,14 +20,12 @@ class SearchController < ApplicationController
  	def match(model,content)
 		if model == "会員"
 			User.where(name: content)
-		elsif model == "イベント（県）"
- 			Event.where(prefecture_code: content)
  		elsif model == "イベント（目的）"
     		Event.where(title: content)
 		elsif model == "投稿内容"
       		PostImage.where(body: content)
       	elsif model == 'ハッシュタグ'
-      	    Hashtag.where(hashname: content)
+      	    Hashtag.find_by(hashname: content)
     	end
  	end
 
@@ -40,14 +33,12 @@ class SearchController < ApplicationController
 	def partical(model,content)
 		if model == "会員"
 			User.where("name LIKE ?", "%#{content}%")
-		elsif model == "イベント（県）"
-			Event.where("prefecture_code LIKE ?", "%#{content}%")
 		elsif model == "イベント（目的）"
 			Event.where("title LIKE ?", "%#{content}%")
 		elsif model == "投稿内容"
 			PostImage.where("body LIKE ?", "%#{content}%")
 		elsif model == "ハッシュタグ"
-			Hashtag.where("hashname LIKE ?", "%#{content}%")
+			Hashtag.find_by("hashname LIKE ?", "%#{content}%")
 		end
 	end
 

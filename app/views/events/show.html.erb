@@ -33,9 +33,13 @@
 				<h4>定員:<span><%= @event.capacity %></span></h4>
 			</div>
 		</div>
+		<% if @event.event_participates.count == @event.capacity %>
+			<h4>定員が埋まりました。キャンセル待ちです。</h4>
+		<% else %>
 		<div id="participates-button_<%= @event.id %>" class="event-participates-show">
 			<%= render 'event_participates/participate', event: @event %>
 		</div>
+		<% end %>
 		<%if @event.user == current_user %>
 			<div class="event-show-edit-button">
 				<%= link_to edit_event_path(@event),class:"btn btn-default" do %>

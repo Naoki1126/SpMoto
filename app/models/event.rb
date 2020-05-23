@@ -1,4 +1,11 @@
 class Event < ApplicationRecord
+  validates :title, presence: true
+  validates :body, length:{ in: 1..400 }
+  validates :prefecture_code, presence: true
+  validates :date_and_time, presence: true
+  validates :meetingplace, presence: true
+  validates :meetingfinishtime, presence: true
+
 	belongs_to :user
 	has_many :event_comments, dependent: :destroy
 	has_many :event_participates, dependent: :destroy
@@ -37,7 +44,7 @@ class Event < ApplicationRecord
     end
   end
 #コメントの通知
-  def create_notification_event_comment!(current_user, post_image_comment_id)
+  def create_notification_event_comment!(current_user, event_comment_id)
     #自分以外ににコメントしている人を全て取得し、全員に通知を送る
     temp_ids = EventComment.select(:user_id).where(event_id: id).where.not(user_id: current_user.id).distinct
     temp_ids.each do |temp_id|

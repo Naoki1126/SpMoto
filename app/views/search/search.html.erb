@@ -5,6 +5,7 @@
     <%= select_tag 'search[how]',options_for_select({"完全一致" => "match","部分一致" => "partical"}) %>
       <%= submit_tag '検索', class:"btn btn-default" %>
   <% end %>
+  <p>※ハッシュタグ検索をされる場合は「#」を抜いたワードを入力お願いします</p>
 </div>
 
 <% if @model == nil %>

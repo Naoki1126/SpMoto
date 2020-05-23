@@ -3,6 +3,17 @@
 	</div>
 	<div class="col-xs-8">
 		<div class= "postimage-new-box">
+			<% if @postimagenew.errors.any? %>
+  				<div id="error_explanation">
+    				<h3><%= @postimagenew.errors.count %>件の入力エラーにより、更新出来ませんでした。:</h3>
+
+  					<ul>
+    					<% @postimagenew.errors.full_messages.each do |msg| %>
+      					<li><%= msg %></li>
+    					<% end %>
+    				</ul>
+ 				</div>
+			<% end %>
 			<h3>新規投稿</h3>
 			<div class="previw">
 			</div>

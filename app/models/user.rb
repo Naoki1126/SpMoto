@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  validates :name, length:{ in:2..20 }
+  validates :introduction, length:{ maximum: 150 }
   has_many :post_images, dependent: :destroy
   has_many :post_image_comments, dependent: :destroy
   has_many :post_image_favorites,dependent: :destroy

@@ -3,6 +3,16 @@
 	</div>
 	<div class= "col-xs-8">
 		<div class= "postimage-update-box">
+			<% if @postimage.errors.any? %>
+  				<div id="error_explanation">
+    				<h4><%= @postimage.errors.count %>件の入力エラーにより更新出来ませんでした。:</h4>
+			    	<ul>
+    					<% @postimage.errors.full_messages.each do |msg| %>
+      						<li><%= msg %></li>
+    					<% end %>
+    				</ul>
+  				</div>
+			<% end %>
 		<h3>投稿編集</h3>
 		<% @postimages.each do |postimage| %>
 			  <%= attachment_image_tag postimage, :image,size:'220x160' %>

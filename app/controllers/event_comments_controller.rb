@@ -6,6 +6,8 @@ class EventCommentsController < ApplicationController
 		@comment.event_id = @event.id
 		@event.id = @comment.event_id
 		@comment.save
+		@event.create_notification_event_comment!(current_user, @comment.id)
+
 	end
 
 	def destroy

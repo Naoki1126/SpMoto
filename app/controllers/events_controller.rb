@@ -68,16 +68,22 @@ class EventsController < ApplicationController
 
 	def create
 		@eventnew = Event.new(event_params)
-		@eventnew.user_id = params[:user_id]
-		@eventnew.save
-		redirect_to events_path
+		@eventnew.user_id = current_user.id
+		if @eventnew.save
+			redirect_to events_path
+		else
+			render("events/new")
+		end
 	end
 
 	def update
 		@event = Event.find(params[:id])
 		@event.user_id = current_user.id
-		@event.update(event_params)
-		redirect_to events_path
+		if @event.update(event_params)
+			redirect_to events_path
+		else
+			render("events/edit")
+		end
 	end
 
 	def destroy_page

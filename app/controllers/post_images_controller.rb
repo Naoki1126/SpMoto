@@ -37,7 +37,7 @@ class PostImagesController < ApplicationController
 	def create
 		@postimagenew = PostImage.new(post_image_params)
 		@postimagenew.user_id = current_user.id
-		@postimagenew.save!
+		@postimagenew.save
 		redirect_to post_images_path
 	end
 

@@ -16,9 +16,10 @@
  					</li>
  				</ul>
  				<div class="image-show-command">
- 					<p id = "favorite-button_<%= @postimage.id %>" class= "image-show-favorite">
+ 					<p><span id = "favorite-button_<%= @postimage.id %>" class= "image-show-favorite">
  						<%= render partial: 'post_image_favorites/favorite', locals: { postimage: @postimage } %>
  							<% if @user == current_user %>
+ 						</span>
  								<span class="pv"><%= "閲覧数： #{@postimage.impressionist_count}" %>
  								</span>
  							<% end %>

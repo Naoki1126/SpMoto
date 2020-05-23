@@ -114,9 +114,6 @@
 	margin:2% 0 2% 0;
 }
 
-.show-image-user{
-
-}
 
 .image-show-comment-index table{
 	width: 400px;
@@ -146,4 +143,23 @@
 
 .image-show-day-edit{
 	padding-left: 2%;
+}
+
+.pv{
+	display: inline-block;
+	margin :0 2% 0 2%;
+}
+
+.comment-form input[type="submit"]{
+	border: 1px solid;
+  	width: 60%;
+ 	height: 4%;
+ 	margin: 0 auto;
+ 	display: block
+
+}
+
+.comment-form form{
+	display: inline-block;
+	margin: 0 auto;
 }

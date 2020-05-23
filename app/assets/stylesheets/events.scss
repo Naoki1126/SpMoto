@@ -8,6 +8,8 @@
 
 .event-title-new{
 	margin-top:15%;
+	border-bottom: 1px solid;
+	margin-bottom: 1%;
 }
 
 .latitude-longitude-form{
@@ -92,8 +94,18 @@
 	width: 100%;
 }
 .eventcomment-index table{
-	width: 400px;
+	width: 100%;
 }
+
+.event-comment-form input[type="submit"]{
+	border: 1px solid;
+  	width: 60%;
+ 	height: 4%;
+ 	margin: 0 auto;
+ 	display: block;
+ 	margin-bottom:2%;
+}
+
 
 .event-comment-user-name span{
 	display: inline-block;
@@ -133,3 +145,13 @@
 #event-destroy-button{
 	width:300px;
 }
+
+.event-comment-form textarea{
+	display: block;
+	margin: 0 auto;
+}
+
+.event-title-new-new{
+	margin-top: 15%;
+}
+

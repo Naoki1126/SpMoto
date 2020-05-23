@@ -30,6 +30,7 @@
             <li class="nav-link"><%=link_to "イベント", events_path %></li>
             <li class="nav-link"><%=link_to "新規投稿", new_post_image_path %></li>
             <li class="nav-link"><%=link_to "検索", search_path(search:"header") %></li>
+            <li class="nav-link"><%= link_to "#",post_image_hashtag_path %></li>
             <li class="nav-link"><%=link_to "ログアウト",destroy_user_session_path,method: :delete %></li>
           </ul>
         </nav>

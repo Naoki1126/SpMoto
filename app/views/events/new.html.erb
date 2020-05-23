@@ -1,7 +1,7 @@
 <div class="row">
 	<div class="col-xs-6">
 	<%= form_for(@eventnew) do |f| %>
-		<div class="event-title-new">
+		<div class="event-title-new-new">
 			<% if @eventnew.errors.any? %>
   				<div id="error_explanation">
     				<h4><%= @eventnew.errors.count %>件の入力エラーにより作成出来ませんでした</h4>
@@ -59,7 +59,7 @@
 			<style>
 			#map{
   				height: 500px;
-  				width: 500px;
+  				width: 100%;
 				}
 			</style>
 			<script>

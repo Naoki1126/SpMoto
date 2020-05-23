@@ -2,7 +2,7 @@
 	<!-- プロフィール左側 -->
 	<div class= "col-xs-3">
 		<div class= "user-box">
-			<%= attachment_image_tag @user, :profile_image, size:'200x250', format:'jpg',fallback: "no_image.jpg" %>
+			<%= attachment_image_tag @user, :profile_image, size:'250x250', format:'jpg',fallback: "no_image.jpg" %>
 			<table class="table table-hover table-inverse" id="user-profile">
 				<tr>
 					<td class="profile-name">name:<span><%= @user.name %></span></td>

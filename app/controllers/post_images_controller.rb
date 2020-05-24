@@ -41,8 +41,12 @@ class PostImagesController < ApplicationController
 	def create
 		@postimagenew = PostImage.new(post_image_params)
 		@postimagenew.user_id = current_user.id
-		@postimagenew.save
+
+		if @postimagenew.save
 		redirect_to post_images_path
+		else
+		   render ('post_images/new')
+		end
 	end
 
 	def update
@@ -50,7 +54,7 @@ class PostImagesController < ApplicationController
 		@postimage.user_id = current_user.id
 		@postimage.update(update_params)
 		redirect_to post_image_path(@postimage)
-
+		
 	end
 
 	def destroy

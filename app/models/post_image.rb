@@ -1,5 +1,6 @@
 class PostImage < ApplicationRecord
 	validates :body, length:{ in: 1..200 }
+	validates :post_image_images, presence: true
 	has_many :post_image_images, dependent: :destroy
 	accepts_attachments_for :post_image_images, attachment: :image
 	has_many :hashtag_post_images

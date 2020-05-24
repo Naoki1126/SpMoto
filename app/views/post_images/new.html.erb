@@ -5,8 +5,7 @@
 		<div class= "postimage-new-box">
 			<% if @postimagenew.errors.any? %>
   				<div id="error_explanation">
-    				<h3><%= @postimagenew.errors.count %>件の入力エラーにより、更新出来ませんでした。:</h3>
-
+    				<h3><%= @postimagenew.errors.count %>件の入力エラーにより、投稿出来ませんでした</h3>
   					<ul>
     					<% @postimagenew.errors.full_messages.each do |msg| %>
       					<li><%= msg %></li>
@@ -17,7 +16,7 @@
 			<h3>新規投稿</h3>
 			<div class="previw">
 			</div>
-			<%= form_with model:@postimagenew do |f| %>
+			<%= form_with model:@postimagenew, local: true do |f| %>
 				<div class="attachment-field">
 					<p>画像を選択（複数指定可）</p>
 					<%= f.attachment_field :post_image_images_images, multiple:true %>

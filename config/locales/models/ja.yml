@@ -1,0 +1,32 @@
+ja:
+  activerecord:
+    models:
+      event: イベント
+      post_image: 投稿
+      post_image_image: 投稿画像
+      user: 会員
+    attributes:
+      event:
+        title: タイトル
+        body: イベント概要
+        prefecture_code: 開催エリア
+        capacity: 定員
+        date_and_time: 開催日時
+        meetingfinishtime: 終了日時
+        meetingplace: 集合場所
+        latitude: 地図のピン
+        longitude: 地図のピン
+      post_image:
+        body: 投稿の詳細
+        post_image_images: 投稿する画像
+      post_image_image:
+        image_id: 投稿画像
+      user:
+        email: メールアドレス
+        name: ユーザー名
+        encrypted_password: パスワード
+        reset_password_token: パスワード(確認用)
+        
+
+
+

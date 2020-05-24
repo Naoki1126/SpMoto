@@ -5,7 +5,7 @@
 		<div class= "postimage-update-box">
 			<% if @postimage.errors.any? %>
   				<div id="error_explanation">
-    				<h4><%= @postimage.errors.count %>件の入力エラーにより更新出来ませんでした。:</h4>
+    				<h4><%= @postimage.errors.count %>件の入力エラーにより更新出来ませんでした。</h4>
 			    	<ul>
     					<% @postimage.errors.full_messages.each do |msg| %>
       						<li><%= msg %></li>
@@ -17,7 +17,7 @@
 		<% @postimages.each do |postimage| %>
 			  <%= attachment_image_tag postimage, :image,size:'220x160' %>
 		<% end %>
-		<%= form_with model:@postimage do |f| %>
+		<%= form_with model:@postimage, local: true do |f| %>
 			<%= f.text_area :body, size:"55x12" %>
 			<br>
 			<p>ハッシュタグ入力欄</p>

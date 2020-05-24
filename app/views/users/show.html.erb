@@ -47,7 +47,7 @@
 						<%if @user == current_user %>
 							<li class="profile-link"><%=link_to "通知",notifications_path, class:"notification-btn" %>
 								<% if unchecked_notifications.any? %>
-									<i class="fa fa-circle notification-circle" style="color: gold;"></i>
+									<i class="fa fa-circle notification-circle" style="color: red;"></i>
 								<% end %>
 							</li>
 						<% end %>

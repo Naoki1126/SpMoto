@@ -20,7 +20,7 @@ module NotificationsHelper
 			@post_image_time = @comment.post_image.created_at.strftime("%Y-%m-%d(%a)")
 			tag.a(@visitor.name, href: user_path(@visitor)) + 'が' + tag.a("#{@post_image_time}の投稿", href: post_image_path(notification.post_image_id)) + 'にコメントしました'
 		when 'participate'
-			tag.a(notification.visited.name, href: user_path(@visitor)) + 'が' + tag.a('あなたのイベント', href: event_path(notification.event.id)) + 'に参加予定です'
+			tag.a(notification.visitor.name, href: user_path(@visitor)) + 'が' + tag.a('あなたのイベント', href: event_path(notification.event.id)) + 'に参加予定です'
 		when 'event_comment' then
 			@comment = EventComment.find_by(id: @visitor_event_comment)
 			@comment_comment = @comment.comment

@@ -3,7 +3,13 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .search-form{
-	margin-top:5%;
+	margin-top:8%;
+}
+
+.search-form input[type="submit"]{
+	height: 30px;
+	display: inline-block;
+	margin-left:3%;
 }
 
 .search-hashtag-index h2{

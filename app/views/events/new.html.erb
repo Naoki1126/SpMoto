@@ -1,20 +1,20 @@
 <div class="row">
 	<div class="col-xs-6">
-	<%= form_for(@eventnew) do |f| %>
 		<div class="event-title-new-new">
-			<% if @eventnew.errors.any? %>
-  				<div id="error_explanation">
-    				<h4><%= @eventnew.errors.count %>件の入力エラーにより作成出来ませんでした</h4>
-   					<ul>
-    					<% @eventnew.errors.full_messages.each do |msg| %>
-      					<li><%= msg %></li>
-   						<% end %>
-   					</ul>
-  				</div>
-			<% end %>
-			<h3>新規イベント</h3>
-			<h4>Title</h4>
-			<%= f.text_field :title,size:"50x100" %>
+			<%= form_for(@eventnew) do |f| %>
+				<% if @eventnew.errors.any? %>
+	  				<div id="error_explanation">
+	    				<h4><%= @eventnew.errors.count %>件の入力エラーにより作成出来ませんでした</h4>
+	   					<ul>
+	    					<% @eventnew.errors.full_messages.each do |msg| %>
+	      					<li><%= msg %></li>
+	   						<% end %>
+	   					</ul>
+	  				</div>
+				<% end %>
+				<h3>新規イベント</h3>
+				<h4>Title</h4>
+				<%= f.text_field :title,size:"50x100" %>
 		</div>
 		<div class="event-body-new">
 			<h4>イベント概要</h4>
@@ -43,8 +43,8 @@
 			</div>
 			<div class="event-new-button">
 				<%= f.submit "上記内容で新規イベントを作成",class:'btn btn-default' %>
-		<% end %>
-	</div>
+			<% end %>
+			</div>
 	</div>
 	<div class="col-xs-6">
 		<div class="new-map">
@@ -68,8 +68,8 @@
 		
 		  		function initMap(){
 					mapInstance = new google.maps.Map(document.getElementById('map'), {
-					center: {lat: -34.397, lng: 150.644},
-					zoom: 8
+						center: {lat: -34.397, lng: 150.644},
+						zoom: 8
 					});
 
 					mapInstance.addListener('click', function(e) {
@@ -92,7 +92,7 @@
     				});
       // 座標の中心をずらす
     				mapInstance.panTo(lat_lng);
-					}
+				}
 			</script>
 			<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY'] %>&callback=initMap" async defer></script>
 		</div>

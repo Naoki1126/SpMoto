@@ -1,44 +1,43 @@
 <div class="row">
 	<div class="col-xs-8">
- 			<div class="image-show-form">
- 				<div class="image-show-day-edit">
- 					<p><%= @postimage.created_at.strftime("%Y-%m-%d(%a)")%>
- 						<span class="editlink">
- 							<%= link_to "編集する",edit_post_image_path(@postimage), class:"glyphicon glyphicon-wrench"%>
- 						</span>
- 					</p>
- 				</div>
- 				<ul class="bxslider">
- 					<% @postimages.each do |post| %>
- 					<li>
- 						<%= attachment_image_tag post, :image, size:'700x500',class: 'showimage' %>
- 						<% end %>
- 					</li>
- 				</ul>
- 				<div class="image-show-command">
- 					<p><span id = "favorite-button_<%= @postimage.id %>" class= "image-show-favorite">
- 						<%= render partial: 'post_image_favorites/favorite', locals: { postimage: @postimage } %>
- 							<% if @user == current_user %>
- 						</span>
- 								<span class="pv"><%= "閲覧数：#{@postimage.impressionist_count}" %>
- 								</span>
- 							<% end %>
- 								<span class="show-image-user">
- 									投稿者:   <%=link_to user_path(@user) do %>
- 									<%= @user.name %>
- 									<% end %>
- 								</span>
- 					</p>
- 				<div class="image-show-body-hash">
- 					<p class="image-show-body"><%= @postimage.body %></p>
- 					<div class="image-show-hash">
- 						<p><%= render_with_hashtags(@postimage.hashbody) %>
- 						</p>
- 					</div>
- 				</div>
- 			
- 				</div>
- 			</div>
+		<div class="image-show-form">
+			<div class="image-show-day-edit">
+				<p><%= @postimage.created_at.strftime("%Y-%m-%d(%a)")%>
+					<span class="editlink">
+						<%= link_to "編集する",edit_post_image_path(@postimage), class:"glyphicon glyphicon-wrench"%>
+					</span>
+				</p>
+			</div>
+			<ul class="bxslider">
+				<% @postimages.each do |post| %>
+				<li>
+					<%= attachment_image_tag post, :image, size:'700x500',class: 'showimage' %>
+					<% end %>
+				</li>
+			</ul>
+			<div class="image-show-command">
+				<p><span id = "favorite-button_<%= @postimage.id %>" class= "image-show-favorite">
+					<%= render partial: 'post_image_favorites/favorite', locals: { postimage: @postimage } %>
+						<% if @user == current_user %>
+					</span>
+							<span class="pv"><%= "閲覧数：#{@postimage.impressionist_count}" %>
+							</span>
+						<% end %>
+							<span class="show-image-user">
+								投稿者:   <%=link_to user_path(@user) do %>
+								<%= @user.name %>
+								<% end %>
+							</span>
+				</p>
+				<div class="image-show-body-hash">
+					<p class="image-show-body"><%= @postimage.body %></p>
+					<div class="image-show-hash">
+						<p><%= render_with_hashtags(@postimage.hashbody) %>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
  	</div>
  	<div class="col-xs-4">
  		<div class= "image-show-comment-box">

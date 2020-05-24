@@ -7,6 +7,7 @@ class Event < ApplicationRecord
   validates :meetingfinishtime, presence: true
   validates :latitude,presence: true
   validates :longitude, presence: true
+  validates :capacity, presence: true
 
 	belongs_to :user
 	has_many :event_comments, dependent: :destroy

@@ -1,5 +1,5 @@
 <%= form_with(model: [event,comment], url: event_event_comments_path(event), method: :post) do |f| %>
-		<%= f.text_area :comment,size:'40x3' %>
-		<br>
-		<%= f.submit '送信する' %>
+	<%= f.text_area :comment,size:'40x3' %>
+	<br>
+	<%= f.submit '送信する' %>
 <% end %>	

@@ -16,16 +16,16 @@
 		</div>
 	</div>
 		<!-- プロフィール右側 -->
-		<div class= "col-xs-8">
-			<div class="user-introduction-edit">
-				<%= f.text_area :introduction, :size => "55x12"%>
-			</div>
-			<div class= "user-edit-sub-mit">
-				<%= f.submit "変更を保存する",class:"btn btn-default" %>
-				<% end %>
-				<%= link_to user_destroy_path(user_id: @user.id),class:"btn btn-danger",id:"edit-destroy-button" do %>
-					<p>退会する</p>
-				<% end %>
-			</div>
+	<div class= "col-xs-8">
+		<div class="user-introduction-edit">
+			<%= f.text_area :introduction, :size => "55x12"%>
 		</div>
+		<div class= "user-edit-sub-mit">
+			<%= f.submit "変更を保存する",class:"btn btn-default" %>
+	<% end %>
+			<%= link_to user_destroy_path(user_id: @user.id),class:"btn btn-danger",id:"edit-destroy-button" do %>
+				<p>退会する</p>
+			<% end %>
+		</div>
+	</div>
 </div>

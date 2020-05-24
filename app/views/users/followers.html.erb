@@ -2,22 +2,22 @@
 	<div class="col-xs-12">
 		<h2>Followers Users</h2>
 		<table class="table table-hover table-inverse">
-		<thead>
-			<tr>
-				<th>image</th>
-				<th>name</th>
-				<th></th>
-			</tr>
-		</thead>
+			<thead>
+				<tr>
+					<th>image</th>
+					<th>name</th>
+					<th></th>
+				</tr>
+			</thead>
 			<tbody>
 				<tr>
 					<% @users.each do |user| %>
 					<td><%= attachment_image_tag user, :profile_image, size:'50x50',format:'jpg',fallback: "no_image.jpg" %></td>
 					<td><%= user.name %></td>
-					<td id="follow-button_<%= user.id %>">
-					<%= render 'relationships/followbutton', user: user %>
+					<td id="follow-button_<%= @user.id %>">
+					<%= render 'relationships/followbutton', user: @user %>
 					</td>
-	 				<td><%= link_to 'Show', user_path(user) %></td>		
+	 				<td><%= link_to '詳細', user_path(user) %></td>
  				</tr>
  					<% end%>
  			</tbody>

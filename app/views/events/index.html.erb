@@ -4,7 +4,7 @@
 			<li class="active"><%= link_to "開催予定のイベント", events_path(event_case: "now") %></li>
 			<li><%= link_to "終了したイベント", events_path(event_case: "log") %></li>
 			<% if user_signed_in? %>
-			<li><%= link_to "イベント作成", new_event_path %></li>
+			<li><%= link_to "イベント作成", new_event_path, data: {"turbolinks" => false} %></li>
 			<% end %>
 		</ul>
 	</nav>
@@ -32,7 +32,7 @@
 					<td><%= "#{event.capacity}人" %></td>
 					<td><%= link_to "#{event.event_participates.count}人",event_event_paricipates_path(event) %></td>
 					<% if user_signed_in? %>
-					<td><%= link_to "詳細",event_path(event) %></td>
+					<td><%= link_to "詳細",event_path(event), data: {"turbolinks" => false} %></td>
 					<% end %>
 				</tr>
 			<% end %>

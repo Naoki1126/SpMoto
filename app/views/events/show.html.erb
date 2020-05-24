@@ -59,22 +59,20 @@
 				</style>
 				<script>
 					let mapInstance;
-
-		  			function initMap(){
+			  		function initMap(){
 						mapInstance = new google.maps.Map(document.getElementById('map'), {
-						center: {lat: <%= @latitude %>, lng: <%= @longitude %>},
-						zoom: 8
+							center: {lat: <%= @latitude %>, lng: <%= @longitude %>},
+							zoom: 8
 						});
-
 						let pos = new google.maps.LatLng(
-   						<%= @latitude %>, //latitude
-  				 		<%= @longitude %>  //longitude
+   							<%= @latitude %>, //latitude
+  				 			<%= @longitude %>  //longitude
   						);
 
   						mapInstance.setCenter(pos)
   						marker = new google.maps.Marker({
-    					map: mapInstance,
-    					position: pos
+    						map: mapInstance,
+    						position: pos
 						});
 					}
 				</script>

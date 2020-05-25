@@ -1,3 +1,2 @@
 class HashtagsController < ApplicationController
-
 end

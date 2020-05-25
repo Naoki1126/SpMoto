@@ -3,7 +3,8 @@ class RoomsController < ApplicationController
 
   def index
     @user = current_user
-  	@rooms = Room.all
+  	@rooms = Entry.where(id: @user.id)
+
   end
   def create
   	@room = Room.create

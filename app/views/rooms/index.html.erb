@@ -2,7 +2,7 @@
 
 <% @rooms.each do |room| %>
 	<div>
-		<%= link_to room.name, room_path(room) %>
+		<%= link_to room.created_at, room_path(room) %>
 	</div>
 <% end %>
 

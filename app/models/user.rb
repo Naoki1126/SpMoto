@@ -37,17 +37,17 @@ class User < ApplicationRecord
 
   def follow(other_user)
     unless self == other_user
-      relationships.find_or_create_by(follow_id: other_user.id)
+      self.relationships.find_or_create_by(follow_id: other_user.id)
     end
   end
 
   def unfollow(other_user)
-    relationship = relationships.find_by(follow_id: other_user.id)
+    relationship = self.relationships.find_by(follow_id: other_user.id)
     relationship.destroy if relationship
   end
 
   def following?(other_user)
-    followings.include?(other_user)
+    self.followings.include?(other_user)
   end
 
   def create_notification_follow!(current_user)

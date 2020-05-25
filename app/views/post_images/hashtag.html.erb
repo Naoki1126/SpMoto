@@ -15,7 +15,7 @@
 		<div class= "hashtag-postimage-box">
 			<h3>#<%= @hashtag.hashname %>:  <%= @postimage.count %> 件 </h3>
 				<% @postimage.each do |postimage| %>
-		    		<%= link_to post_image_path(postimage) do %>
+		    		<%= link_to post_image_path(postimage),data: {"turbolinks" => false}  do %>
 			  			<%= attachment_image_tag postimage.post_image_images[0], :image,size:'250x200' %>
 		 			<% end %>
 				<% end %>

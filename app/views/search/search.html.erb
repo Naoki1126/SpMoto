@@ -60,7 +60,7 @@
   <div class="search-postimage-index">
     <h2>search for "<%= @model %>に"<%= @content %>"が含まれる投稿</h2>
     <% @datas.each do |data| %>
-      <%= link_to post_image_path(datae) do %>
+      <%= link_to post_image_path(data),data: {"turbolinks" => false}  do %>
         <%= attachment_image_tag data.post_image_images[0], :image,size:'250x200' %>
       <% end %>
     <% end %>
@@ -69,7 +69,7 @@
   <div class="search-hashtag-index">
     <h2>search for "<%= @model %>"が含まれる投稿</h2>
     <% @datas.post_images.each do |data| %>
-      <%= link_to post_image_path(data) do %>
+      <%= link_to post_image_path(data),data: {"turbolinks" => false}  do %>
         <%= attachment_image_tag data.post_image_images[0], :image,size:'250x200' %>
       <% end %>
     <% end %>

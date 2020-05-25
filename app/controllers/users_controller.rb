@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :correct_user, only: [:edit, :update, :destroy, :destroy_page]
+  before_action :correct_user, only: [:edit, :update, :destroy_page, :destroy]
 
   def index
     @user = current_user
@@ -57,7 +57,7 @@ class UsersController < ApplicationController
   end
 
   def destroy_page
-    @user = User.find(params[:user_id])
+    @user = User.find(params[:id])
   end
 
   def destroy

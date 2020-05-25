@@ -23,7 +23,7 @@
 		<div class= "user-edit-sub-mit">
 			<%= f.submit "変更を保存する",class:"btn btn-default" %>
 	<% end %>
-			<%= link_to user_destroy_path(user_id: @user.id),class:"btn btn-danger",id:"edit-destroy-button" do %>
+			<%= link_to user_destroy_path(@user),class:"btn btn-danger",id:"edit-destroy-button" do %>
 				<p>退会する</p>
 			<% end %>
 		</div>

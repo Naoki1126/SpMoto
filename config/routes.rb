@@ -22,10 +22,10 @@ Rails.application.routes.draw do
   get '/search' => 'search#search'
   root 'homes#top'
   resources :users, only: [:index, :show, :edit, :update, :destroy] do
-    get '/destroy' => 'users#destroy_page'
     get '/follows' => 'users#follows'
     get '/followers' => 'users#followers'
   end
+  get '/users/:id/destroy' => 'users#destroy_page',as:'user_destroy'
   # フォロー関連
   resources :relationships, only: [:create, :destroy]
 

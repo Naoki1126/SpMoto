@@ -4,7 +4,13 @@ class UsersController < ApplicationController
 
 	def index
 		@user = current_user
-		@users = User.page(params[:page]).per(50).reverse_order
+		if params[:prefecture_code] == nil
+			@users = User.page(params[:page]).per(50).reverse_order
+		else
+			@pusers = User.where(prefecture_code: params[:prefecture_code])
+			@users = @pusers.page(params[:page]).per(50).reverse_order
+			@prefecture = @pusers.find_by(prefecture_code: params[:prefecture_code])
+		end
 	end
 
 	def show

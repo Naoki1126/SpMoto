@@ -3,7 +3,11 @@
 	<table class="table table-hover table-inverse" id="user-all">
 		<thead>
 			<tr>
-				<th></th>
+				<% if params[:prefecture_code] == nil %>
+					<th>ALL Users</th>
+				<% else %>
+					<th><%= "'#{@prefecture.prefecture_name}'の会員" %></th>
+				<% end %>
 				<th>name</th>
 				<th>prefecture</th>
 				<th></th>
@@ -17,7 +21,7 @@
 				    <% end %>
 				</td>
 				<td><%= link_to user.name, user_path(user)%></td>
-				<td><%= user.prefecture_name %></td>
+				<td><%= link_to user.prefecture_name, users_path(prefecture_code: user.prefecture_code ) %></td>
 				<td id="follow-button_<%= user.id %>">
 					<%= render 'relationships/followbutton', user: user %>
 				</td>

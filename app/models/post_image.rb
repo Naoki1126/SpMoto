@@ -37,7 +37,7 @@ class PostImage < ApplicationRecord
 
   # コメントの通知
   def create_notification_post_image_comment!(current_user, post_image_comment_id)
-    # 自分位階にコメントしている人を全て取得し、全員に通知を送る
+    # 自分以外にコメントしている人を全て取得し、全員に通知を送る
     temp_ids = PostImageComment.select(:user_id).where(post_image_id: id).where.not(user_id: current_user.id).distinct
     temp_ids.each do |temp_id|
       save_notification_post_image_comment!(current_user, post_image_comment_id, temp_id['user_id'])

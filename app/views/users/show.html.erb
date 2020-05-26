@@ -8,7 +8,7 @@
 					<td class="profile-name">name:<span><%= @user.name %></span></td>
 				</tr>
 				<% unless @user.prefecture_name == nil %>
-				<tr>
+				<tr class="profile-prefecture-tr">
 					<td class="profile-prefecture">所属:<span><%= @user.prefecture_name %></span></td>
 				</tr>
 				<% end %>
@@ -29,7 +29,8 @@
 						<li class="profile-link"><%= link_to "follow:#{@user.followings.count}", user_follows_path(user_id: @user.id) %></li>
 						<li class="profile-link"><%= link_to "follower:#{@user.followers.count}", user_followers_path(user_id: @user.id) %></li>
 						<% if @user.id == current_user.id %>
-						<li class="profile-link"><%= link_to "DM", rooms_path %></li>
+						<li class="profile-link"><%= link_to "DM", rooms_path %>
+						</li>
 
 						<% else %>
 							<% if @isroom == true %>
@@ -46,9 +47,9 @@
 							<% end %>
 						<% end %>
 						<%if @user == current_user %>
-							<li class="profile-link"><%=link_to "通知",notifications_path, class:"notification-btn" %>
+							<li class="profile-link notification"><%=link_to "通知",notifications_path, class:"notification-btn" %>
 								<% if unchecked_notifications.any? %>
-									<i class="fa fa-circle notification-circle" style="color: red;"></i>
+									<i class="fa fa-circle notification-circle" style="color: gold;"></i>
 								<% end %>
 							</li>
 						<% end %>

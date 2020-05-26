@@ -33,6 +33,12 @@
 	height: 100%;
 }
 
+
+.room-user-link-box:hover{
+	background-color: #EEEEEE;
+	color:black;
+}
+
 .room-user-name{
 	font-size: 16px;
 	color: black;
@@ -40,7 +46,7 @@
 
 .room-user-names{
 	display: inline-block;
-	width: 10%;
+	width: 15%;
 }
 
 .room-last-message-create{

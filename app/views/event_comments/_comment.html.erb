@@ -1,7 +1,7 @@
 <table>
 	<% event.event_comments.each do |event_comment| %>
 		<tr>
-	    	<td class="event-comment-user-name"><%= event_comment.created_at.to_date %><span><%= event_comment.user.name %></span></td>
+	    	<td class="event-comment-user-name"><%= event_comment.created_at.strftime("%Y/%m/%d/%H:%M") %><span><%= event_comment.user.name %></span></td>
 		</tr>
 		<tr class= "comment-table-tr">
 			<td><%= event_comment.comment %></td>

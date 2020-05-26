@@ -9,7 +9,7 @@
 			<% @messages = room.messages.order(updated_at: :desc).limit(1) %>
 			<% @message = @messages[0] %>
 				<% if @message.present? %>
-					<%= link_to room_path(room) do %>
+					<%= link_to room_path(room),data: {"turbolinks" => false} do %>
 						<div class="room-user-link-box">
 							<p class="room-user-name">
 								<span class=room-user-names><%= @name %></span>
@@ -20,7 +20,7 @@
 					</div>
 				<% end %>
 				<% else %>
-					<%= link_to room_path(room) do %>
+					<%= link_to room_path(room),data: {"turbolinks" => false} do %>
 						<span class="room-user-name"><%= @name %></span>
 						<span class="room-last-message">メッセージはありません</span>
 					<% end %>

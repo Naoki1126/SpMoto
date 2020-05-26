@@ -3,7 +3,8 @@ class RoomsController < ApplicationController
 
   def index
     @user = current_user
-    @rooms = Entry.where(id: @user.id)
+    @rooms = @user.rooms.joins(:messages).includes(:messages).order("messages.created_at DESC")
+
   end
 
   def create

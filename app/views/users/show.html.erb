@@ -29,6 +29,7 @@
 						<li class="profile-link"><%= link_to "follow:#{@user.followings.count}", user_follows_path(user_id: @user.id) %></li>
 						<li class="profile-link"><%= link_to "follower:#{@user.followers.count}", user_followers_path(user_id: @user.id) %></li>
 						<% if @user.id == current_user.id %>
+						<li class="profile-link"><%= link_to "DM", rooms_path %></li>
 
 						<% else %>
 							<% if @isroom == true %>

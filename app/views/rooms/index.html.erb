@@ -1,8 +1,25 @@
-<h1>DM 一覧</h1>
-
-<% @rooms.each do |room| %>
-	<div>
-		<%= link_to room.created_at, room_path(room) %>
+<div class="row">
+	<div class="rooms-index-title">
+		<h4>DM</h4>
 	</div>
-<% end %>
+	<div class="rooms-index">
+		<% @rooms.each do |room| %>
+			<% @entry = room.entries.where.not(user_id: current_user) %>
+			<% @name = @entry[0].user.name %>
+			<% @messages = room.messages.order(updated_at: :desc).limit(1) %>
+			<% @message = @messages[0] %>
+			<% if @message.present? %>
+				<%= link_to room_path(room) do %>
+					<span class="room-user-name"><%= @name %></span>
+					<span class="room-last-message"><%= @message.content %></span>
+				<% end %>
+			<% else %>
+				<%= link_to room_path(room) do %>
+					<span class="room-user-name"><%= @name %></span>
+					<span class="room-last-message">メッセージはありません</span>
+				<% end %>
+			<% end %>
+
+		<% end %>
+	</div>
 

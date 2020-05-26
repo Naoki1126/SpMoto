@@ -1,17 +1,22 @@
 <div class="row">
 	<div class="message-room">
-		<h4>メンバー:
-			<% @entriys.each do |entriy| %>
-			<%= link_to entriy.user.name, user_path(entriy.user) %>
-		<% end %>
-		</h4>
-		<form>
-			<label>post</label>
-			<input type="text" data-behavior="room_speaker">
-		</form>
+		<div class="message-other-user">
+			<p>send_to:
+				<span>
+					<% @entry = @entriys.where.not(user_id: current_user) %>
+					<% @name = @entry[0].user.name %>
+					<%= link_to @name, user_path(@entry) %>
+				</span>
+			</p>
+		</div>
+		<div class="message-text">
+			<form>
+				<span>post</span>
+				<input type="text" data-behavior="room_speaker"><span>push Enter</span>
+			</form>
+		</div>
 		<div id = "messages", data-room_id="<%= @room.id %>"> 
 			<%= render @messages %>
 		</div>
 	</div>
 </div>
-

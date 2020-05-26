@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="rooms-index-title">
-		<h4>DM</h4>
+		<h4>メッセージリスト</h4>
 	</div>
 	<div class="rooms-index">
 		<% @rooms.each do |room| %>
@@ -8,18 +8,24 @@
 			<% @name = @entry[0].user.name %>
 			<% @messages = room.messages.order(updated_at: :desc).limit(1) %>
 			<% @message = @messages[0] %>
-			<% if @message.present? %>
-				<%= link_to room_path(room) do %>
-					<span class="room-user-name"><%= @name %></span>
-					<span class="room-last-message"><%= @message.content %></span>
+				<% if @message.present? %>
+					<%= link_to room_path(room) do %>
+						<div class="room-user-link-box">
+							<p class="room-user-name">
+								<span class=room-user-names><%= @name %></span>
+								<span class="room-last-message-create"><%= @message.created_at.strftime("%Y/%m/%d/%H:%M") %>
+								</span>
+								<span class="	room-last-message"><%= @message.content %></span>
+							</p>
+					</div>
 				<% end %>
-			<% else %>
-				<%= link_to room_path(room) do %>
-					<span class="room-user-name"><%= @name %></span>
-					<span class="room-last-message">メッセージはありません</span>
+				<% else %>
+					<%= link_to room_path(room) do %>
+						<span class="room-user-name"><%= @name %></span>
+						<span class="room-last-message">メッセージはありません</span>
+					<% end %>
 				<% end %>
-			<% end %>
-
 		<% end %>
 	</div>
+</div>
 

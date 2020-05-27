@@ -1,6 +1,6 @@
 <div class="row">
 	<div class= "hashtag-name">
-		<div class= "col-xs-2">
+		<div class= "col-xs-3">
 			<% @hashtags.each do |hash| %>
 				<div class= "hashname">
 					<%= link_to  "##{hash.hashname} (#{hash.post_images.count}) 件","/post_image/hashtag/#{hash.hashname}" %>
@@ -11,12 +11,18 @@
 	<% if params[:name] == nil %>
 
 	<% else %>
-	<div class= "col-xs-10">
+	<div class= "col-xs-9">
 		<div class= "hashtag-postimage-box">
 			<h3>#<%= @hashtag.hashname %>:  <%= @postimage.count %> 件 </h3>
 				<% @postimage.each do |postimage| %>
 		    		<%= link_to post_image_path(postimage),data: {"turbolinks" => false}  do %>
-			  			<%= attachment_image_tag postimage.post_image_images[0], :image,size:'250x200' %>
+				  		<ul class="slider">
+	  						<% postimage.post_image_images.each do |post| %>
+	  							<li>
+									<%= attachment_image_tag post, :image ,size:'250x200', format:'jpg',class:"image" %>
+								</li>
+							<% end %>
+						</ul>
 		 			<% end %>
 				<% end %>
 			<div class="image-index-pagination">
@@ -27,7 +33,7 @@
 	<% end %>
 </div>
 
-
+	
 
 
 

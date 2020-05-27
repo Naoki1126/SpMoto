@@ -11,7 +11,7 @@
 <% if @model == nil %>
 
 <% elsif @model == "会員" or @model == "イベント（目的)" %>
-  <h2>search for "<%= @model %>"</h2>
+  <h3>search for "<%= @model %>"</h3>
   <table class="table table-hover table-inverse">
     <thead>
       <% if @model == "会員" %>
@@ -58,20 +58,35 @@
   </table>
 <% elsif @model == "投稿内容" %>
   <div class="search-postimage-index">
-    <h2>search for "<%= @model %>に"<%= @content %>"が含まれる投稿</h2>
+    <h3>search for "<%= @model %>に"<%= @content %>"が含まれる投稿</h3>
     <% @datas.each do |data| %>
       <%= link_to post_image_path(data),data: {"turbolinks" => false}  do %>
-        <%= attachment_image_tag data.post_image_images[0], :image,size:'250x200' %>
+        <ul class="slider">
+          <% data.post_image_images.each do |post| %>
+            <li>
+              <%= attachment_image_tag post, :image ,size:'250x200', format:'jpg',class:"image" %>
+            </li>
+          <% end %>
+        </ul>
       <% end %>
     <% end %>
   </div>
 <% elsif @model == "ハッシュタグ" %>
   <div class="search-hashtag-index">
-    <h2>search for "<%= @model %>"が含まれる投稿</h2>
+    <h3>search for "#<%= @content %>"が含まれる投稿</h3>
     <% @datas.post_images.each do |data| %>
       <%= link_to post_image_path(data),data: {"turbolinks" => false}  do %>
-        <%= attachment_image_tag data.post_image_images[0], :image,size:'250x200' %>
+        <ul class="slider">
+          <% data.post_image_images.each do |post| %>
+            <li>
+              <%= attachment_image_tag post, :image ,size:'250x200', format:'jpg',class:"image" %>
+            </li>
+          <% end %>
+        </ul>
       <% end %>
     <% end %>
   </div>
 <% end %>
+
+
+

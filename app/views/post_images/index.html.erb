@@ -1,10 +1,16 @@
 <div class= "row">
 	<div class="postimage-index">
 		<% @postimage.each do |image| %>
-  			<%= link_to post_image_path(image.post_image_id),data: {"turbolinks" => false}  do %>
-			<%= attachment_image_tag image, :image ,size:'250x200', format:'jpg',class:"image" %>
+  			<%= link_to post_image_path(image),data: {"turbolinks" => false}  do %>
+  				<ul class="slider">
+  					<% image.post_image_images.each do |post| %>
+  						<li>
+							<%= attachment_image_tag post, :image ,size:'250x200', format:'jpg',class:"image" %>
+						</li>
+				<% end %>
+				</ul>
+			<% end %>
   		<% end %>
-	<% end %>
 	</div>
 	<div class="image-index-pagination">
 		<%= paginate @postimage,class:"paginate" %>

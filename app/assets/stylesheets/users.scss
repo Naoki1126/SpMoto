@@ -2,7 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
+a {
+  text-decoration: none;
+}
 
 .field{
 	width:100%;
@@ -106,6 +108,7 @@
   border: 1px solid #EEEEEE;
   margin:2px;
   width: auto !important;
+  transition: all 2S;
 }
 .profile-link span{
   display: inline-block;
@@ -133,21 +136,27 @@
 }
 
 .new_room{
-  display: block;
+  display: inline-block;
   height:50px;
   width: 70px;
-  padding-top: 15px;
 }
 
 .new_room input[type="submit"]{
   display: block;
+  height: 100%;
+  width: 100%;
   border-style: none;
-  color:blue;
   margin: 0 auto;
 }
 
 .new_room:hover{
   background-color: #EEEEEE;
+}
+
+.new_room input[type="submit"]:hover{
+   background-color: black;
+   color:white;
+   font-weight: bold;
 }
 
 .user-edit-box{
@@ -230,5 +239,7 @@
 .user-index-image{
   border-radius: 20px;
 }
+
+
 
 

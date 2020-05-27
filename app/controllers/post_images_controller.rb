@@ -21,7 +21,7 @@ class PostImagesController < ApplicationController
   end
 
   def index
-    @postimage = PostImageImage.all.page(params[:page]).per(30).reverse_order
+    @postimage = PostImage.all.page(params[:page]).per(30).reverse_order
   end
 
   def show

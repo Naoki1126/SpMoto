@@ -22,7 +22,7 @@
 		<div class= "col-xs-9">
 			<div class= "navbar">
 				<nav>
-					<ul class="nav navbar-nav navbar-right">
+					<ul class="nav navbar-nav navbar-right user-nav">
 						<li class="profile-link"><%= link_to "主催イベント", events_path(event_case: "now",user_id: @user.id) %></li>
 						<li class="profile-link"><%= link_to "過去イベント", events_path(event_case: "log",user_id: @user.id) %></li>
 						<li class="postcount"><span><%= "投稿件数:#{@post_images.count}" %></span></li>

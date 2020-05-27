@@ -83,6 +83,15 @@
 
 .message-text{
 	margin-bottom: 5px;
+	background-color: black;
+	color:white;
+	font-weight: bold;
+	position: fixed;
+	z-index:1500;
+}
+
+#messages{
+	margin-top: 3%;
 }
 
 

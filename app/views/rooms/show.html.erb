@@ -1,7 +1,7 @@
 <div class="row">
 	<div class="message-room">
 		<div class="message-other-user">
-			<p>send_to:
+			<p>Send_to:
 				<span>
 					<% @entry = @entriys.where.not(user_id: current_user) %>
 					<% @name = @entry[0].user.name %>
@@ -11,8 +11,8 @@
 		</div>
 		<div class="message-text">
 			<form>
-				<span>post</span>
-				<input type="text" data-behavior="room_speaker"><span>push Enter</span>
+				<span>Post</span>
+				<input type="text" data-behavior="room_speaker"><span>Push Enter</span>
 			</form>
 		</div>
 		<div id = "messages", data-room_id="<%= @room.id %>"> 

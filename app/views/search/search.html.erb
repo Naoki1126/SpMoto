@@ -36,8 +36,11 @@
       <% @datas.each do |data| %>
         <% if @model == "会員" %>
           <tr>
-            <td><%= attachment_image_tag data, :profile_image,size:"100x75" %></td>
-            <td><%= data.name %></td>
+            <td><%= attachment_image_tag data, :profile_image,size:"50x50",format:'jpg',fallback: "no_image.jpg" %></td>
+            <td><%= link_to user_path(data),data: {"turbolinks" => false} do %>
+                  <%= data.name %>
+                <% end %>
+            </td>
             <td><%= data.prefecture_name %>
             <td id="follow-button_<%= data.id %>">
             <%= render 'relationships/followbutton', user: data %>

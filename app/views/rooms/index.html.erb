@@ -12,6 +12,7 @@
 					<%= link_to room_path(room),data: {"turbolinks" => false} do %>
 						<div class="room-user-link-box">
 							<p class="room-user-name">
+								<%= attachment_image_tag @entry[0].user,:profile_image, size:'50x50',format:'jpg',fallback: "no_image.jpg",class:'user-index-image' %>
 								<span class=room-user-names><%= @name %></span>
 								<span class="room-last-message-create"><%= @message.created_at.strftime("%Y/%m/%d/%H:%M") %>
 								</span>

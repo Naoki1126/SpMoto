@@ -2,9 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-a {
-  text-decoration: none;
-}
+
 
 .field{
 	width:100%;
@@ -93,10 +91,10 @@ a {
 
 .user-introduction{
   border:1px solid #EEEEEE;
-  height:200px;
-  box-shadow:5px 5px 10px #EEEEEE;
+  height:220px;
+  box-shadow:8px 8px 15px #CCCCCC;
   padding:10px 15px 5px 15px;
-  margin-top:10%;
+  margin-top:6%;
 }
 
 #user-profile{
@@ -105,10 +103,10 @@ a {
 }
 
 .profile-link {
-  border: 1px solid #EEEEEE;
+  border: 1px solid #CCCCCC;
   margin:2px;
   width: auto !important;
-  transition: all 2S;
+  transition:all 1S;
 }
 .profile-link span{
   display: inline-block;
@@ -117,7 +115,7 @@ a {
 
 .postcount{
   height:52px;
-  border: 1px solid #EEEEEE;
+  border: 1px solid #CCCCCC;
   margin:2px;
   width:100px;
   text-align: center;
@@ -240,6 +238,16 @@ a {
   border-radius: 20px;
 }
 
+.profile-link:hover{
+  background-color: black;
+  color:black;
+}
 
+
+.profile-link a:hover{
+  background-color: black;
+  color:black;
+  font-weight: bold;
+}
 
 

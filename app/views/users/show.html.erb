@@ -25,7 +25,7 @@
 					<ul class="nav navbar-nav navbar-right user-nav">
 						<li class="profile-link"><%= link_to "主催イベント", events_path(event_case: "now",user_id: @user.id) %></li>
 						<li class="profile-link"><%= link_to "過去イベント", events_path(event_case: "log",user_id: @user.id) %></li>
-						<li class="postcount"><span><%= "投稿件数:#{@post_images.count}" %></span></li>
+						<li class="postcount"><%= "投稿件数:#{@post_images.count}" %></li>
 						<li class="profile-link"><%= link_to "follow:#{@user.followings.count}", user_follows_path(user_id: @user.id) %></li>
 						<li class="profile-link"><%= link_to "follower:#{@user.followers.count}", user_followers_path(user_id: @user.id) %></li>
 						<% if @user.id == current_user.id %>

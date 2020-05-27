@@ -68,9 +68,13 @@
 	<div class= "contents-box">
 		<% @post_images.each do |image| %>
   			<%= link_to post_image_path(image) do %>
-  				<% image.post_image_images.each do |post| %>
-					<%= attachment_image_tag post, :image ,size:'150x120', format:'jpg',class:"image" %>
-				<% end %>
+  				<ul class="usslider">
+  					<% image.post_image_images.each do |post| %>
+  						<li>
+							<%= attachment_image_tag post, :image ,size:'150x120', format:'jpg',class:"image" %>
+						</li>
+					<% end %>
+				</ul>
   			<% end %>
 		<% end %>
 	</div>

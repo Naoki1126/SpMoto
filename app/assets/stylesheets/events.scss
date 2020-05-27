@@ -3,11 +3,10 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .event-top{
-	margin-top:7%;
+	margin-top:60px;
 }
 
 .event-title-new{
-	margin-top:15%;
 	border-bottom: 1px solid;
 	margin-bottom: 1%;
 }
@@ -17,7 +16,7 @@
 }
 
 .new-map{
-	margin-top:15%;
+	margin-top:60px;
 }
 
 .event-new-button{
@@ -31,6 +30,9 @@
 	width:300px;
 }
 
+.event-show-box{
+	margin-top:60px;
+}
 .event-show-box span{
 	display: inline-block;
 	margin-left: 5%;
@@ -135,7 +137,7 @@
 }
 
 .event-title-edit{
-	margin-top:15%;
+	margin-top:60px;
 }
 .event-new-button span{
   display: inline-block;
@@ -151,9 +153,6 @@
 	margin: 0 auto;
 }
 
-.event-title-new-new{
-	margin-top: 15%;
-}
 
 .event-navs{
 	border:2px solid #EEEEEE;

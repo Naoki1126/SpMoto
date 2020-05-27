@@ -3,7 +3,7 @@
 		<div class= "col-xs-3">
 			<% @hashtags.each do |hash| %>
 				<div class= "hashname">
-					<%= link_to  "##{hash.hashname} (#{hash.post_images.count}) 件","/post_image/hashtag/#{hash.hashname}" %>
+					<%= link_to  "##{hash.hashname} (#{hash.post_images.count}) 件","/post_image/hashtag/#{hash.hashname}",data: {"turbolinks" => false} %>
 				</div>
 			<% end %>
 		</div>

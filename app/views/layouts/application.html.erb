@@ -22,7 +22,7 @@
         </nav>
 
         <% if user_signed_in? %>
-        <nav>
+        <nav class="heade-nav">
           <ul class="nav navbar-nav navbar-right">
             <li class="nav-link"><%=link_to "マイページ", user_path(current_user) %></li>
             <li class="nav-link"><%=link_to "投稿一覧", post_images_path,data: {"turbolinks" => false} %></li>
@@ -36,7 +36,7 @@
         </nav>
 
         <% else %>
-         <nav>
+         <nav class="head-nav">
           <ul class="nav navbar-nav navbar-right">
             <li class="nav-link"><%=link_to "トップ", root_path %></li>
             <li class="nav-link"><%=link_to "投稿一覧", post_images_path,data: {"turbolinks" => false} %></li>

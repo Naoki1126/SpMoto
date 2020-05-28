@@ -1,9 +1,12 @@
 <div class="row">
 	<div class= "hashtag-name">
 		<div class= "col-xs-3">
-			<% @hashtags.each do |hash| %>
+			<% @hashtags.sort.reverse.each do |count| %>
 				<div class= "hashname">
-					<%= link_to  "##{hash.hashname} (#{hash.post_images.count}) 件","/post_image/hashtag/#{hash.hashname}",data: {"turbolinks" => false} %>
+					<% count[1].each do |hashtag| %>
+					<p><%= link_to  "##{hashtag.hashname} (#{hashtag.post_images.count}) 件","/post_image/hashtag/#{hashtag.hashname}",data: {"turbolinks" => false} %>
+					</p>
+					<% end %>
 				</div>
 			<% end %>
 		</div>
@@ -16,7 +19,7 @@
 			<h3>#<%= @hashtag.hashname %>:  <%= @postimage.count %> 件 </h3>
 				<% @postimage.each do |postimage| %>
 		    		<%= link_to post_image_path(postimage),data: {"turbolinks" => false}  do %>
-				  		<ul class="slider">
+				  		<ul class="seslider">
 	  						<% postimage.post_image_images.each do |post| %>
 	  							<li>
 									<%= attachment_image_tag post, :image ,size:'250x200', format:'jpg',class:"image" %>

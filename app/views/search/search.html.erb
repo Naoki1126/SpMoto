@@ -64,7 +64,7 @@
     <h3>search for "<%= @model %>に"<%= @content %>"が含まれる投稿</h3>
     <% @datas.each do |data| %>
       <%= link_to post_image_path(data),data: {"turbolinks" => false}  do %>
-        <ul class="slider">
+        <ul class="seslider">
           <% data.post_image_images.each do |post| %>
             <li>
               <%= attachment_image_tag post, :image ,size:'250x200', format:'jpg',class:"image" %>
@@ -79,7 +79,7 @@
     <h3>search for "#<%= @content %>"が含まれる投稿</h3>
     <% @datas.post_images.each do |data| %>
       <%= link_to post_image_path(data),data: {"turbolinks" => false}  do %>
-        <ul class="slider">
+        <ul class="seslider">
           <% data.post_image_images.each do |post| %>
             <li>
               <%= attachment_image_tag post, :image ,size:'250x200', format:'jpg',class:"image" %>

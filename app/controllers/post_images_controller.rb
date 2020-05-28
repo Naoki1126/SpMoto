@@ -10,12 +10,30 @@ class PostImagesController < ApplicationController
   def hashtag
     @user = current_user
     if params[:name].nil?
-      @hashtags = Hashtag.all
-        
+      @hashtags = Hashtag.all.to_a.group_by{ |hashtag| hashtag.post_images.count}
+      # hashtags = Hashtag.all
+      # @hashtags = []
+      # hashtags.each do |hashtag|
+      #   temp = {count: hashtag.post_images.count,value: hashtag}
+      #   @hashtags.push(temp)
+      #   # @hashtags.store(
+      #   #   hashtag.post_images.count,
+      #   #   hashtag
+      #   # )
+      # end
+      # @hashtags.sort.reverse
     else
       @hashtag = Hashtag.find_by(hashname: params[:name])
       @postimage = @hashtag.post_images.page(params[:page]).per(25).reverse_order
-      @hashtags = Hashtag.all
+      @hashtags = Hashtag.all.to_a.group_by{ |hashtag| hashtag.post_images.count}
+      # @hashtags = {}
+      # hashtags.each do |hashtag|
+      #   @hashtags.store(
+      #     hashtag.post_images.count,
+      #     hashtag
+      #   )
+      # end
+      # @hashtags.sort.reverse
     end
   end
 

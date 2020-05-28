@@ -11,12 +11,11 @@ class PostImagesController < ApplicationController
     @user = current_user
     if params[:name].nil?
       @hashtags = Hashtag.all
-      @count = @hashtags.count
+        
     else
       @hashtag = Hashtag.find_by(hashname: params[:name])
       @postimage = @hashtag.post_images.page(params[:page]).per(25).reverse_order
       @hashtags = Hashtag.all
-      @count = @hashtags.count
     end
   end
 

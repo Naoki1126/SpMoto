@@ -17,7 +17,7 @@ class EventsController < ApplicationController
   end
 
   def index
-    @events = Event.all
+    @events = Event.all.order(date_and_time: "DESC")
 
     # 各ページのlink_to内にパラメータを設置.
     case params[:event_case]
@@ -26,20 +26,23 @@ class EventsController < ApplicationController
       # ユーザーIDがパラメータに含まれているか判別
       # 含まれていなければ未来の全てのイベント情報。含まれていればユーザー主催の未来のイベントを表示
       if params[:user_id].nil?
-        @events = Event.where("Date(date_and_time) >= '#{Date.today}'")
+        @events = Event.where("Date(date_and_time) >= '#{Date.today}'").order(date_and_time: "DESC")
+
       else
-        @events = Event.where(user_id: params[:user_id]).where("Date(date_and_time) >= '#{Date.today}'")
+        @events = Event.where(user_id: params[:user_id]).where("Date(date_and_time) >= '#{Date.today}'").order(date_and_time: "DESC")
+
           end
       # 今日より過去のイベント情報の表示
     when "log"
       if params[:user_id].nil?
-        @events = Event.where("Date(meetingfinishtime) <= '#{Date.today}'")
+        @events = Event.where("Date(meetingfinishtime) <= '#{Date.today}'").order(meetingfinishtime: "DESC")
       else
-        @events = Event.where(user_id: params[:user_id]).where("Date(meetingfinishtime) <= '#{Date.today}'")
+        @events = Event.where(user_id: params[:user_id]).where("Date(meetingfinishtime) <= '#{Date.today}'").order(meetingfinishtime: "DESC")
       end
       # 全てのイベント情報の取得
     when ""
-      @events = Event.all
+      @events = Event.all.order(date_and_time: "DESC")
+
          end
     # 都道府県検索
     case params[:event_prefecture]

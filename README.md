@@ -45,7 +45,7 @@ SNSで知り合った人とツーリングができる。ツーリングメン�
 https://docs.google.com/spreadsheets/d/1rHuIAc7UJ_hYn_TsUVkqeHudYR4St3-htZOYvS56QVQ/edit?usp=sharing
 
 ・ER図
-https://drive.google.com/file/d/1B4yhMifvERN7TIbgBMpOixRbSzTQbXwh/view?usp=sharing
+https://drive.google.com/file/d/14rxaxx_nEtaPoDeEmGUub6qOs5NMGYWo/view?usp=sharing
 
 
 ### 機能一覧

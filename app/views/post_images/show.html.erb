@@ -8,14 +8,16 @@
 					</span>
 				</p>
 			</div>
-			<script src="assets/bxslider.min.js"></script>
-			<ul class="bxslider">
-				<% @postimages.each do |post| %>
-				<li>
-					<%= attachment_image_tag post, :image, size:'700x500',class: 'showimage' %>
-					<% end %>
-				</li>
-			</ul>
+			<div class= "image-show-image">
+				<script src="assets/bxslider.min.js"></script>
+				<ul class="bxslider">
+					<% @postimages.each do |post| %>
+					<li>
+						<%= attachment_image_tag post, :image, size:'450x500',class: 'showimage' %>
+						<% end %>
+					</li>
+				</ul>
+			</div>
 			<div class="image-show-command">
 				<p><span id = "favorite-button_<%= @postimage.id %>" class= "image-show-favorite">
 					<%= render partial: 'post_image_favorites/favorite', locals: { postimage: @postimage } %>

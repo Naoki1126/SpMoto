@@ -21,7 +21,7 @@ class SearchController < ApplicationController
     if model == "会員"
       User.where(name: content)
     elsif model == "イベント（目的）"
-      Event.where(title: content)
+      Event.where(title: content).order(date_and_time: "DESC")
     elsif model == "投稿内容"
       PostImage.where(body: content)
     elsif model == 'ハッシュタグ'
@@ -34,7 +34,7 @@ class SearchController < ApplicationController
     if model == "会員"
       User.where("name LIKE ?", "%#{content}%")
     elsif model == "イベント（目的）"
-      Event.where("title LIKE ?", "%#{content}%")
+      Event.where("title LIKE ?", "%#{content}%").order(date_and_time: "DESC")
     elsif model == "投稿内容"
       PostImage.where("body LIKE ?", "%#{content}%")
     elsif model == "ハッシュタグ"

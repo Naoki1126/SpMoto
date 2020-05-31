@@ -48,8 +48,8 @@
         <% elsif @model == "イベント（目的）" %>
           <tr>
             <td><%= data.title %></td>
-            <td><%= data.date_and_time %></td>
-            <td><%= data.meetingfinishtime %></td>
+            <td><%= data.date_and_time.strftime("%Y年%m月%d日") %></td>
+            <td><%= data.meetingfinishtime.strftime("%Y年%m月%d日") %></td>
             <td><%= link_to data.prefecture_name,events_path(event_prefecture: 'name',prefecture_code: data.prefecture_code) %></td>
             <td><%= "#{data.capacity}人" %></td>
             <td><%= link_to "#{data.event_participates.count}人",event_event_paricipates_path(data) %></td>

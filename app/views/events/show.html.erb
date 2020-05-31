@@ -12,7 +12,7 @@
 			</div>
 			<div class= "event-user-show">
 			<h4>主催者:
-				<%= link_to user_path(@user) do %>
+				<%= link_to user_path(@user),data: {"turbolinks" => false} do %>
 					<span><%= attachment_image_tag @user, :profile_image,size:'50x50',fallback:"no_image.jpg" %></span><span><%= @user.name %></span></h4>
 				<% end %>
 			</div>

@@ -5,7 +5,7 @@
 				<span>
 					<% @entry = @entriys.where.not(user_id: current_user) %>
 					<% @name = @entry[0].user.name %>
-					<%= link_to @name, user_path(@entry[0].user_id) %>
+					<%= link_to @name, user_path(@entry[0].user_id),data: {"turbolinks" => false} %>
 				</span>
 			</p>
 		</div>

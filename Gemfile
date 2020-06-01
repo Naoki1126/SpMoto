@@ -79,6 +79,7 @@ gem 'impressionist', '~>1.6.1'
 gem 'geocoder'
 gem 'bxslider-rails'
 
+
 group :production do
   gem 'mysql2'
 end

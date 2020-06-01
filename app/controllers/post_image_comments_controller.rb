@@ -5,6 +5,7 @@ class PostImageCommentsController < ApplicationController
     @comment = current_user.post_image_comments.new(comment_params)
     @comment.post_image_id = @postimage.id
     @postimage.id = @comment.post_image_id
+    @comment.score = Language.get_data(comment_params[:comment])
     @comment.save
     @postimage.create_notification_post_image_comment!(current_user, @comment.id)
     end

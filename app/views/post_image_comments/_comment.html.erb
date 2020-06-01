@@ -1,7 +1,9 @@
 <table>
 	<% postimage.post_image_comments.each do |post_image_comment| %>
 	<tr>
-	    <td class="event-comment-user-name"><%= post_image_comment.created_at.strftime("%Y/%m/%d/%H:%M") %><span><%= post_image_comment.user.name %></span></td>
+	    <td class="event-comment-user-name"><%= post_image_comment.created_at.strftime("%Y/%m/%d/%H:%M") %><span><%= post_image_comment.user.name %></span>
+           <span class="comment-score"><%= post_image_comment&.score %></span>
+       </td>
 	</tr>
 	<tr class="comment-table-tr">
 		<td><%= post_image_comment.comment %></td>

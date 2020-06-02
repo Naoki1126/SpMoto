@@ -3,14 +3,20 @@
 		<tr>
 	    	<td class="event-comment-user-name"><%= event_comment.created_at.strftime("%Y/%m/%d/%H:%M") %><span><%= event_comment.user.name %></span></td>
 		</tr>
-		<tr class= "comment-table-tr">
-			<td><%= event_comment.comment %></td>
-	    	<% if event_comment.user_id == current_user.id %>
-	    		<td>
-	    			<span><%= link_to "削除", event_event_comments_path(event_comment), method: :delete, remote:true %>
-	    			</span>
-	    		</td> 
-	    	<% end %>
-		</tr>
-    <% end %>
+		<% if event_comment.score > 0 %>
+			<tr class="comment-table-tr positive-comment">
+		<% elsif event_comment.score < 0 %>
+			<tr class="comment-table-tr negative-comment">
+		<% else %>
+			<tr class="comment-table-tr standard-comment">
+		<% end %>
+				<td><%= event_comment.comment %></td>
+		    	<% if event_comment.user_id == current_user.id %>
+		    		<td>
+		    			<span><%= link_to "削除", event_event_comments_path(event_comment), method: :delete, remote:true %>
+		    			</span>
+		    		</td> 
+	    		<% end %>
+			</tr>
+  	<% end %>
 </table>

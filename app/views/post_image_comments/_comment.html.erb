@@ -1,18 +1,23 @@
 <table>
 	<% postimage.post_image_comments.each do |post_image_comment| %>
-	<tr>
-	    <td class="event-comment-user-name"><%= post_image_comment.created_at.strftime("%Y/%m/%d/%H:%M") %><span><%= post_image_comment.user.name %></span>
-           <span class="comment-score"><%= post_image_comment&.score %></span>
-       </td>
-	</tr>
-	<tr class="comment-table-tr">
-		<td><%= post_image_comment.comment %></td>
-	    <% if post_image_comment.user_id == current_user.id %>
-	    	<td>
-	    		<span><%= link_to "削除", post_image_post_image_comments_path(post_image_comment.id), method: :delete, remote:true %>
-	    		</span>
-	   	<% end %>
-	    	</td> 
-	</tr>
+		<tr>
+		    <td class="event-comment-user-name"><%= post_image_comment.created_at.strftime("%Y/%m/%d/%H:%M") %><span><%= post_image_comment.user.name %></span>
+	       </td>
+		</tr>
+		<% if post_image_comment.score > 0 %>
+			<tr class="comment-table-tr positive-comment">
+		<% elsif post_image_comment.score < 0 %>
+			<tr class="comment-table-tr negative-comment">
+		<% else %>
+			<tr class="comment-table-tr standard-comment">
+		<% end %>
+				<td><%= post_image_comment.comment %></td>
+			    <% if post_image_comment.user_id == current_user.id or post_image_comment.post_image.user_id == current_user.id %>
+			    	<td>
+			    		<span><%= link_to "削除", post_image_post_image_comments_path(post_image_comment.id), method: :delete, remote:true %>
+			    		</span>
+			   	<% end %>
+		    		</td> 
+			</tr>
     <% end %>
 </table>

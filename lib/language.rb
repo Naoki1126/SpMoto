@@ -21,6 +21,7 @@ module Language
       response = https.request(request, params)
       # APIレスポンス出力
       JSON.parse(response.body)['documentSentiment']['score']
+      # APIリクエスト用のJSONパラメータ
     end
   end
 end

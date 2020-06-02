@@ -5,6 +5,7 @@ class EventCommentsController < ApplicationController
     @comment = current_user.event_comments.new(comment_params)
     @comment.event_id = @event.id
     @event.id = @comment.event_id
+    @comment.score = Language.get_data(comment_params[:comment])
     @comment.save
     @event.create_notification_event_comment!(current_user, @comment.id)
   end

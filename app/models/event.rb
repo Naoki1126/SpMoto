@@ -13,10 +13,11 @@ class Event < ApplicationRecord
   has_many :event_comments, dependent: :destroy
   has_many :event_participates, dependent: :destroy
   has_many :notifications, dependent: :destroy
+  #既に参加アクションをしているか判断
   def participated_by?(user)
     event_participates.where(user_id: user.id).exists?
   end
-
+  #JpPrefectureによる都道府県登録
   include JpPrefecture
   jp_prefecture :prefucture_code
 

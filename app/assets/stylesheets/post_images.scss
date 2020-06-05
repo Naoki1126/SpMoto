@@ -175,8 +175,7 @@
 }
 
 .bx-wrapper {
-	float: left;
-	box-shadow: 0px 3px 3px black;
+	border:3px solid #DDDDDD;
 }
 
 .image-show-image{
@@ -193,4 +192,27 @@
 .negative-comment:hover{
 	background-color: #A4C6FF;
 	transition: all1S;
+}
+
+.post-image-index-post-box{
+	float:left;
+	border:1px solid #DDDDDD;
+	margin: 8px;
+	box-shadow: 1px 1px 2px #DDDDDD;
+	width: 220px;
+}
+
+.index-post-box-top{
+	display: inline-block;
+	margin-top: 5px;
+	margin-left: 12px;
+}
+
+.post-box-top-favorite{
+	display: inline-block;
+	margin-left: 50px;
+}
+
+.index-post-box-name{
+	margin-left: 12px;
 }

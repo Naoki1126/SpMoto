@@ -9,6 +9,7 @@ class EventParticipatesController < ApplicationController
     @event = Event.find(params[:event_id])
     @participate = current_user.event_participates.new(event_id: @event.id)
     @participate.save
+    #通知作成
     @event.create_notification_participate!(current_user)
   end
 

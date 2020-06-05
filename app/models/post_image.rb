@@ -1,6 +1,7 @@
 class PostImage < ApplicationRecord
   validates :body, length: { in: 1..200 }
   validates :post_image_images, presence: true
+  #下記２行複数画像の保存に必要な記載
   has_many :post_image_images, dependent: :destroy
   accepts_attachments_for :post_image_images, attachment: :image
   has_many :hashtag_post_images
@@ -62,6 +63,7 @@ class PostImage < ApplicationRecord
   end
 
   # ハッシュタグ機能
+  # 作成アクション
   after_create do
     post_image = PostImage.find_by(id: id)
     # hashbodyに打ち込まれたハッシュタグを検出
@@ -72,7 +74,7 @@ class PostImage < ApplicationRecord
       post_image.hashtags << tag
     end
   end
-
+  #更新アクション
   before_update do
     post_image = PostImage.find_by(id: id)
     post_image.hashtags.clear

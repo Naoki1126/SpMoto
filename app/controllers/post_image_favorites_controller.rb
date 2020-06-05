@@ -4,6 +4,7 @@ class PostImageFavoritesController < ApplicationController
     @postimage = PostImage.find(params[:post_image_id])
     @favorite = current_user.post_image_favorites.new(post_image_id: @postimage.id)
     @favorite.save
+    #通知作成
     @postimage.create_notification_favorite!(current_user)
   end
 

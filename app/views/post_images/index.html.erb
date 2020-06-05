@@ -1,15 +1,32 @@
 <div class= "row">
 	<div class="postimage-index">
 		<% @postimage.each do |image| %>
-  			<%= link_to post_image_path(image),data: {"turbolinks" => false}  do %>
-  				<ul class="slider">
-  					<% image.post_image_images.each do |post| %>
-  						<li>
-							<%= attachment_image_tag post, :image ,size:'200x150', format:'jpg',class:"image" %>
-						</li>
+			<div class= "post-image-index-post-box">
+				<p class="index-post-box-top">
+					<%= image.created_at.strftime("%Y/%m/%d")%>
+					<span id ="favorite-button_<%= image.id %>" class="post-box-top-favorite">
+					 <%= render partial: 'post_image_favorites/favorite', locals: { postimage: image } %>
+					</span>
+				</p>
+				<div class= "index-post-box-image">
+				<%= link_to post_image_path(image),data: {"turbolinks" => false}  do %>
+					<ul class="slider">
+						<% image.post_image_images.each do |post| %>
+							<li>
+								<%= attachment_image_tag post, :image ,size:'200x150', format:'jpg',class:"image" %>
+							</li>
+						<% end %>
+					</ul>
 				<% end %>
-				</ul>
-			<% end %>
+				</div>
+				<p class="index-post-box-name">
+					<%= link_to user_path(image.user) do %>
+						<%= attachment_image_tag image.user, :profile_image,size:'30x30', format:'jpg',fallback:'no_image.jpg',class:'min-image' %>
+						<span class="index-post-box-user"><%= image.user.name %>
+						</span>
+					<% end %>
+				</p>
+			</div>
   		<% end %>
 	</div>
 	<div class="image-index-pagination">

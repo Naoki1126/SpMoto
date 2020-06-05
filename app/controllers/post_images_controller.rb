@@ -47,6 +47,7 @@ class PostImagesController < ApplicationController
     @postimages = @postimage.post_image_images
     @comment = PostImageComment.new
     @favorite = PostImageFavorite.new
+    #閲覧数の取得
     impressionist(@postimage)
   end
 

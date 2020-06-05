@@ -1,11 +1,15 @@
 <div class= "row">
 	<div class="postimage-index">
+		<p class="index-switch">
+			<%= link_to "一覧", post_images_path, data: {"turbolinks" => false}%>
+			<%= link_to "フォロー", post_images_path(user_id: current_user.id), data: {"turbolinks" => false}%>
+		</p>
 		<% @postimage.each do |image| %>
-			<div class= "post-image-index-post-box">
+ 			<div class= "post-image-index-post-box">
 				<p class="index-post-box-top">
 					<%= image.created_at.strftime("%Y/%m/%d")%>
 					<span id ="favorite-button_<%= image.id %>" class="post-box-top-favorite">
-					 <%= render partial: 'post_image_favorites/favorite', locals: { postimage: image } %>
+					 <%= render 'post_image_favorites/favorite',postimage: image %>
 					</span>
 				</p>
 				<div class= "index-post-box-image">

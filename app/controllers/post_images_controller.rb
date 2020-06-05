@@ -38,7 +38,12 @@ class PostImagesController < ApplicationController
   end
 
   def index
-    @postimage = PostImage.all.page(params[:page]).per(30).reverse_order
+    if params[:user_id] == nil
+      @postimage = PostImage.all.page(params[:page]).per(30).reverse_order
+    else
+      @postimage = PostImage.where(user_id: current_user.followings).page(params[:page]).per(30).reverse_order
+
+    end
   end
 
   def show
@@ -95,5 +100,5 @@ class PostImagesController < ApplicationController
     if current_user != post_image.user
       redirect_to root_path
     end
-    end
+  end
 end

@@ -17,21 +17,36 @@
 	<div class= "col-xs-9">
 		<div class= "hashtag-postimage-box">
 			<h3>#<%= @hashtag.hashname %>:  <%= @postimage.count %> 件 </h3>
-				<% @postimage.each do |postimage| %>
-		    		<%= link_to post_image_path(postimage),data: {"turbolinks" => false}  do %>
-				  		<ul class="seslider">
-	  						<% postimage.post_image_images.each do |post| %>
-	  							<li>
-									<%= attachment_image_tag post, :image ,size:'250x200', format:'jpg',class:"image" %>
-								</li>
-							<% end %>
-						</ul>
-		 			<% end %>
-				<% end %>
-			<div class="image-index-pagination">
-				<%= paginate @postimage,class:"paginate" %>
-			</div>
 		</div>
+		<% @postimage.each do |postimage| %>
+			<div class= "hashtag-image-box">
+				<p class= hashtag-image-box-top>
+					<%= postimage.created_at.strftime("%Y/%m/%d") %>
+					<span id = "favorite-button_<%= postimage.id %>"class="hashtag-image-box-top-favorite">
+						<%= render 'post_image_favorites/favorite',postimage: postimage %>
+					</span>
+				</p>
+    			<%= link_to post_image_path(postimage),data: {"turbolinks" => false}  do %>
+		  			<ul class="seslider">
+							<% postimage.post_image_images.each do |post| %>
+								<li>
+								<%= attachment_image_tag post, :image ,size:'250x200', format:'jpg',class:"image" %>
+							</li>
+						<% end %>
+					</ul>
+				<% end %>
+				<p class="hashtag-post-box-name">
+					<%= link_to user_path(postimage.user) do %>
+						<%= attachment_image_tag postimage.user, :profile_image,size:'30x30', format:'jpg',fallback:'no_image.jpg',class:'min-image' %>
+						<span class="index-post-box-user"><%= postimage.user.name %>
+						</span>
+					<% end %>
+				</p>
+			</div>
+		<% end %>
+	<div class="image-index-pagination">
+		<%= paginate @postimage,class:"paginate" %>
+	</div>
 	</div>
 	<% end %>
 </div>

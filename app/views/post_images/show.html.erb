@@ -19,18 +19,21 @@
 				</ul>
 			</div>
 			<div class="image-show-command">
-				<p><span id = "favorite-button_<%= @postimage.id %>" class= "image-show-favorite">
-					<%= render partial: 'post_image_favorites/favorite', locals: { postimage: @postimage } %>
-						<% if @user == current_user %>
-					</span>
-							<span class="pv"><%= "閲覧数：#{@postimage.impressionist_count}" %>
-							</span>
+
+				<p>
+					<span class="show-image-user">
+						<%=link_to user_path(@user) do %>
+      						<%= attachment_image_tag @user, :profile_image,size:'50x50', format:'jpg',fallback:'no_image.jpg',class:'min-image' %>
+							<%= @user.name %>
 						<% end %>
-							<span class="show-image-user">
-								投稿者:   <%=link_to user_path(@user) do %>
-								<%= @user.name %>
-								<% end %>
-							</span>
+					</span>
+					<span id = "favorite-button_<%= @postimage.id %>" class= "image-show-favorite">
+					<%= render partial: 'post_image_favorites/favorite', locals: { postimage: @postimage } %>
+					</span>
+					<% if @user == current_user %>
+						<span class="pv"><%= "閲覧数：#{@postimage.impressionist_count}" %>
+						</span>
+					<% end %>
 				</p>
 				<div class="image-show-body-hash">
 					<p class="image-show-body"><%= @postimage.body %></p>

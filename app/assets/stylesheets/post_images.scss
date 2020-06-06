@@ -16,7 +16,6 @@
 .image-show-form{
 	border:3px solid #EEEEEE;
 	box-shadow: 4px 4px 6px #EEEEEE;
-	height:100%;
 	width: 80%;
 	margin-top:60px;
 	margin-bottom:5%;
@@ -139,8 +138,9 @@
 
 .show-image-user{
 	display: inline-block;
-}
-
+	margin-left: 2%;
+	margin-right: 10%;
+}	
 .image-show-body-hash{
 	border-top: 2px solid #EEEEEE;
 	padding:2% 2% 2% 0;
@@ -156,7 +156,7 @@
 
 .pv{
 	display: inline-block;
-	margin :0 2% 0 2%;
+	margin :0 2% 0 10%;
 }
 
 .comment-form input[type="submit"]{
@@ -178,9 +178,6 @@
 	border:2px solid #DDDDDD;
 }
 
-.image-show-image{
-	height: 500px;
-}
 .image-show-form{
 	width: 680px;
 }
@@ -215,4 +212,87 @@
 
 .index-post-box-name{
 	margin-left: 12px;
+}
+
+.hashtag-image-box{
+	float:left;
+	border:2px solid #DDDDDD;
+	margin: 8px;
+	box-shadow: 1px 1px 2px #DDDDDD;
+	width: 270px;
+}
+
+.hashtag-image-box-top{
+	display: inline-block;
+	margin-top: 5px;
+	margin-left: 12px;
+}
+
+.hashtag-image-box-top-favorite{
+	display: inline-block;
+	margin-left: 80px;
+}
+
+.hashtag-post-box-name{
+	margin-left: 12px;
+}
+
+.index-switch{
+	text-align: center;
+	padding-top: 1%;
+	letter-spacing: 5px;
+	font-size: 15px;
+
+}
+
+.index-all{
+	width: 100px;
+	height: 50px;
+	background-color: white;
+	border-radius: 10px;
+	margin-right: 2%;
+	display: inline-block;
+	transition: all 2S;
+}
+
+.index-follow{
+	width: 100px;
+	height: 50px;
+	background-color: white;
+	border-radius: 10px;
+	margin-left:2%;
+	display: inline-block;
+	transition: all 2S;
+}
+
+.index-all-text{
+	color: black;
+	display: block;
+	height: 100%;
+	padding-top: 10px;
+}
+
+.index-follow-text{
+	color: black;
+	display: block;
+	height: 100%;
+	padding-top: 10px;
+}
+
+.index-all:hover{
+	background-color: black;
+	color: white;
+}
+
+.index-follow:hover{
+	background-color: black;
+	color:white;
+}
+.index-all-text:hover{
+	color:white;
+	font-weight: bold;
+}
+.index-follow-text:hover{
+	color:white;
+	font-weight: bold;
 }

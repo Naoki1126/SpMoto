@@ -66,17 +66,19 @@
 </div>
 <div class= "row">
 	<div class= "contents-box">
-		<% @post_images.each do |image| %>
-  			<%= link_to post_image_path(image),data: {"turbolinks" => false}  do %>
-  				<ul class="usslider">
-  					<% image.post_image_images.each do |post| %>
-  						<li>
-							<%= attachment_image_tag post, :image ,size:'200x150', format:'jpg',class:"image" %>
-						</li>
-					<% end %>
-				</ul>
-  			<% end %>
-		<% end %>
+		<div class= "post-image-index-post-box">
+			<% @post_images.each do |image| %>
+	  			<%= link_to post_image_path(image),data: {"turbolinks" => false}  do %>
+	  				<ul class="usslider">
+	  					<% image.post_image_images.each do |post| %>
+	  						<li>
+								<%= attachment_image_tag post, :image ,size:'200x150', format:'jpg',class:"image" %>
+							</li>
+						<% end %>
+					</ul>
+	  			<% end %>
+			<% end %>
+		</div>
 	</div>
 </div>
 <div class="kaminari">

@@ -1,16 +1,28 @@
 <div class= "row">
 	<div class="postimage-index">
-		<p class="index-switch">
-			<%= link_to "一覧", post_images_path, data: {"turbolinks" => false}%>
-			<%= link_to "フォロー", post_images_path(user_id: current_user.id), data: {"turbolinks" => false}%>
-		</p>
+		<% if user_signed_in? %>
+			<div class="index-switch">
+				<button type="button" class="index-all">
+					<%= link_to post_images_path, data: {"turbolinks" => false} do %>
+					<span class= "index-all-text">全投稿</span>
+					<% end %>
+				</button>
+				<button type = "button"class="index-follow">
+				<%= link_to post_images_path(user_id: current_user.id), data: {"turbolinks" => false} do %>
+					<span class="index-follow-text">フォロー</span>
+				<% end %>
+				</button>
+			</div>
+		<% end %>
 		<% @postimage.each do |image| %>
  			<div class= "post-image-index-post-box">
 				<p class="index-post-box-top">
 					<%= image.created_at.strftime("%Y/%m/%d")%>
-					<span id ="favorite-button_<%= image.id %>" class="post-box-top-favorite">
-					 <%= render 'post_image_favorites/favorite',postimage: image %>
-					</span>
+					<% if user_signed_in? %>
+						<span id ="favorite-button_<%= image.id %>" class="post-box-top-favorite">
+						 <%= render 'post_image_favorites/favorite',postimage: image %>
+						</span>
+					<% end %>
 				</p>
 				<div class= "index-post-box-image">
 				<%= link_to post_image_path(image),data: {"turbolinks" => false}  do %>

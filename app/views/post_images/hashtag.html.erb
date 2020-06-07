@@ -16,6 +16,7 @@
 	<% else %>
 	<div class= "col-xs-9">
 			<h3 class="search-title">#<%= @hashtag.hashname %>:  <%= @postimage.count %> 件 </h3>
+		<div class="flex-box">
 		<% @postimage.each do |postimage| %>
 			<div class= "hashtag-image-box">
 				<p class= hashtag-image-box-top>
@@ -42,6 +43,7 @@
 				</p>
 			</div>
 		<% end %>
+		</div>
 	<div class="image-index-pagination" data-turbolinks="false">
 		<%= paginate @postimage,class:"paginate" %>
 	</div>

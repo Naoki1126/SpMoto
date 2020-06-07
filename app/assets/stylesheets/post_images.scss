@@ -192,10 +192,14 @@
 	transition: all1S;
 }
 
+.flex-box{
+	display: flex;
+	flex-wrap: wrap;
+}
+
 .post-image-index-post-box{
-	float:left;
 	border:2px solid #DDDDDD;
-	margin: 8px;
+	margin: 1.2%;
 	box-shadow: 1px 1px 2px #DDDDDD;
 	width: 220px;
 }
@@ -217,7 +221,6 @@
 }
 
 .hashtag-image-box{
-	float:left;
 	border:2px solid #DDDDDD;
 	margin: 8px;
 	box-shadow: 1px 1px 2px #DDDDDD;

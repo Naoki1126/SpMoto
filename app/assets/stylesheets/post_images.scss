@@ -246,23 +246,26 @@
 }
 
 .index-all{
-	width: 100px;
+	width: 130px;
 	height: 50px;
 	background-color: white;
-	border-radius: 10px;
+	border-radius: 5px;
 	margin-right: 2%;
 	display: inline-block;
 	transition: all 2S;
+	border: 1px solid black;
 }
 
 .index-follow{
-	width: 100px;
+	width: 130px;
 	height: 50px;
 	background-color: white;
-	border-radius: 10px;
+	border-radius: 5px;
 	margin-left:2%;
 	display: inline-block;
 	transition: all 2S;
+	border: 1px solid black;
+	padding-left: 3px;
 }
 
 .index-all-text{

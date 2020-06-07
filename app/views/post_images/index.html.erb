@@ -15,7 +15,7 @@
 			</div>
 		<% end %>
 		<div class= "flex-box">
-		<% @postimage.each do |image| %>
+		<% @postimage.shuffle.each do |image| %>
  			<div class= "post-image-index-post-box">
 				<p class="index-post-box-top">
 					<%= image.created_at.strftime("%Y/%m/%d")%>

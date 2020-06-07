@@ -20,7 +20,7 @@
 						<%= attachment_image_tag user, :profile_image, size:'50x50', format:'jpg',fallback: "no_image.jpg",class:'user-index-image' %>
 				    <% end %>
 				</td>
-				<td><%= link_to user.name, user_path(user)%></td>
+				<td><%= link_to user.name, user_path(user),data: {"turbolinks" => false} %></td>
 				<td><%= link_to user.prefecture_name, users_path(prefecture_code: user.prefecture_code ) %></td>
 				<td id="follow-button_<%= user.id %>">
 					<%= render 'relationships/followbutton', user: user %>

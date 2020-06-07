@@ -14,6 +14,7 @@
 				</button>
 			</div>
 		<% end %>
+		<div class= "flex-box">
 		<% @postimage.each do |image| %>
  			<div class= "post-image-index-post-box">
 				<p class="index-post-box-top">
@@ -44,6 +45,7 @@
 				</p>
 			</div>
   		<% end %>
+  		</div>
 	</div>
 	<div class="image-index-pagination" data-turbolinks="false">
 		<%= paginate @postimage,class:"paginate" %>

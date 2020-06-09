@@ -56,6 +56,7 @@ footer{
 	width:100%;
 	background-color:black;
 	height:50px;
+	margin-top:1%;
 }
 
 .foot{
@@ -79,7 +80,7 @@ footer{
 
         /* コンテンツ部分の高さが画面より低い場合は画面の高さに合わせる*/
         height: 100%;
-        min-height: 100%;
+        min-height: 50%;
 }
 
 ul {

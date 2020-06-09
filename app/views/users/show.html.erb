@@ -21,43 +21,41 @@
 		<!-- プロフィール右側 -->
 		<div class= "col-xs-9">
 			<div class= "navbar">
-				<nav>
-					<ul class="nav navbar-nav navbar-right user-nav">
-						<li class="profile-link"><%= link_to "主催イベント", events_path(event_case: "now",user_id: @user.id) %></li>
-						<li class="profile-link"><%= link_to "過去イベント", events_path(event_case: "log",user_id: @user.id) %></li>
-						<li class="postcount"><%= "投稿件数:#{@post_images.count}" %></li>
-						<li class="profile-link"><%= link_to "follow:#{@user.followings.count}", user_follows_path(user_id: @user.id) %></li>
-						<li class="profile-link"><%= link_to "follower:#{@user.followers.count}", user_followers_path(user_id: @user.id) %></li>
+				<div class="user-button">
+					<span class="profile-link prof-post-count"><%= "投稿件数:#{@post_images.count}" %></span>
+						<button class="profile-link"><%= link_to "主催イベント", events_path(event_case: "now",user_id: @user.id) %></button>
+						<button class="profile-link"><%= link_to "過去イベント", events_path(event_case: "log",user_id: @user.id) %></button>
+						<button class="profile-link"><%= link_to "follow:#{@user.followings.count}", user_follows_path(user_id: @user.id) %></button>
+						<button class="profile-link"><%= link_to "follower:#{@user.followers.count}", user_followers_path(user_id: @user.id) %></button>
 						<% if @user.id == current_user.id %>
-						<li class="profile-link"><%= link_to "DM", rooms_path %>
-						</li>
+						<button class="profile-link"><%= link_to "DM", rooms_path %>
+						</button>
 
 						<% else %>
 							<% if @isroom == true %>
-								<li class= "profile-link"><a href="/rooms/<%= @roomid %>">DM</a></li>
+								<button class= "profile-link"><a href="/rooms/<%= @roomid %>">DM</a></button>
 							<% else %>
-								<li class="profile-link">
+								<button class="profile-link">
 									<%= form_for @room do |f| %>
 										<%= fields_for @entry do |e| %>
 											<%= e.hidden_field :user_id, :value=> @user.id %>
 										<% end %>
 										<%= f.submit "DM", class:'dmbutton' %>
 									<% end %>
-								</li>
+								</button>
 							<% end %>
 						<% end %>
 						<%if @user == current_user %>
-							<li class="profile-link notification"><%=link_to "通知",notifications_path, class:"notification-btn" %>
+							<button class="profile-link notification"><%=link_to "通知",notifications_path, class:"notification-btn" %>
 								<% if unchecked_notifications.any? %>
 									<i class="fa fa-circle notification-circle" style="color: gold;"></i>
 								<% end %>
-							</li>
+							</button>
 						<% end %>
 						<% if @user == current_user %>
-							<li class="profile-link"><%= link_to "会員情報編集", edit_user_path(@user) %></li>
+							<button class="profile-link"><%= link_to "会員情報編集", edit_user_path(@user) %></button>
 						<% end %>
-					</ul>
-				</nav>
+					</div>
 		    </div>
 			<div class="user-introduction">
 				<%= @user.introduction %>

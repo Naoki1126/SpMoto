@@ -10,16 +10,18 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<% @users.each do |user| %>
-					<td><%= attachment_image_tag user, :profile_image, size:'50x50',format:'jpg',fallback: "no_image.jpg" %></td>
-					<td><%= user.name %></td>
-					<td id="follow-button_<%= @user.id %>">
-					<%= render 'relationships/followbutton', user: @user %>
-					</td>
-	 				<td><%= link_to '詳細', user_path(user) %></td>
- 				</tr>
- 					<% end%>
+				<% @users.each do |user| %>
+					<tr>	
+						<td><%= link_to user_path(user),data: {"turbolinks" => false} do %>
+							<%= attachment_image_tag user, :profile_image, size:'50x50',format:'jpg',fallback: "no_image.jpg" %>
+							<% end %>
+							</td>
+						<td><%= link_to user.name, user_path(user),data: {"turbolinks" => false} %></td>
+						<td id="follow-button_<%= user.id %>">
+						<%= render 'relationships/followbutton', user: user %>
+						</td>
+ 					</tr>
+ 				<% end%>
  			</tbody>
 		</table>
  	</div>

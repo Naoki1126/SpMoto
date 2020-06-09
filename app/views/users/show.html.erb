@@ -25,8 +25,12 @@
 					<span class="profile-link prof-post-count"><%= "投稿件数:#{@post_images.count}" %></span>
 						<button class="profile-link"><%= link_to "主催イベント", events_path(event_case: "now",user_id: @user.id) %></button>
 						<button class="profile-link"><%= link_to "過去イベント", events_path(event_case: "log",user_id: @user.id) %></button>
-						<button class="profile-link"><%= link_to "follow:#{@user.followings.count}", user_follows_path(user_id: @user.id) %></button>
-						<button class="profile-link"><%= link_to "follower:#{@user.followers.count}", user_followers_path(user_id: @user.id) %></button>
+						<button class="profile-link" id="follow-count_<%= @user.id %>">
+							<%= render 'relationships/followcount', user: @user %>
+						</button>
+						<button class="profile-link" id="follower-count_<%= @user.id %>">
+							<%= render 'relationships/followercount', user: @user %>
+						</button>
 						<% if @user.id == current_user.id %>
 						<button class="profile-link"><%= link_to "DM", rooms_path %>
 						</button>

@@ -44,6 +44,10 @@
 				</div>
 			</div>
 		</div>
+		<div id = "favorite-index_<%= @postimage.id %>">
+			<%= render partial: 'post_image_favorites/favorite-index', locals: { postimage: @postimage } %>
+		</div>
+
  	</div>
  	<div class="col-xs-4">
  		<div class= "image-show-comment-box">

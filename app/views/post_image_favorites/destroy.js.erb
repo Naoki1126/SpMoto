@@ -1,1 +1,2 @@
 $('#favorite-button_<%= @postimage.id %>').html("<%= j(render partial: 'post_image_favorites/favorite', locals: {postimage: @postimage}) %>");
+$('#favorite-index_<%= @postimage.id %>').html("<%= j(render partial: 'post_image_favorites/favorite-index', locals: {postimage: @postimage}) %>");

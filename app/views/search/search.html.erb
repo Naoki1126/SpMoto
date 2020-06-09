@@ -94,32 +94,36 @@
 <% elsif @model == "ハッシュタグ" %>
   <div class="search-hashtag-index">
     <h3 class="search-title">search for "#<%= @content %>"が含まれる投稿</h3>
-    <div class="flex-box">
-      <% @datas.post_images.each do |data| %>
-        <div class= "hashtag-image-box">
-            <p class= hashtag-image-box-top>
-              <%= data.created_at.strftime("%Y/%m/%d") %>
-              <span id = "favorite-button_<%= data.id %>"class="hashtag-image-box-top-favorite">
-                <%= render 'post_image_favorites/favorite',postimage: data %>
-              </span>
+      <% if @datas == nil %>
+  </div>
+      <% else %>
+      <div class="flex-box">
+        <% @datas.post_images.each do |data| %>
+          <div class= "hashtag-image-box">
+              <p class= hashtag-image-box-top>
+                <%= data.created_at.strftime("%Y/%m/%d") %>
+                <span id = "favorite-button_<%= data.id %>"class="hashtag-image-box-top-favorite">
+                  <%= render 'post_image_favorites/favorite',postimage: data %>
+                </span>
+              </p>
+              <%= link_to post_image_path(data),data: {"turbolinks" => false}  do %>
+                <ul class="seslider">
+                  <% data.post_image_images.each do |post| %>
+                    <li>
+                      <%= attachment_image_tag post, :image ,size:'250x200', format:'jpg',class:"image" %>
+                    </li>
+                  <% end %>
+                </ul>
+              <% end %>
+            <p class="hashtag-post-box-name">
+              <%= link_to user_path(data.user),data: {"turbolinks" => false} do %>
+                <%= attachment_image_tag data.user, :profile_image,size:'30x30', format:'jpg',fallback:'no_image.jpg',class:'min-image' %>
+                <span class="index-post-box-user"><%= data.user.name %>
+                </span>
+              <% end %>
             </p>
-            <%= link_to post_image_path(data),data: {"turbolinks" => false}  do %>
-              <ul class="seslider">
-                <% data.post_image_images.each do |post| %>
-                  <li>
-                    <%= attachment_image_tag post, :image ,size:'250x200', format:'jpg',class:"image" %>
-                  </li>
-                <% end %>
-              </ul>
-            <% end %>
-          <p class="hashtag-post-box-name">
-            <%= link_to user_path(data.user),data: {"turbolinks" => false} do %>
-              <%= attachment_image_tag data.user, :profile_image,size:'30x30', format:'jpg',fallback:'no_image.jpg',class:'min-image' %>
-              <span class="index-post-box-user"><%= data.user.name %>
-              </span>
-            <% end %>
-          </p>
-        </div>
+          </div>
+        <% end %>
       <% end %>
     </div>
   </div>

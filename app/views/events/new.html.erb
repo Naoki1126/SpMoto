@@ -14,11 +14,11 @@
 				<% end %>
 				<h3>新規イベント</h3>
 				<h4>Title</h4>
-				<%= f.text_field :title,size:"50x100" %>
+				<%= f.text_field :title %>
 		</div>
 		<div class="event-body-new">
 			<h4>イベント概要</h4>
-			<%= f.text_area :body,placeholder: "イベントの詳細を記入して下さい",size:"50x10" %>
+			<%= f.text_area :body,placeholder: "イベントの詳細を記入して下さい" %>
 		</div>
 		<div class="event-prefecture-new">
 			<h4>開催エリア:  
@@ -32,7 +32,7 @@
 			<h4>終了日時:  <%= f.datetime_field :meetingfinishtime %></h4>
 		</div>
 		<div class="event-meetingplace-new">
-			<h4>集合場所:  <%= f.text_field :meetingplace %></h4>
+			<h4 class="time">集合場所:  <%= f.text_field :meetingplace %></h4>
 		</div>
 		<div class = "event-capacity-new">
 			<h4>定員:  <%= f.number_field :capacity,value: "指定なし",in: 1..2000 %></h4>

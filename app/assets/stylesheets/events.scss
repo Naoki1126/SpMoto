@@ -11,6 +11,15 @@
 	margin-bottom: 1%;
 }
 
+.event-title-new-new input[type="text"]{
+	width: 100%;
+}
+
+.event-body-new textarea[id="event_body"]{
+	width: 100%;
+	height: 200px;
+}
+
 .latitude-longitude-form{
 	display:none;
 }
@@ -58,8 +67,14 @@
 	box-shadow: 1px 1px 3px #EEEEEE;
 }
 .event-meetingplace-new{
+
 	border:1px solid #EEEEEE;
 	box-shadow: 1px 1px 3px #EEEEEE;
+}
+
+
+.event-meetingplace-new input[type="text"]{
+	width: 85%;
 }
 
 .event-date-and-time-new{

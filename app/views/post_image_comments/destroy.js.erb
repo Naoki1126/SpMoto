@@ -1,1 +1,2 @@
 $("#post-image-comment_<%= @postimage.id %>").html("<%= j(render 'post_image_comments/comment', postimage:@postimage ) %>");
+$("#comment-count_<%= @postimage.id %>").html("<%= j(render 'post_image_comments/comment-count', postimage:@postimage ) %>");

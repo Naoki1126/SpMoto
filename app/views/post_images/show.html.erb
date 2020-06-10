@@ -1,5 +1,7 @@
 <div class="row">
-	<div class="col-xs-8">
+	<div class="col-xs-3">
+	</div>
+	<div class="col-xs-6">
 		<div class="image-show-form">
 			<div class="image-show-day-edit">
 				<p><%= @postimage.created_at.strftime("%Y-%m-%d(%a)")%>
@@ -19,7 +21,6 @@
 				</ul>
 			</div>
 			<div class="image-show-command">
-
 				<p>
 					<span class="show-image-user">
 						<%=link_to user_path(@user) do %>
@@ -30,9 +31,13 @@
 					<span id = "favorite-button_<%= @postimage.id %>" class= "image-show-favorite">
 					<%= render partial: 'post_image_favorites/favorite', locals: { postimage: @postimage } %>
 					</span>
+					<span class="favorite-show">いいね</span>
+					<i class="far fa-comments show-comment-count"></i><span class='show-comment-count'><%= @postimage.post_image_comments.count %></span>
 					<% if @user == current_user %>
+
 						<span class="pv"><%= "閲覧数：#{@postimage.impressionist_count}" %>
 						</span>
+
 					<% end %>
 				</p>
 				<div class="image-show-body-hash">
@@ -44,13 +49,11 @@
 				</div>
 			</div>
 		</div>
-		<div id = "favorite-index_<%= @postimage.id %>">
+		<div id = "favorite-index_<%= @postimage.id %>" class="favorite-modal">
 			<%= render partial: 'post_image_favorites/favorite-index', locals: { postimage: @postimage } %>
 		</div>
-
- 	</div>
- 	<div class="col-xs-4">
- 		<div class= "image-show-comment-box">
+		<div class= "image-show-comment-box">
+			<i class="far fa-window-close"></i>
  			<div class="comment-form">
  				<h4>Comment-form</h4>
  					<%= render 'post_image_comments/form', postimage: @postimage, comment: @comment %>
@@ -59,5 +62,7 @@
  					<%= render 'post_image_comments/comment', postimage: @postimage %>
  			</div>
  		</div>
+	</div>
+ 	<div class="col-xs-3">
  	</div>
 </div>

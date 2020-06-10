@@ -4,6 +4,10 @@ $(document).ready(function(){
 		$('.favorite-modal').fadeIn();
 	});
 
+	$('.favorite-show').click(function(){
+		$('html,body').scrollTop(0);
+	});
+
 	$('.fa-times').click(function(){
 		$('.favorite-modal').fadeOut();
 	});

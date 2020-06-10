@@ -32,7 +32,10 @@
 					<%= render partial: 'post_image_favorites/favorite', locals: { postimage: @postimage } %>
 					</span>
 					<span class="favorite-show">いいね</span>
-					<i class="far fa-comments show-comment-count"></i><span class='show-comment-count'><%= @postimage.post_image_comments.count %></span>
+					<i class="far fa-comments show-comment-count"></i>
+					<span class='show-comment-count' id='comment-count_<%= @postimage.id %>'>
+						<%= render 'post_image_comments/comment-count', postimage:@postimage %>
+					</span>
 					<% if @user == current_user %>
 
 						<span class="pv"><%= "閲覧数：#{@postimage.impressionist_count}" %>

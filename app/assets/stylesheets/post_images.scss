@@ -36,9 +36,12 @@
 
 
 .image-show-comment-box{
-	margin-top: 20%
+	display:none;
 }
 
+.comment-form{
+	text-align: center;
+}
 
 .editlink{
 	float:right;
@@ -124,6 +127,7 @@
 
 
 .image-show-comment-index table{
+	margin:0 auto;
 	width: 400px;
 }
 
@@ -155,6 +159,10 @@
 	color: #777777
 }
 
+.favorite-modal{
+	display: none;
+}
+
 .pv{
 	display: inline-block;
 	margin :0 2% 0 10%;
@@ -180,7 +188,8 @@
 }
 
 .image-show-form{
-	width: 680px;
+	width: 100%;
+
 }
 .positive-comment:hover{
 	background-color: #FFC7AF;
@@ -304,4 +313,72 @@
 .index-follow-text:hover{
 	color:white;
 	font-weight: bold;
+}
+
+.favorite-modal{
+	width: 80%;
+	height: 480px;
+	border-radius: 5px;
+	background-color: rgba(0,0,0,0.5);
+	margin:0 auto;
+	position: absolute;
+	top :10%;
+	left:10%;
+	padding-left: 1%;
+}
+
+.favorite-user{
+	display: inline-block;
+	width: 100%;
+	border-bottom: 1px solid white;
+}
+
+.favorite-user img{
+	display: inline-block;
+	margin-right: 5%;
+	margin-left: 5%;
+}
+
+.fauser{
+	color: white;
+}
+
+.favorite-show{
+	display: inline-block;
+	margin-right:5%;
+	color: #337ab7;
+}
+.favorite-show:hover{
+	cursor: pointer;
+	border-bottom: 1px solid #337ab7;
+}
+
+.fa-times{
+	font-size: 20px;
+}
+
+.fa-times:hover{
+	cursor:pointer;
+}
+
+.fa-comments{
+	color: #337ab7;
+}
+
+.fa-comments:hover{
+	cursor: pointer;
+	border-bottom: 1px solid #337ab7;
+}
+.show-comment-count{
+	margin-left:1%;
+	color: #337ab7;
+}
+
+.show-comment-count:hover{
+	cursor: pointer;
+	border-bottom: 1px solid #337ab7;
+}
+
+.fa-window-close{
+	font-size: 20px;
 }

@@ -1,5 +1,5 @@
 <table>
-	<% event.event_comments.each do |event_comment| %>
+	<% event.event_comments.sort_by{|comment| comment.id}.reverse.each do |event_comment| %>
 		<tr>
 	    	<td class="event-comment-user-name"><%= event_comment.created_at.strftime("%Y/%m/%d/%H:%M") %><span><%= event_comment.user.name %></span></td>
 		</tr>

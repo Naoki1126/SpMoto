@@ -21,4 +21,13 @@ RSpec.describe 'EventCommentモデルのテスト', type: :model do
 			end
 		end
 	end
+
+	# describe 'バリデーションのテスト' do
+	# 		it '空欄でないこと' do
+	# 			let(:event_comment) { create(:event_comment) }
+	# 			event_comment.comment = ''
+	# 			expect(event_comment.valid?).to eq false;
+	# 		end
+	# end
+
 end

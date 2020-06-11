@@ -86,6 +86,13 @@
 .message-text{
 	margin-bottom: 5px;
 	background-color: black;
+	width: 45%;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.message-text input[type="text"]{
+	width: 65%;
 }
 
 #messages{

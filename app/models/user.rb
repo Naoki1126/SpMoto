@@ -25,6 +25,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  #ゲストログイン
+  def self.guest
+    find_or_create_by!(email: 'guest@guest.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+    end
+  end
+
   include JpPrefecture
   jp_prefecture :prefucture_code
 

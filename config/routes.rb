@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     passwords: 'users/passwords',
     registraitions: 'users/registraitions',
   }
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   # 管理者側
@@ -52,4 +53,11 @@ Rails.application.routes.draw do
 
   # 地図
   get '/map_request', to: 'events#map', as: 'map_request'
+
+  # ゲストログイン
+  post '/', to: 'homes#new_guest', as: 'homes_new_guest'
+
+  devise_scope :user do
+    post '/', to: 'users/session#new_guest'
+  end
 end

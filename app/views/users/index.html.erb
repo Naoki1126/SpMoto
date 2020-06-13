@@ -22,8 +22,9 @@
 						    <% end %>
 						</td>
 						<td><%= link_to user.name, user_path(user),data: {"turbolinks" => false} %></td>
+						<% unless user.prefecture_code == nil %>
 						<td width="10%"><%= link_to user.prefecture_name, users_path(prefecture_code: user.prefecture_code ) %></td>
-						
+						<% end %>
 						<td width="17%">
 							<% if @user.followers.where(id: user.id).exists? %>
 						あなたをフォローしています

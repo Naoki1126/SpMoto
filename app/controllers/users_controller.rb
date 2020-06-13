@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :correct_user, only: [:edit, :update, :destroy_page, :destroy]
+  before_action :check_guest_destroy, only: :destroy
 
   def index
     @user = current_user
@@ -78,4 +79,5 @@ class UsersController < ApplicationController
       redirect_to root_path
     end
   end
+
 end

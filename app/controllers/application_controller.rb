@@ -14,4 +14,17 @@ class ApplicationController < ActionController::Base
   def after_sign_out_path_for(resource)
     root_path
   end
+
+  def check_guest_destroy
+    @user = current_user
+    if @user.email == 'guest@guest.com'
+      redirect_to root_path, alert: 'ゲストユーザーに権限がありません'
+    end
+  end
+
+  def check_guest_edit
+    if params[:user][:email].downcase == 'guest@guest.com'
+      redirect_to root_path, alert: 'ゲストユーザーの変更・削除はできません。'
+    end
+  end
 end

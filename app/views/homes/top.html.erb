@@ -30,8 +30,18 @@
                         <span class="text">ログイン</span>
                         <% end %>
                     </button>
-            <% end %>
             </div>
+            <div class="guest">
+                <button type="button" class="bt new">
+                        <%= link_to homes_new_guest_path, method: :post, data: {"turbolinks" => false} do %>
+                        <span class="text">ゲストログイン</span>
+                        <% end %>
+                    </button>
+            </div>
+            <% end %>
+           
+
+
     </div>
 </div>
     

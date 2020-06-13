@@ -1,5 +1,7 @@
 <div class= "row">
+
 	<div class="postimage-index">
+		<p class="notice"><%= flash[:notice] %></p>
 		<% if user_signed_in? %>
 			<div class="index-switch">
 				<button type="button" class="index-all">

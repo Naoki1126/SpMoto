@@ -22,12 +22,20 @@ RSpec.describe 'EventCommentモデルのテスト', type: :model do
 		end
 	end
 
-	# describe 'バリデーションのテスト' do
-	# 		it '空欄でないこと' do
-	# 			let(:event_comment) { create(:event_comment) }
-	# 			event_comment.comment = ''
-	# 			expect(event_comment.valid?).to eq false;
-	# 		end
-	# end
+	describe 'バリデーションのテスト' do
+	 	before do
+	 		@user =  FactoryBot.create(:user)
+	 		@event = FactoryBot.create(:event)
+	 		@comment = EventComment.create(
+	 			user_id:@user.id,
+	 			event_id:@event.id,
+	 			comment:'aaaaaa',
+	 			)
+	 	end
+			it '空欄でないこと' do
+	 			@comment.comment = ''
+	 			expect(@comment.valid?).to eq false;
+	 		end
+	end
 
 end

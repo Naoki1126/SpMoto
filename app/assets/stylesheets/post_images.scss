@@ -60,6 +60,7 @@
 	height:50px;
 	text-align: center;
 	margin-top: 20px;
+	margin-bottom: 1%;
 }
 
 .postimage-new  input[type="submit"]{
@@ -101,9 +102,6 @@
 
 .hashtag-name{
 	margin-top:60px;
-}
-
-.hashname{
 	border-right: 1px solid #EEEEEE;
 }
 
@@ -381,4 +379,8 @@
 
 .fa-window-close{
 	font-size: 20px;
+}
+
+.hashtag-post-box{
+	margin-top: 60px;
 }

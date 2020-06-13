@@ -1,6 +1,6 @@
 <div class="row">
-	<div class= "hashtag-name">
-		<div class= "col-xs-2">
+	<div class= "col-xs-2">
+		<div class= "hashtag-name">
 			<% @hashtags.sort.reverse.each do |count| %>
 				<div class= "hashname">
 					<% count[1].each do |hashtag| %>
@@ -15,35 +15,37 @@
 
 	<% else %>
 	<div class= "col-xs-10">
+		<div class="hashtag-post-box">
 			<h3 class="search-title">#<%= @hashtag.hashname %>:  <%= @postimage.count %> 件 </h3>
-		<div class="flex-box">
-		<% @postimage.each do |postimage| %>
-			<div class= "hashtag-image-box">
-				<p class= hashtag-image-box-top>
-					<%= postimage.created_at.strftime("%Y/%m/%d") %>
-					<span id = "favorite-button_<%= postimage.id %>"class="hashtag-image-box-top-favorite">
-						<%= render 'post_image_favorites/favorite',postimage: postimage %>
-					</span>
-				</p>
-    			<%= link_to post_image_path(postimage),data: {"turbolinks" => false}  do %>
-		  			<ul class="seslider">
-							<% postimage.post_image_images.each do |post| %>
-								<li>
-								<%= attachment_image_tag post, :image ,size:'250x200', format:'jpg',class:"image" %>
-							</li>
-						<% end %>
-					</ul>
-				<% end %>
-				<p class="hashtag-post-box-name">
-					<%= link_to user_path(postimage.user) do %>
-						<%= attachment_image_tag postimage.user, :profile_image,size:'30x30', format:'jpg',fallback:'no_image.jpg',class:'min-image' %>
-						<span class="index-post-box-user"><%= postimage.user.name %>
+			<div class="flex-box">
+			<% @postimage.each do |postimage| %>
+				<div class= "hashtag-image-box">
+					<p class= hashtag-image-box-top>
+						<%= postimage.created_at.strftime("%Y/%m/%d") %>
+						<span id = "favorite-button_<%= postimage.id %>"class="hashtag-image-box-top-favorite">
+							<%= render 'post_image_favorites/favorite',postimage: postimage %>
 						</span>
+					</p>
+	    			<%= link_to post_image_path(postimage),data: {"turbolinks" => false}  do %>
+			  			<ul class="seslider">
+								<% postimage.post_image_images.each do |post| %>
+									<li>
+									<%= attachment_image_tag post, :image ,size:'250x200', format:'jpg',class:"image" %>
+								</li>
+							<% end %>
+						</ul>
 					<% end %>
-				</p>
-			</div>
-		<% end %>
+					<p class="hashtag-post-box-name">
+						<%= link_to user_path(postimage.user) do %>
+							<%= attachment_image_tag postimage.user, :profile_image,size:'30x30', format:'jpg',fallback:'no_image.jpg',class:'min-image' %>
+							<span class="index-post-box-user"><%= postimage.user.name %>
+							</span>
+						<% end %>
+					</p>
+				</div>
+			<% end %>
 		</div>
+	</div>
 	<div class="image-index-pagination" data-turbolinks="false">
 		<%= paginate @postimage,class:"paginate" %>
 	</div>

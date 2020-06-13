@@ -1,5 +1,17 @@
 require 'rails_helper'
 
-RSpec.describe PostImageFavorite, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+RSpec.describe 'PostImageFavoriteモデルのテスト', type: :model do
+	describe 'アソシエーションのテスト' do
+		context 'Userモデルとの関係' do
+			it 'N:1となっている' do
+				expect(PostImageFavorite.reflect_on_association(:user).macro).to eq :belongs_to
+			end
+		end
+
+		context 'PostImageモデルとの関係' do
+			it 'N:1となっている' do
+				expect(PostImageFavorite.reflect_on_association(:post_image).macro).to eq :belongs_to
+			end
+		end
+	end
 end

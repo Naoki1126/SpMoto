@@ -1,7 +1,7 @@
 <table>
 	<% event.event_comments.sort_by{|comment| comment.id}.reverse.each do |event_comment| %>
 		<tr>
-	    	<td class="event-comment-user-name"><%= event_comment.created_at.strftime("%Y/%m/%d/%H:%M") %><span><%= event_comment.user.name %></span></td>
+	    	<td class="event-comment-user-name"><%= event_comment.created_at.strftime("%Y/%m/%d/%H:%M") %><span><%= link_to event_comment.user.name,user_path(event_comment.user),data: {"turbolinks" => false} %></span></td>
 		</tr>
 		<% if event_comment.score > 0 %>
 			<tr class="comment-table-tr positive-comment">

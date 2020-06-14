@@ -329,7 +329,9 @@
 	display: inline-block;
 	width: 100%;
 	border-bottom: 1px solid white;
+	padding:1%;
 }
+
 
 .favorite-user img{
 	display: inline-block;
@@ -341,6 +343,9 @@
 	color: white;
 }
 
+.fauser:hover{
+	color:#337ab7;
+}
 .favorite-show{
 	display: inline-block;
 	margin-right:5%;

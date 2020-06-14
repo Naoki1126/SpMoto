@@ -19,7 +19,7 @@ $(document).ready(function(){
 	<ul>
 	<% postimage.post_image_favorites.each do |post_image_favorite| %>
 		    <li class="favorite-user fa fa-heart" aria-hidden="true" style="color: red;">
-		    	<%= link_to user_path(post_image_favorite.user_id) do %>
+		    	<%= link_to user_path(post_image_favorite.user_id),data: {"turbolinks" => false} do %>
 		    		<%= attachment_image_tag post_image_favorite.user, :profile_image,size:'30x30', format:'jpg',fallback:'no_image.jpg',class:'min-image' %>
 		    		<span class="fauser"><%= post_image_favorite.user.name %></span>
 		    	<% end %>

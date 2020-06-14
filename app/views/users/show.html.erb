@@ -16,6 +16,11 @@
 			<div id ="follow-button_<%= @user.id %>" class="follow-button-space">
 				<%= render 'relationships/followbutton', user: @user %>
 			</div>
+			<% if @user == current_user %>
+				<div class="current-culendar">
+					<button class="fa fa-calendar" aria-hidden="true"></button>
+				</div>
+			<% end %>
 		</div>
 	</div>
 		<!-- プロフィール右側 -->
@@ -59,6 +64,7 @@
 						<% if @user == current_user %>
 							<button class="profile-link"><%= link_to "会員情報編集", edit_user_path(@user) %></button>
 						<% end %>
+
 					</div>
 		    </div>
 			<div class="user-introduction">
@@ -88,4 +94,15 @@
 </div>
 <div class="image-index-pagination" data-turbolinks="false">
 <%= paginate @post_images,class:"paginate" %>
+</div>
+<div class= 'carender'>
+	<%= month_calendar events: @events do |date, event| %>
+  		<%= date %>
+
+	  <% event.each do |participate| %>
+		    <div class="equal">
+		      <%= link_to participate.event.title,event_path(participate.event) %>
+		    </div>
+	  <% end %>
+	<% end %>
 </div>

@@ -81,7 +81,7 @@ gem 'refile-mini_magick'
 gem 'impressionist', '~>1.6.1'
 gem 'geocoder'
 gem 'bxslider-rails'
-
+gem 'simple_calendar', '~>2.0'
 
 group :production do
   gem 'mysql2'

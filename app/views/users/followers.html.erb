@@ -17,7 +17,7 @@
 							<% end %>
 							</td>
 						<td><%= link_to user.name, user_path(user),data: {"turbolinks" => false} %></td>
-						<td id="follow-button_<%= user.id %>">
+						<td width="20%"id="follow-button_<%= user.id %>">
 						<%= render 'relationships/followbutton', user: user %>
 						</td>
  					</tr>

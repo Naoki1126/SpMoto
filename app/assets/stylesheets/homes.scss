@@ -21,7 +21,7 @@
 	position:absolute;
 	top:10%;
 	color:white;
-	text-shadow:1px 1px 2px black;
+	text-shadow:2px 2px 4px black;
 }
 
 .bt{
@@ -76,18 +76,23 @@
 .about {
 	padding-top: 20%;
 }
-.about h4{
+.about h3{
 	color: white;
 	text-align: center;
-	text-shadow:2px 2px 3px black;
+	text-shadow:2px 2px 4px black;
 }
 
 .about p{
 	color: white;
 	text-align: center;
 	font-size:16px;
-	text-shadow:2px 2px 3px black;
+	text-shadow:2px 2px 4px black;
 }
+
+.title-text{
+	display: none;
+}
+
 
 
 

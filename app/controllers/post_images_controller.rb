@@ -24,7 +24,7 @@ class PostImagesController < ApplicationController
       # @hashtags.sort.reverse
     else
       @hashtag = Hashtag.find_by(hashname: params[:name])
-      @postimage = @hashtag.post_images.page(params[:page]).per(21).reverse_order
+      @postimage = @hashtag.post_images.page(params[:page]).per(20).reverse_order
       @hashtags = Hashtag.all.to_a.group_by{ |hashtag| hashtag.post_images.count}
       # @hashtags = {}
       # hashtags.each do |hashtag|
@@ -39,7 +39,7 @@ class PostImagesController < ApplicationController
 
   def index
     if params[:user_id] == nil
-      @postimage = PostImage.all.page(params[:page]).per(24).reverse_order
+      @postimage = PostImage.all.page(params[:page]).per(25).reverse_order
     else
       @postimage = PostImage.where(user_id: current_user.followings).page(params[:page]).per(24).reverse_order
 

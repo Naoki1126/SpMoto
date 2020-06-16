@@ -1,24 +1,16 @@
 <div class="row">
 	<div class="image-box">
-        <h2>~ To everyone who loves motercycles ~</h2>
-            <% if user_signed_in? %>
-              <div class="about">
-                    <h4>SpMotoとは</h4>
-                        <p>バイクが好きな方へ向けたSNSサイトです。<br>
-                        当サイトではSNSとして画像を投稿することはもちろん<br>
-                        ツーリングイベントへの参加、開催をすることが出来ます。</p>
-                        <p>心ゆくまでご活用ください</p>
-                </div>
-            <% else %>
+        <h2 class="home-message">~ To everyone who loves motercycles ~</h2>
+            <div class="about">
+                <h3 id="home-title">SpMotoとは</h3>
+                    <p class="title-text">バイクが好きな方へ向けたSNSです。<br>
+                    会員様は画像を投稿することはもちろん<br>
+                    ツーリングイベントへの参加、開催をすることが出来ます。
+                    <br>
+                    是非ご活用ください。</p>
+            </div>
             <br>
-                <div class="about">
-                    <h4>SpMotoとは</h4>
-                        <p>バイクが好きな方へ向けたSNSです。<br>
-                        会員様は画像を投稿することはもちろん<br>
-                        ツーリングイベントへの参加、開催をすることが出来ます。</p>
-                        <p>是非ご活用ください</p>
-                </div>
-            <br>
+            <% unless user_signed_in? %>
             <div class= "second">
                     <button type="button" class="bt new">
                         <%= link_to new_user_registration_path do %>
@@ -41,4 +33,19 @@
             <% end %>
     </div>
 </div>
-    
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#home-title').hover(
+            function() {
+                $('.title-text').slideDown();
+                $('#home-title').css('color','gold');
+                $('.home-message').css('color','gold');
+            },
+            function() {
+                $('.title-text').slideUp();
+                $('#home-title').css('color','white');
+                $('.home-message').css('color','white');
+            },
+        );
+    });
+</script>

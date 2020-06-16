@@ -1,5 +1,9 @@
 <div class="simple-calendar">
-  <p>あなたが現在参加予定のイベント</p>
+  <% if current_page?(user_path) %>
+    <p>あなたが現在参加予定のイベント</p>
+  <% else %>
+    <p>開催スケジュール</p>
+  <% end %>
   <div class="calendar-heading">
     <%= link_to t('simple_calendar.previous', default: 'Previous'), calendar.url_for_previous_view %>
     <span class="calendar-title"><%= t('date.month_names')[start_date.month] %> <%= start_date.year %></span>

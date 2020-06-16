@@ -1,1 +1,2 @@
 $("#event-comment_<%= @event.id %>").html("<%= j(render 'event_comments/comment', event:@event ) %>");
+$("#event-comment-count_<%= @event.id %>").html("<%= j(render 'event_comments/comments-count', event:@event ) %>");

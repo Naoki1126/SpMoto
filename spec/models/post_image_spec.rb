@@ -64,8 +64,8 @@ RSpec.describe 'PostImageモデルのテスト', type: :model do
 	 			expect(@postimage.valid?).to eq false;
 	 		end
 
-	 		it 'bodyが200文字以下であること' do
-	 			@postimage.body = Faker::Lorem.characters(number:201)
+	 		it 'bodyが1000文字以下であること' do
+	 			@postimage.body = Faker::Lorem.characters(number:1001)
 	 			expect(@postimage.valid?).to eq false;
 	 		end
 

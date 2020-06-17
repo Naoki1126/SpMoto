@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	$('.fa-calendar').click(function(){
 		$('.carender').fadeToggle();
-		$('.post-image-index-post-box').fadeToggle();
+		$('.post-image-show-post-box').fadeToggle();
 	});
 });
 

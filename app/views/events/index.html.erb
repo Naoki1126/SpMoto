@@ -3,6 +3,7 @@
 		<ul class= "nav nav-tabs">
 			<li class="event-navs"><%= link_to "開催予定のイベント", events_path(event_case: "now") %></li>
 			<li class="event-navs"><%= link_to "終了したイベント", events_path(event_case: "log") %></li>
+			<button class="fa fa-calendar event-index-calendar" aria-hidden="true"></button>
 			<% if user_signed_in? %>
 				<li class="event-navs"><%= link_to "イベント作成", new_event_path, data: {"turbolinks" => false} %></li>
 			<% end %>
@@ -10,7 +11,7 @@
 	</nav>
 	<div class= "col-xs-1">
 	</div>
-	<div class="col-xs-10">
+	<div class="col-xs-10 event-index">
 		<table class="table table-hover table-inverse" >
 			<thead>
 				<tr>
@@ -42,5 +43,21 @@
 	<div class="col-xs-1">
 	</div>
 </div>
+<div class= 'calender'>
+	<%= month_calendar events: @events do |date, event| %>
+  		<%= date %>
 
+	 	<% event.each do |event| %>
+		  	<% if event.event_participates.where(user_id: current_user).exists? %>
+			    <div class="equal">
+			      <%= link_to event.title,event_path(event) %>
+			    </div>
+			<% else %>
+				 <div class="other">
+			      <%= link_to event.title,event_path(event) %>
+			    </div>
+		  	<% end %>
+		<% end %>
+	<% end %>
+</div>
 

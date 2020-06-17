@@ -74,5 +74,15 @@ class Event < ApplicationRecord
     notification.save if notification.valid?
   end
 
+    #gem simple_calender用
+  def start_time
+    self.date_and_time
+  end
+
+  def end_time
+    self.meetingfinishtime
+  end
+
+
 
 end

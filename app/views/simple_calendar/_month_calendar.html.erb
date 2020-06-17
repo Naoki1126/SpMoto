@@ -1,16 +1,14 @@
 <div class="simple-calendar">
-  <% if current_page?(user_path) %>
-    <p>あなたが現在参加予定のイベント</p>
-  <% else %>
-    <p>開催スケジュール</p>
-  <% end %>
-  <div class="calendar-heading">
-    <%= link_to t('simple_calendar.previous', default: 'Previous'), calendar.url_for_previous_view %>
-    <span class="calendar-title"><%= t('date.month_names')[start_date.month] %> <%= start_date.year %></span>
-    <%= link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view %>
+  <p class="carendar-title"><%= "#{Date.today.month}月のイベントスケジュール" %></p>
+
+  <div class="calendar-heading" data-turbolinks="false">
+    <!--%= link_to t('simple_calendar.previous', default: 'Previous'), calendar.url_for_previous_view %-->
+    <!-- <span class="calendar-title"><%= t('date.month_names')[start_date.month] %> <%= start_date.year %></span> -->
+    <!--%= link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view %-->
+    <span class="calendar-info">参加予定</span>
   </div>
 
-  <table class="table table-striped">
+  <table class="table table-striped calendar-table">
     <thead>
       <tr>
         <% date_range.slice(0, 7).each do |day| %>

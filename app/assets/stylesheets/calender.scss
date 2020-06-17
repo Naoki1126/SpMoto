@@ -3,12 +3,12 @@
 }
 
 .equal{
-	background-color: blue;
+	background-color: orange;
 	width: 100%;
 }
 
 .equal a{
-	color: white;
+	color: black;
 }
 
 .fa-calendar{
@@ -21,8 +21,32 @@
 	text-align: center;
 }
 
-.simple-calendar p{
+.carendar-title{
 	text-align: center;
 	font-weight: bold;
 	font-size: 18px;
+}
+
+.calendar-info{
+	background-color: orange;
+	display: inline-block;
+	float:right;
+	width: 100px;
+	text-align: center;
+	font-weight: bold;
+}
+
+.calender{
+	display: none;
+}
+
+.event-index-calendar{
+	font-size: 40px;
+	display: inline-block;
+	margin-left: 1%;
+}
+
+
+.calendar-table th{
+	text-align: center;
 }

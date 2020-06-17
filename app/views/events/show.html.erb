@@ -7,7 +7,7 @@
 			<div class="event-body-new">
 				<div class="event-body-show">
 					<p>イベント概要</p>
-					<%= @event.body %>
+					<%= simple_format(@event.body) %>
 				</div>
 			</div>
 			<div class= "event-user-show">

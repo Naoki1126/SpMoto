@@ -20,18 +20,18 @@
  			<div class= "post-image-index-post-box">
 				<p class="index-post-box-top">
 					<%= image.created_at.strftime("%Y/%m/%d")%>
-					<% if user_signed_in? %>
-						<span id ="favorite-button_<%= image.id %>" class="post-box-top-favorite">
-						 <%= render 'post_image_favorites/favorite',postimage: image %>
-						</span>
-					<% end %>
 				</p>
+				<% if user_signed_in? %>
+					<span id ="favorite-button_<%= image.id %>" class="post-box-top-favorite">
+						<%= render 'post_image_favorites/favorite',postimage: image %>
+					</span>
+				<% end %>
 				<div class= "index-post-box-image">
 				<%= link_to post_image_path(image),data: {"turbolinks" => false}  do %>
 					<ul class="slider">
 						<% image.post_image_images.each do |post| %>
 							<li>
-								<%= attachment_image_tag post, :image ,size:'200x150', format:'jpg',class:"image" %>
+								<%= attachment_image_tag post, :image ,size:'400x300', format:'jpg',class:"image" %>
 							</li>
 						<% end %>
 					</ul>

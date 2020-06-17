@@ -1,5 +1,5 @@
 class PostImage < ApplicationRecord
-  validates :body, length: { in: 1..200 }
+  validates :body, length: { in: 1..1000 }
   validates :post_image_images, presence: true
   #下記２行複数画像の保存に必要な記載
   has_many :post_image_images, dependent: :destroy

@@ -151,6 +151,7 @@
 
 .image-show-body-hash p{
 	word-break: break-all;
+	white-space: pre-wrap;
 }
 .image-show-command{
 	padding-left: 3%;
@@ -209,7 +210,7 @@
 	border:2px solid #DDDDDD;
 	margin: 1.2%;
 	box-shadow: 1px 1px 2px #DDDDDD;
-	width: 400px;
+	width: 430px;
 }
 
 .post-image-show-post-box{
@@ -227,10 +228,6 @@
 	margin-top: 5px;
 	margin-left: 12px;
 	color:#777777;
-}
-
-.post-box-top-favorite{
-	margin-left:60%;
 }
 
 .index-post-box-name{
@@ -398,4 +395,18 @@
 
 .hashtag-post-box{
 	margin-top: 60px;
+}
+
+.index-comment-count{
+	display: inline-block;
+	margin-left: 55%;
+}
+
+.index-comment-count:hover{
+	cursor: default;
+	border-bottom: none;
+}
+
+.post-box-top-favorite{
+	margin-left: 2%;
 }

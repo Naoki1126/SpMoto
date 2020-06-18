@@ -1,54 +1,65 @@
 <div class= "row">
-
-	<div class="postimage-index">
-		<% if user_signed_in? %>
-			<div class="index-switch">
-				<button type="button" class="index-all">
-					<%= link_to post_images_path, data: {"turbolinks" => false} do %>
-					<span class= "index-all-text">全投稿</span>
-					<% end %>
-				</button>
-				<button type = "button"class="index-follow">
-				<%= link_to post_images_path(user_id: current_user.id), data: {"turbolinks" => false} do %>
-					<span class="index-follow-text">フォロー</span>
-				<% end %>
-				</button>
-			</div>
-		<% end %>
-		<div class= "flex-box" style="padding-left: 5%;">
-		<% @postimage.each do |image| %>
- 			<div class= "post-image-index-post-box">
-				<p class="index-post-box-top">
-					<%= image.created_at.strftime("%Y/%m/%d")%>
-				</p>
-				<% if user_signed_in? %>
-					<span id ="favorite-button_<%= image.id %>" class="post-box-top-favorite">
-						<%= render 'post_image_favorites/favorite',postimage: image %>
-					</span>
-				<% end %>
-				<div class= "index-post-box-image">
-				<%= link_to post_image_path(image),data: {"turbolinks" => false}  do %>
-					<ul class="slider">
-						<% image.post_image_images.each do |post| %>
-							<li>
-								<%= attachment_image_tag post, :image ,size:'400x300', format:'jpg',class:"image" %>
-							</li>
+	<div class="col-xs-12 col-lg-12 col-md-12 col-sm-12">
+		<div class="postimage-index">
+			<% if user_signed_in? %>
+				<div class="index-switch">
+					<button type="button" class="index-all">
+						<%= link_to post_images_path, data: {"turbolinks" => false} do %>
+						<span class= "index-all-text">全投稿</span>
 						<% end %>
-					</ul>
-				<% end %>
+					</button>
+					<button type = "button"class="index-follow">
+					<%= link_to post_images_path(user_id: current_user.id), data: {"turbolinks" => false} do %>
+						<span class="index-follow-text">フォロー</span>
+					<% end %>
+					</button>
 				</div>
-				<p class="index-post-box-name">
-					<%= link_to user_path(image.user),data: {"turbolinks" => false} do %>
-						<%= attachment_image_tag image.user, :profile_image,size:'30x30', format:'jpg',fallback:'no_image.jpg',class:'min-image' %>
-						<span class="index-post-box-user"><%= image.user.name %>
+			<% end %>
+			<div class= "flex-box">
+			<% @postimage.each do |image| %>
+	 			<div class= "post-image-index-post-box">
+					<p class="index-post-box-top">
+						<%= image.created_at.strftime("%Y/%m/%d")%>
+					</p>
+					<% if user_signed_in? %>
+						<span class='far fa-comments index-comment-count' id='comment-count_<%= image.id %>' style="color: #777777;">
+						<%= render 'post_image_comments/comment-count', postimage:image %>
+						</span>
+						<span id ="favorite-button_<%= image.id %>" class="post-box-top-favorite">
+							<%= render 'post_image_favorites/favorite',postimage: image %>
 						</span>
 					<% end %>
-				</p>
-			</div>
-  		<% end %>
-  		</div>
-	</div>
-	<div class="image-index-pagination" data-turbolinks="false">
-		<%= paginate @postimage,class:"paginate" %>
+					<div class= "index-post-box-image">
+					<%= link_to post_image_path(image),data: {"turbolinks" => false}  do %>
+						<ul class="slider">
+							<% image.post_image_images.each do |post| %>
+								<li>
+									<%= attachment_image_tag post, :image ,size:'430x360', format:'jpg',class:"image" %>
+								</li>
+							<% end %>
+						</ul>
+					<% end %>
+					</div>
+					<p class="index-post-box-name">
+						<%= link_to user_path(image.user),data: {"turbolinks" => false} do %>
+							<%= attachment_image_tag image.user, :profile_image,size:'30x30', format:'jpg',fallback:'no_image.jpg',class:'min-image' %>
+							<span class="index-post-box-user"><%= image.user.name %>
+							</span>
+						<% end %>
+					</p>
+					<div class="image-show-body-hash" style="padding:2%">
+						<%= simple_format(image.body.truncate(50))%>
+						<% if image.body.length > 50 %>
+							<span><%= link_to '続きを読む', post_image_path(image) %>
+							</span>
+						<% end %>
+					</div>
+				</div>
+	  		<% end %>
+	  		</div>
+		</div>
+		<div class="image-index-pagination" data-turbolinks="false">
+			<%= paginate @postimage,class:"paginate" %>
+		</div>
 	</div>
 </div>

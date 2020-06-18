@@ -1,37 +1,37 @@
 <div class="row">
-<div class="image-box">
-    <h2 class="home-message">~ To everyone who loves motercycles ~</h2>
-        <div class="about">
-            <h3 id="home-title">SpMotoとは</h3>
-                <p class="title-text">バイクが好きな方へ向けたSNSです。<br>
-                会員様は画像を投稿することはもちろん<br>
-                ツーリングイベントへの参加、開催をすることが出来ます。
-                <br>
-                是非ご活用ください。</p>
+        <div class="image-box">
+            <h2 class="home-message">~ To everyone who loves motercycles ~</h2>
+            <div class="about">
+                <h3 id="home-title">SpMotoとは</h3>
+                    <p class="title-text">バイクが好きな方へ向けたSNSです。<br>
+                    会員様は画像を投稿することはもちろん<br>
+                    ツーリングイベントへの参加、開催をすることが出来ます。
+                    <br>
+                    是非ご活用ください。</p>
+            </div>
+            <br>
+            <% unless user_signed_in? %>
+            <div class= "second">
+                    <button type="button" class="bt new">
+                        <%= link_to new_user_registration_path do %>
+                        <span class="text">新規登録</span>
+                        <% end %>
+                    </button>
+                    <button type="button" class="bt session">
+                        <%= link_to new_user_session_path do %>
+                        <span class="text">ログイン</span>
+                        <% end %>
+                    </button>
+            </div>
+            <div class="thired">
+                <button type="button" class="bt guest">
+                        <%= link_to homes_new_guest_path, method: :post, data: {"turbolinks" => false} do %>
+                        <span class="text">ゲストログイン</span>
+                        <% end %>
+                    </button>
+            </div>
+            <% end %>
         </div>
-        <br>
-        <% unless user_signed_in? %>
-        <div class= "second">
-                <button type="button" class="bt new">
-                    <%= link_to new_user_registration_path do %>
-                    <span class="text">新規登録</span>
-                    <% end %>
-                </button>
-                <button type="button" class="bt session">
-                    <%= link_to new_user_session_path do %>
-                    <span class="text">ログイン</span>
-                    <% end %>
-                </button>
-        </div>
-        <div>
-            <button type="button" class="bt guest">
-                    <%= link_to homes_new_guest_path, method: :post, data: {"turbolinks" => false} do %>
-                    <span class="text">ゲストログイン</span>
-                    <% end %>
-                </button>
-        </div>
-        <% end %>
-    </div>
 </div>
 <script type="text/javascript">
     $(document).ready(function(){

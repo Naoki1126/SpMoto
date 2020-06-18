@@ -18,3 +18,10 @@
 //= require bootstrap-sprockets
 //= require bxslider
 //= require_tree .
+
+
+$(document).ready(function(){
+	$('.fa-caret-square-down').click(function(){
+		$('.head-nav').slideToggle();
+	});
+});

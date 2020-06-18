@@ -1,32 +1,34 @@
 <div class="row">
-	<div class="rooms-index-title">
-		<h4>Message List</h4>
-	</div>
-	<div class="rooms-index">
-		<% @rooms.each do |room| %>
-			<% @entry = room.entries.where.not(user_id: current_user) %>
-			<% @name = @entry[0].user.name %>
-			<% @messages = room.messages.order(updated_at: :desc).limit(1) %>
-			<% @message = @messages[0] %>
-				<% if @message.present? %>
-					<%= link_to room_path(room),data: {"turbolinks" => false} do %>
-						<div class="room-user-link-box">
-							<p class="room-user-name">
-								<%= attachment_image_tag @entry[0].user,:profile_image, size:'50x50',format:'jpg',fallback: "no_image.jpg",class:'user-index-image' %>
-								<span class=room-user-names><%= @name %></span>
-								<span class="room-last-message-create"><%= @message.created_at.strftime("%Y/%m/%d/%H:%M") %>
-								</span>
-								<span class="room-last-message"><%= @message.content %></span>
-							</p>
-					</div>
-				<% end %>
-				<% else %>
-					<%= link_to room_path(room),data: {"turbolinks" => false} do %>
-						<span class="room-user-name"><%= @name %></span>
-						<span class="room-last-message">メッセージはありません</span>
+	<div class="col-xs-12 col-lg-12 col-md-12 col-sm-12">
+		<div class="rooms-index-title">
+			<h4>Message List</h4>
+		</div>
+		<div class="rooms-index">
+			<% @rooms.each do |room| %>
+				<% @entry = room.entries.where.not(user_id: current_user) %>
+				<% @name = @entry[0].user.name %>
+				<% @messages = room.messages.order(updated_at: :desc).limit(1) %>
+				<% @message = @messages[0] %>
+					<% if @message.present? %>
+						<%= link_to room_path(room),data: {"turbolinks" => false} do %>
+							<div class="room-user-link-box">
+								<p class="room-user-name">
+									<%= attachment_image_tag @entry[0].user,:profile_image, size:'50x50',format:'jpg',fallback: "no_image.jpg",class:'user-index-image' %>
+									<span class=room-user-names><%= @name %></span>
+									<span class="room-last-message-create"><%= @message.created_at.strftime("%Y/%m/%d/%H:%M") %>
+									</span>
+									<span class="room-last-message"><%= @message.content %></span>
+								</p>
+						</div>
 					<% end %>
-				<% end %>
-		<% end %>
+					<% else %>
+						<%= link_to room_path(room),data: {"turbolinks" => false} do %>
+							<span class="room-user-name"><%= @name %></span>
+							<span class="room-last-message">メッセージはありません</span>
+						<% end %>
+					<% end %>
+			<% end %>
+		</div>
 	</div>
 </div>
 

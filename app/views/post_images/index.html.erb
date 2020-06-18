@@ -50,7 +50,7 @@
 					<div class="image-show-body-hash" style="padding:2%">
 						<%= simple_format(image.body.truncate(50))%>
 						<% if image.body.length > 50 %>
-							<span class="text-prev"><%= link_to '続きを読む', post_image_path(image) %>
+							<span class="text-prev"><%= link_to '続きを読む', post_image_path(image), data: {"turbolinks" => false} %>
 							</span>
 						<% end %>
 					</div>

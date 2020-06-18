@@ -1,72 +1,70 @@
 <div class="row">
-	<nav class= "event-top">
-		<ul class= "nav nav-tabs" data-turbolinks="false">
-			<li class="event-navs"><%= link_to "開催予定のイベント", events_path(event_case: "now") %></li>
-			<li class="event-navs"><%= link_to "終了したイベント", events_path(event_case: "log") %></li>
-			<button class="fa fa-calendar event-index-calendar" aria-hidden="true"></button>
-			<% if user_signed_in? %>
-				<li class="event-navs"><%= link_to "イベント作成", new_event_path %></li>
-			<% end %>
-		</ul>
-	</nav>
-	<div class= "col-xs-1">
-	</div>
-	<div class="col-xs-10 event-index">
-		<table class="table table-inverse" >
-			<thead>
-				<tr>
-					<th>目的</th>
-					<th>開催日時</th>
-					<th>終了日時</th>
-					<th>都道府県</th>
-					<th>定員</th>
-					<th>現在の参加人数</th>
-				</tr>
-			</thead>
-			<tbody>
-				<% @events.each do |event| %>
-				<% if event.event_participates.where(user_id: current_user).exists? %>
-					<tr class= "participate">
-				<% else %>
+	<div class="col-xs-12 col-lg-12 col-md-12 col-sm-12">
+		<nav class= "event-top">
+			<ul class= "nav nav-tabs" data-turbolinks="false">
+				<li class="event-navs"><%= link_to "開催予定のイベント", events_path(event_case: "now") %></li>
+				<li class="event-navs"><%= link_to "終了したイベント", events_path(event_case: "log") %></li>
+				<button class="fa fa-calendar event-index-calendar" aria-hidden="true"></button>
+				<% if user_signed_in? %>
+					<li class="event-navs"><%= link_to "イベント作成", new_event_path %></li>
+				<% end %>
+			</ul>
+		</nav>
+		<div class="event-index">
+			<table class="table table-inverse" >
+				<thead>
 					<tr>
-				<% end %>
-						<td><%= event.title %></td>
-						<td><%= event.date_and_time.strftime("%Y年%m月%d日") %></td>
-						<td><%= event.meetingfinishtime.strftime("%Y年%m月%d日") %></td>
-						<td><%= link_to event.prefecture_name,events_path(event_prefecture: 'name',prefecture_code: event.prefecture_code) %></td>
-						<td><%= "#{event.capacity}人" %></td>
-						<td><%= link_to "#{event.event_participates.count}人",event_event_paricipates_path(event) %></td>
-						<% if event.event_participates.where(user_id: current_user).exists? %>
-							<td>参加予定</td>
-						<% else %>
-							<td></td>
-						<% end %>
-						<% if user_signed_in? %>
-							<td><%= link_to "詳細",event_path(event), data: {"turbolinks" => false} %></td>
-						<% end %>
+						<th>目的</th>
+						<th>開催日時</th>
+						<th>終了日時</th>
+						<th>都道府県</th>
+						<th>定員</th>
+						<th>現在の参加人数</th>
 					</tr>
-				<% end %>
-			</tbody>
-		</table>
+				</thead>
+				<tbody>
+					<% @events.each do |event| %>
+					<% if event.event_participates.where(user_id: current_user).exists? %>
+						<tr class= "participate">
+					<% else %>
+						<tr>
+					<% end %>
+							<td><%= event.title %></td>
+							<td><%= event.date_and_time.strftime("%Y/%m/%d") %></td>
+							<td><%= event.meetingfinishtime.strftime("%Y/%m/%d") %></td>
+							<td><%= link_to event.prefecture_name,events_path(event_prefecture: 'name',prefecture_code: event.prefecture_code),data: {"turbolinks" => false}  %></td>
+							<td><%= "#{event.capacity}人" %></td>
+							<td><%= link_to "#{event.event_participates.count}人",event_event_paricipates_path(event) %></td>
+							<% if event.event_participates.where(user_id: current_user).exists? %>
+								<td>参加予定</td>
+							<% else %>
+								<td></td>
+							<% end %>
+							<% if user_signed_in? %>
+								<td><%= link_to "詳細",event_path(event), data: {"turbolinks" => false} %></td>
+							<% end %>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
 	</div>
-	<div class="col-xs-1">
-	</div>
-</div>
-<div class= 'calender'>
-	<%= month_calendar events: @events do |date, event| %>
-  		<%= date %>
+	<div class= 'calender'>
+		<%= month_calendar events: @events do |date, event| %>
+	  		<%= date %>
 
-	 	<% event.each do |event| %>
-		  	<% if event.event_participates.where(user_id: current_user).exists? %>
-			    <div class="equal">
-			      <%= link_to event.title,event_path(event) %>
-			    </div>
-			<% else %>
-				 <div class="other">
-			      <%= link_to event.title,event_path(event) %>
-			    </div>
-		  	<% end %>
+		 	<% event.each do |event| %>
+			  	<% if event.event_participates.where(user_id: current_user).exists? %>
+				    <div class="equal">
+				      <%= link_to event.title,event_path(event) %>
+				    </div>
+				<% else %>
+					 <div class="other">
+				      <%= link_to event.title,event_path(event) %>
+				    </div>
+			  	<% end %>
+			<% end %>
 		<% end %>
-	<% end %>
+	</div>
 </div>
 

@@ -1,6 +1,6 @@
 <div class= "row">
 	<!-- プロフィール左側 -->
-	<div class= "col-xs-3">
+	<div class= "col-lg-3 col-md-3 col-sm-3 col-xs-12">
 		<div class= "user-box">
 			<%= attachment_image_tag @user, :profile_image, size:'250x250', format:'jpg',fallback: "no_image.jpg" %>
 			<table class="table table-hover table-inverse" id="user-profile">
@@ -24,7 +24,7 @@
 		</div>
 	</div>
 		<!-- プロフィール右側 -->
-		<div class= "col-xs-9">
+		<div class= "col-xs-12 col-lg-9 col-md-9 col-sm-9">
 			<div class= "navbar">
 				<div class="user-button">
 					<span class="profile-link prof-post-count"><%= "投稿件数:#{@post_images.count}" %></span>
@@ -73,36 +73,44 @@
 		</div>
 </div>
 <div class= "row">
-	<div class= "contents-box" style="padding-left: 5%;">
-		<% @post_images.each do |image| %>
-			<div class= "post-image-show-post-box">
-				<p class= hashtag-image-box-top>
-					<%= image.created_at.strftime("%Y/%m/%d") %>
-				</p>
-	  			<%= link_to post_image_path(image),data: {"turbolinks" => false}  do %>
-	  				<ul class="usslider">
-	  					<% image.post_image_images.each do |post| %>
-	  						<li>
-								<%= attachment_image_tag post, :image ,size:'200x150', format:'jpg',class:"image" %>
-							</li>
-						<% end %>
-					</ul>
-	  			<% end %>
-			</div>
-		<% end %>
-	</div>
-</div>
-<div class="image-index-pagination" data-turbolinks="false">
-<%= paginate @post_images,class:"paginate" %>
-</div>
-<div class= 'carender'>
-	<%= month_calendar events: @events do |date, event| %>
-  		<%= date %>
+	<div class="col-xs-12 col-lg-12 col-md-12 col-sm-12">
+		<div class= "contents-box">
+			<% @post_images.each do |image| %>
+				<div class= "post-image-show-post-box">
+					<p class= hashtag-image-box-top>
+						<%= image.created_at.strftime("%Y/%m/%d") %>
+						<span class='far fa-comments user-show-comment-count' id='comment-count_<%= image.id %>' style="color: #777777;">
+						<%= render 'post_image_comments/comment-count', postimage:image %>
+						</span>
+						<span id ="favorite-button_<%= image.id %>" class="user-show-favorite">
+							<%= render 'post_image_favorites/favorite',postimage: image %>
+						</span>
+					</p>
+		  			<%= link_to post_image_path(image),data: {"turbolinks" => false}  do %>
+		  				<ul class="usslider">
+		  					<% image.post_image_images.each do |post| %>
+		  						<li>
+									<%= attachment_image_tag post, :image ,size:'430x360', format:'jpg',class:"image" %>
+								</li>
+							<% end %>
+						</ul>
+		  			<% end %>
+				</div>
+			<% end %>
+		</div>
+		<div class="image-index-pagination" data-turbolinks="false">
+		<%= paginate @post_images,class:"paginate" %>
+		</div>
+		<div class= 'carender'>
+			<%= month_calendar events: @events do |date, event| %>
+		  		<%= date %>
 
-	  <% event.each do |participate| %>
-		    <div class="equal">
-		      <%= link_to participate.event.title,event_path(participate.event) %>
-		    </div>
-	  <% end %>
-	<% end %>
+			  <% event.each do |participate| %>
+				    <div class="equal">
+				      <%= link_to participate.event.title,event_path(participate.event) %>
+				    </div>
+			  <% end %>
+			<% end %>
+		</div>
+	</div>
 </div>

@@ -217,7 +217,7 @@
 	border:2px solid #DDDDDD;
 	margin: 1.2%;
 	box-shadow: 1px 1px 2px #DDDDDD;
-	width: 200px;
+	width: 430px;
 }
 .image-show-body p{
 	word-break:break-all;
@@ -242,7 +242,6 @@
 }
 
 .hashtag-image-box-top{
-	display: inline-block;
 	margin-top: 5px;
 	margin-left: 12px;
 	color: #777777;
@@ -408,5 +407,14 @@
 }
 
 .post-box-top-favorite{
+	margin-left: 2%;
+}
+
+.user-show-comment-count{
+	display: inline-block;
+	margin-left:55%;
+}
+
+.user-show-favorite{
 	margin-left: 2%;
 }

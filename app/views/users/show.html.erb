@@ -99,16 +99,31 @@
 			<% end %>
 		</div>
 		<div class="image-index-pagination" data-turbolinks="false">
-		<%= paginate @post_images,class:"paginate" %>
+			<%= paginate @post_images,class:"paginate" %>
 		</div>
 		<div class= 'carender'>
-			<%= month_calendar events: @events do |date, event| %>
+			<%= month_calendar events: @events do |date, events| %>
 		  		<%= date %>
 
-			  <% event.each do |participate| %>
-				    <div class="equal">
-				      <%= link_to participate.event.title,event_path(participate.event) %>
-				    </div>
+			  <% events.each do |event| %>
+			  <br>
+			  	<% if event.event_participates.where(user_id: current_user).exists? and event.user_id == current_user.id %>
+			  		<i class="fa fa-circle notification-circle" style="color: red;"></i>
+			  		<span class = "equal">
+			  			 <%= link_to event.title,event_path(event) %>
+			  		</span>
+			  	<% elsif event.event_participates.where(user_id: current_user).exists? %>
+			    	<span class="equal">
+			     		<%= link_to event.title,event_path(event) %>
+			     	</span>
+			    <% elsif event.user_id == current_user.id %>
+			  			<i class="fa fa-circle notification-circle" style="color: red;"></i>
+			  			<span class = "sponser">
+			  			 <%= link_to event.title,event_path(event) %>
+			  		</span>
+			  	<% else %>
+
+			    <% end %>
 			  <% end %>
 			<% end %>
 		</div>

@@ -9,7 +9,6 @@
 	background-image: image-url("bike-4.jpg");
 	background-position:center center;
  	background-size:cover;
- 	text-align: center;
  	background-color: black;
  }
 
@@ -18,8 +17,9 @@
 }
 
 .image-box h2{
-	position:absolute;
-	top:10%;
+	display: inline-block;
+	margin-top:70px;
+	text-align: left;
 	color:white;
 	text-shadow:2px 2px 4px black;
 }
@@ -91,6 +91,11 @@
 
 .title-text{
 	display: none;
+}
+
+.thired{
+	width: 100%;
+	text-align: center;
 }
 
 

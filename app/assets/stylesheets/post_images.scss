@@ -153,6 +153,15 @@
 	word-break: break-all;
 	white-space: pre-wrap;
 }
+
+.text-prev{
+	position: absolute;
+	bottom: 0;
+	margin: 0;
+	padding: 0;
+
+}
+
 .image-show-command{
 	padding-left: 3%;
 }
@@ -207,10 +216,11 @@
 }
 
 .post-image-index-post-box{
-	border:2px solid #DDDDDD;
+	border:2px solid #CCCCCC;
 	margin: 1.2%;
-	box-shadow: 1px 1px 2px #DDDDDD;
+	box-shadow: 1px 1px 2px #CCCCCC;
 	width: 430px;
+	position: relative;
 }
 
 .post-image-show-post-box{

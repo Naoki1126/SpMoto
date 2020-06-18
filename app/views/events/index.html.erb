@@ -4,10 +4,11 @@
 			<ul class= "nav nav-tabs" data-turbolinks="false">
 				<li class="event-navs"><%= link_to "開催予定のイベント", events_path(event_case: "now") %></li>
 				<li class="event-navs"><%= link_to "終了したイベント", events_path(event_case: "log") %></li>
-				<button class="fa fa-calendar event-index-calendar" aria-hidden="true"></button>
 				<% if user_signed_in? %>
 					<li class="event-navs"><%= link_to "イベント作成", new_event_path %></li>
 				<% end %>
+					<button class="fa fa-calendar event-index-calendar" aria-hidden="true"></button>
+					
 			</ul>
 		</nav>
 		<div class="event-index">
@@ -20,6 +21,9 @@
 						<th>都道府県</th>
 						<th>定員</th>
 						<th>現在の参加人数</th>
+						<th style="text-align: right"><i class="fa fa-circle notification-circle" style="color: red;"><span>主催イベント</span></i>
+						</th>
+
 					</tr>
 				</thead>
 				<tbody>
@@ -29,7 +33,12 @@
 					<% else %>
 						<tr>
 					<% end %>
-							<td><%= event.title %></td>
+
+							<td> 
+								<% if event.user_id == current_user.id %>
+									<i class="fa fa-circle notification-circle" style="color: red;"></i>
+								<% end %>
+								<%= event.title %></td>
 							<td><%= event.date_and_time.strftime("%Y/%m/%d") %></td>
 							<td><%= event.meetingfinishtime.strftime("%Y/%m/%d") %></td>
 							<td><%= link_to event.prefecture_name,events_path(event_prefecture: 'name',prefecture_code: event.prefecture_code),data: {"turbolinks" => false}  %></td>
@@ -54,14 +63,18 @@
 	  		<%= date %>
 
 		 	<% event.each do |event| %>
+		 	<br>
+		 		<% if event.user_id == current_user.id %>
+					<i class="fa fa-circle notification-circle" style="color: red;"></i>
+				<% end %>
 			  	<% if event.event_participates.where(user_id: current_user).exists? %>
-				    <div class="equal">
+				    <span class="equal">
 				      <%= link_to event.title,event_path(event) %>
-				    </div>
+				    </span>
 				<% else %>
-					 <div class="other">
+					 <span class="other">
 				      <%= link_to event.title,event_path(event) %>
-				    </div>
+				    </span>
 			  	<% end %>
 			<% end %>
 		<% end %>

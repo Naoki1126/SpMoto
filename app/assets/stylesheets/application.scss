@@ -44,12 +44,12 @@ header a:hover{
 }
 
 .logo{
-	font-size: 18px;
+	font-size: 20px;
 	font-weight: bold;
 	text-shadow:1px 1px 2px white;
 }
 
-.nav-link{
+.title-nav-link{
 	font-weight: bold;
 }
 
@@ -88,6 +88,35 @@ ul {
 }
 
 .head-nav{
+	padding-top:51px;
 	padding-right: 10px;
+	position: fixed;
+	z-index:149;
+	left:80%;
+	background-color: black;
+	width: 20%;
+	text-align: center;
+	border:1px solid white;
+	display: none;
+
+}
+
+
+.nav-link a{
+	color: white;
+	display: block;
+	border-top: 1px solid white;
+	padding-top: 3%;
+	font-weight: bold;
+}
+
+.fa-caret-square-down{
+	font-size: 42px;
+	margin-left:45%;
+	margin-top:5px;
+}
+
+.fa-caret-square-down:hover{
+	cursor: pointer;
 }
 

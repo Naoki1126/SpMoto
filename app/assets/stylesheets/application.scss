@@ -88,35 +88,98 @@ ul {
 }
 
 .head-nav{
-	padding-top:51px;
-	padding-right: 10px;
 	position: fixed;
-	z-index:149;
 	left:80%;
-	background-color: black;
-	width: 20%;
+	top:1%;
+	z-index:150;
 	text-align: center;
-	border:1px solid white;
-	display: none;
+	width: 20%;
 
 }
 
+.nav-link{
+	display: none;
+	background-color: black;
+	height: 50px;
+	margin: -0.3%;
+	border-bottom: 1px solid white;
+	padding-top: 2%;
+
+}
 
 .nav-link a{
 	color: white;
 	display: block;
-	border-top: 1px solid white;
+	height: 100%;
+	border-bottom: 1px solid white;
 	padding-top: 3%;
 	font-weight: bold;
 }
 
+
+.nav-link a:hover{
+	color: black;
+	background-color: white;
+	transition: all 1S;
+}
+
 .fa-caret-square-down{
 	font-size: 42px;
-	margin-left:45%;
-	margin-top:5px;
 }
 
 .fa-caret-square-down:hover{
 	cursor: pointer;
+}
+
+.user-info{
+	width:31%;
+	height:100%;
+	background-color: black;
+	color:white;
+	font-weight: bold;
+	text-align: center;
+	z-index: 150;
+	position: fixed;
+	left:130%;
+	top:53px;
+	height: auto !important;
+
+
+        /* コンテンツ部分の高さが画面より低い場合は画面の高さに合わせる*/
+}
+
+.user-info-menu{
+	margin: -0.5%;
+}
+
+.user-info-menu a{
+
+	display: block;
+	height: 60px;
+	width: 100%;
+	border-bottom: 1px solid white;
+	color: white;
+	padding-top: 4%;
+
+}
+
+.user-info-menu a:hover{
+	color: black;
+	background-color: white;
+	transition: all 1S;
+
+}
+
+.fa-user-circle-o{
+	font-size: 42px;
+	color:white;
+	z-index: 150;
+	position: fixed;
+	left: 83%;
+	top:1%;
+}
+
+.fa-user-circle-o:hover{
+	cursor:pointer;
 }
 

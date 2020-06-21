@@ -1,9 +1,9 @@
 <div class= "row">
 	<%= form_for(@user) do |f| %>
 	<!-- プロフィール左側 -->
-	<div class= "col-xs-2">
+	<div class= "col-lg-2 col-md-2">
 	</div>
-	<div class= col-xs-4>
+	<div class= "col-xs-12 col-lg-4 col-md-4 col-sm-12">
 		<div class= "user-edit-box">
 			<%= attachment_image_tag @user, :profile_image, size:'250x250', format:'jpg',fallback: "no_image.jpg" %>
 			<%= f.attachment_field :profile_image, class:"edit-profile-image" %>
@@ -18,7 +18,7 @@
 		</div>
 	</div>
 		<!-- プロフィール右側 -->
-	<div class= "col-xs-4">
+	<div class= "col-xs-12 col-lg-4 col-md-4 col-sm-12">
 		<div class="user-introduction-edit">
 			<%= f.text_area :introduction, :size => "55x15"%>
 			<div class= "user-edit-sub-mit">
@@ -30,6 +30,6 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-xs-2">
+	<div class="col-lg-2 col-md-2">
 	</div>
 </div>

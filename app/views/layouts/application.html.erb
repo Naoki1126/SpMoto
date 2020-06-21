@@ -43,8 +43,8 @@
               <p class="nav-link"><%= link_to "#",post_image_hashtag_path %></p>
               <p class="nav-link"><%=link_to "ログアウト",destroy_user_session_path,method: :delete %></p>
           </div>
-           <i class="fa fa-user-circle-o" aria-hidden="true"></i>
-            <div class="user-info off">
+           <i class="fa fa-user-circle-o off" aria-hidden="true"></i>
+            <div class="user-info">
                   <p class="user-info-menu">
                     <%= link_to "主催イベント", events_path(event_case: "now",user_id: current_user.id) %>
                   </p>

@@ -27,13 +27,17 @@ $(document).ready(function(){
 });
 
 $(document).ready(function(){
-	$('.fa-user-circle-o').on('click',function(){
+	$('.fa-user-circle-o').click(function(){
 	  if($('.fa-user-circle-o').hasClass('off')){
-	    $('.fa-user-circle-o').removeClass('off');
-	    $('.user-info').animate({'left':'69%'},300).addClass('on');
+	   		$('.fa-user-circle-o').removeClass('off');
+	    	$('.user-info').animate({'left':'69%'},300).addClass('on');
 	  }else{
-	    $('.fa-user-circle-o').addClass('off');
-	    $('.user-info').animate({'left':'100%'},300);
+	    	$('.fa-user-circle-o').addClass('off');
+	    	$('.user-info').animate({'left':'100%'},300);
 	  }
 	});
 });
+
+
+
+

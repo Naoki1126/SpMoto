@@ -216,4 +216,96 @@
 }
 
 
+.event-buttons{
+	text-align: center;
+}
+
+.event-buttons a{
+	color: black;
+}
+
+.event-button{
+	background-color: cornsilk;
+	border-radius: 5px;
+	width: 150px;
+	height: 50px;
+	border-color: cornsilk;
+}
+
+.newevent{
+	margin-bottom: 1%;
+}
+
+.event-smart-index{
+	margin-top:50px;
+}
+
+.event-smart-index a{
+	color: black;
+}
+
+.event-smart-box{
+	width: 100%;
+	border: 1px orange;
+	border-style: outset;
+	border-radius: 5px;
+	margin-bottom: 20px;
+	padding: 10px 5px 0 10px;
+}
+
+.participate-smart-message{
+	display: inline-block;
+	float:right;
+}
+
+
+.event-smart-title p{
+	border-bottom:1px dotted orange;
+}
+
+.event-smart-title span{
+	display: inline-block;
+	margin-left: 10px;
+}
+
+.event-smart-time p{
+	border-bottom:1px dotted orange;
+}
+
+.participate-smart-message{
+	color:darkorange;
+}
+
+.pc-tab{
+	display: none;
+}
+
+.smart{
+	margin-top: 80px;
+	display: none;
+}
+
+.event-index-which{
+	margin-top: 150px;
+	text-align: center;
+}
+
+.which-button{
+	height: 80px;
+	width: 30%;
+	background-color: white;
+	border-radius: 10px;
+	margin: 5px;
+	border: 1px solid #CCCCCC;
+	font-size: 18px;
+
+}
+
+.which-button:hover{
+	background-color: black;
+	color:white;
+	font-weight: bold;
+	transition: all 2S;
+
+}
 

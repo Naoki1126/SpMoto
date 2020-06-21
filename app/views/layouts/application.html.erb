@@ -24,9 +24,11 @@
                 </ul>
               </nav>
             </div>
-          <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+          <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
           </div>
-          <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+          <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5 bar-right">
+             <i class="fas fa-bars"></i>
+             <span class="far fa-user" style="color:white"></span>
           </div>
         </div>
       </div>
@@ -45,7 +47,7 @@
           </div>
            <i class="fa fa-user-circle-o off" aria-hidden="true"></i>
             <div class="user-info">
-                  <p class="user-info-menu">
+                  <p class="user-info-menu menu-top">
                     <%= link_to "主催イベント", events_path(event_case: "now",user_id: current_user.id) %>
                   </p>
                   <p class="user-info-menu">

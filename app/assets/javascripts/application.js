@@ -38,6 +38,18 @@ $(document).ready(function(){
 	});
 });
 
+$(document).ready(function(){
+	$('.fa-bars').click(function(){
+		$('.head-nav').slideToggle(true);
+	});
+
+	$('.fa-user').click(function(){
+		$('.user-info').slideToggle(true);
+	});
+});
+
+
+
 
 
 

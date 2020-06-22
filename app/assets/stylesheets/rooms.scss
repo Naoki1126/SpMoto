@@ -90,17 +90,38 @@
 .message-text{
 	margin-bottom: 5px;
 	background-color: black;
-	width: 45%;
+	width: 100%;
 	margin: 0 auto;
 	text-align: center;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+
+.message-post{
+	visibility: visible;
 }
 
 .message-text input[type="text"]{
-	width: 65%;
+	width: 90%;
 }
 
 #messages{
 	margin-top: 3%;
+}
+
+@media screen and (max-width:480px) {
+	.message-text{
+		width: 100%;
+	}
+	.message-text {
+		width: 100%;
+	}
+
+	.message-text span{
+		display: block;
+	}
+
+
 }
 
 

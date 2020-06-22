@@ -103,14 +103,14 @@ z-index:150;
 text-align: center;
 width: 20%;
 
+
 }
 
 .nav-link{
 display: none;
 background-color: black;
 height: 50px;
-margin: -0.3%;
-border-bottom: 1px solid white;
+margin: 0 0 0px;
 padding-top: 2%;
 
 }
@@ -158,7 +158,6 @@ font-weight: bold;
 }
 
 .user-info-menu{
-	margin: -0.5%;
 }
 
 .user-info-menu a{
@@ -212,7 +211,6 @@ font-weight: bold;
 	border-bottom: 1px solid white;
 	padding-top: 3%;
 	font-weight: bold;
-	margin: -0.3%;
 	}
 
 	.fa-caret-square-down{
@@ -271,8 +269,90 @@ font-weight: bold;
 	.menu-top{
 		padding-top: 60px;
 	}
+}
 
+@media screen and (max-width:768px) {
+	.head-nav{
+		width: 100%;
+		text-align: center;
+		position: static;
+		display: none;
+		padding-top: 18px;
+	}
 
+	.nav-link{
+		background-color: black;
+		display: block;
+		border-bottom: 1px solid white;;
+
+	}
+
+	.nav-link a{
+	color: white;
+	display: block;
+	height: 100%;
+
+	padding-top: 0%;
+	font-weight: bold;
+	}
+
+	.fa-caret-square-down{
+		display: none;
+	}
+
+	.fa-user-circle-o{
+		visibility:hidden;
+	}
+
+	.off{
+		display: none;
+	}
+
+	.fa-bars{
+		font-size: 35px;
+		visibility:visible;
+		display: inline-block;
+		margin-top: 10px;
+	}
+
+	.fa-user{
+		font-size: 35px;
+		color: white;
+		visibility:visible;
+		display: inline-block;
+		margin-left: 10px
+	}
+
+	.bar-right{
+		text-align: right;
+	}
+
+	.user-info{
+	width:100%;
+	background-color: black;
+	color:white;
+	font-weight: bold;
+	text-align: center;
+	position: static;
+	display: none;
+	}
+
+	.user-info-menu{
+	}
+
+	.user-info-menu a{
+	display: block;
+	width: 100%;
+	height: 50px;
+	color: white;
+	border-style: none;
+	border-bottom: 1px solid white;
+	padding-top:1%;
+	}
+
+	.menu-top{
+		padding-top: 60px;
+	}
 }
 
 

@@ -20,10 +20,10 @@
 							<%= render 'post_image_favorites/favorite',postimage: postimage %>
 						</span>
 		    			<%= link_to post_image_path(postimage),data: {"turbolinks" => false}  do %>
-				  			<ul class="seslider">
+				  			<ul class="slider">
 									<% postimage.post_image_images.each do |post| %>
 										<li>
-										<%= attachment_image_tag post, :image ,size:'250x200', format:'jpg',class:"image" %>
+										<%= attachment_image_tag post, :image ,size:'430x360', format:'jpg',class:"image" %>
 									</li>
 								<% end %>
 							</ul>

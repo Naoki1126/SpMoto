@@ -19,13 +19,17 @@
 			<h3 class="search-title">#<%= @hashtag.hashname %>:  <%= @postimage.count %> 件 </h3>
 			<div class="flex-box">
 			<% @postimage.each do |postimage| %>
-				<div class= "hashtag-image-box">
-					<p class= hashtag-image-box-top>
+				<div class= "post-image-index-post-box">
+					<p class="index-post-box-top">
 						<%= postimage.created_at.strftime("%Y/%m/%d") %>
-						<span id = "favorite-button_<%= postimage.id %>"class="hashtag-image-box-top-favorite">
-							<%= render 'post_image_favorites/favorite',postimage: postimage %>
-						</span>
 					</p>
+					<span class='far fa-comments index-comment-count' id='comment-count_<%= postimage.id %>' style="color: #777777;">
+						<%= render 'post_image_comments/comment-count', postimage:postimage %>
+					</span>
+
+					<span id = "favorite-button_<%= postimage.id %>"class="post-box-top-favorite">
+						<%= render 'post_image_favorites/favorite',postimage: postimage %>
+					</span>
 	    			<%= link_to post_image_path(postimage),data: {"turbolinks" => false}  do %>
 			  			<ul class="seslider">
 								<% postimage.post_image_images.each do |post| %>
@@ -42,6 +46,13 @@
 							</span>
 						<% end %>
 					</p>
+					<div class="image-show-body-hash" style="padding:2%">
+						<%= simple_format(postimage.body.truncate(50))%>
+						<% if postimage.body.length > 50 %>
+							<span class="text-prev"><%= link_to '続きを読む', post_image_path(postimage), data: {"turbolinks" => false} %>
+							</span>
+						<% end %>
+					</div>
 				</div>
 			<% end %>
 			</div>

@@ -1,57 +1,71 @@
-<div class="row">
-	<div class= "col-xs-12 col-lg-2 col-md-2 col-sm-2">
-		<div class= "hashtag-name">
-			<% @hashtags.sort.reverse.each do |count| %>
-				<div class= "hashname">
-					<% count[1].each do |hashtag| %>
-					<p><%= link_to  "##{hashtag.hashname} (#{hashtag.post_images.count}) 件","/post_image/hashtag/#{hashtag.hashname}",data: {"turbolinks" => false} %>
-					</p>
-					<% end %>
-				</div>
-			<% end %>
-		</div>
-	</div>
-	<% if params[:name] == nil %>
+<div class="hashtag-index-all">
+	<div class="row">
+		<% if params[:name] == nil %>
 
-	<% else %>
-	<div class= "col-xs-12 col-lg-10 col-md-10 col-sm-10">
-		<div class="hashtag-post-box">
-			<h3 class="search-title">#<%= @hashtag.hashname %>:  <%= @postimage.count %> 件 </h3>
-			<div class="flex-box">
-			<% @postimage.each do |postimage| %>
-				<div class= "hashtag-image-box">
-					<p class= hashtag-image-box-top>
-						<%= postimage.created_at.strftime("%Y/%m/%d") %>
-						<span id = "favorite-button_<%= postimage.id %>"class="hashtag-image-box-top-favorite">
+		<% else %>
+		<div class= "col-xs-12 col-lg-12 col-md-12 col-sm-12">
+			<div class="hashtag-post-box">
+				<h3 class="search-title">#<%= @hashtag.hashname %>:  <%= @postimage.count %> 件 </h3>
+				<div class="flex-box">
+				<% @postimage.each do |postimage| %>
+					<div class= "post-image-index-post-box">
+						<p class="index-post-box-top">
+							<%= postimage.created_at.strftime("%Y/%m/%d") %>
+						</p>
+						<span class='far fa-comments index-comment-count' id='comment-count_<%= postimage.id %>' style="color: #777777;">
+							<%= render 'post_image_comments/comment-count', postimage:postimage %>
+						</span>
+
+						<span id = "favorite-button_<%= postimage.id %>"class="post-box-top-favorite">
 							<%= render 'post_image_favorites/favorite',postimage: postimage %>
 						</span>
-					</p>
-	    			<%= link_to post_image_path(postimage),data: {"turbolinks" => false}  do %>
-			  			<ul class="seslider">
-								<% postimage.post_image_images.each do |post| %>
-									<li>
-									<%= attachment_image_tag post, :image ,size:'250x200', format:'jpg',class:"image" %>
-								</li>
-							<% end %>
-						</ul>
-					<% end %>
-					<p class="hashtag-post-box-name">
-						<%= link_to user_path(postimage.user) do %>
-							<%= attachment_image_tag postimage.user, :profile_image,size:'30x30', format:'jpg',fallback:'no_image.jpg',class:'min-image' %>
-							<span class="index-post-box-user"><%= postimage.user.name %>
-							</span>
+		    			<%= link_to post_image_path(postimage),data: {"turbolinks" => false}  do %>
+				  			<ul class="seslider">
+									<% postimage.post_image_images.each do |post| %>
+										<li>
+										<%= attachment_image_tag post, :image ,size:'250x200', format:'jpg',class:"image" %>
+									</li>
+								<% end %>
+							</ul>
 						<% end %>
-					</p>
+						<p class="hashtag-post-box-name">
+							<%= link_to user_path(postimage.user) do %>
+								<%= attachment_image_tag postimage.user, :profile_image,size:'30x30', format:'jpg',fallback:'no_image.jpg',class:'min-image' %>
+								<span class="index-post-box-user"><%= postimage.user.name %>
+								</span>
+							<% end %>
+						</p>
+						<div class="image-show-body-hash" style="padding:2%">
+							<%= simple_format(postimage.body.truncate(50))%>
+							<% if postimage.body.length > 50 %>
+								<span class="text-prev"><%= link_to '続きを読む', post_image_path(postimage), data: {"turbolinks" => false} %>
+								</span>
+							<% end %>
+						</div>
+					</div>
+				<% end %>
 				</div>
-			<% end %>
+			</div>
+			<div class="image-index-pagination" data-turbolinks="false">
+				<%= paginate @postimage,class:"paginate" %>
 			</div>
 		</div>
-		<div class="image-index-pagination" data-turbolinks="false">
-			<%= paginate @postimage,class:"paginate" %>
+		<% end %>
+	</div>
+	<div class="row">
+		<div class= "col-xs-12 col-lg-12 col-md-12 col-sm-12">
+			<div class= "hashtag-name">
+				<% @hashtags.sort.reverse.each do |count| %>
+						<% count[1].each do |hashtag| %>
+						<p><%= link_to  "##{hashtag.hashname} (#{hashtag.post_images.count}) 件","/post_image/hashtag/#{hashtag.hashname}",data: {"turbolinks" => false} %>
+						</p>
+						<% end %>
+				<% end %>
+			</div>
 		</div>
 	</div>
-	<% end %>
 </div>
+
 
 	
 

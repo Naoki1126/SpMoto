@@ -69,18 +69,21 @@
         </div>
           <div class="flex-box">
             <% @datas.each do |data| %>
-              <div class= "hashtag-image-box">
-                <p class= hashtag-image-box-top>
+              <div class= "post-image-index-post-box">
+                <p class="index-post-box-top" >
                   <%= data.created_at.strftime("%Y/%m/%d") %>
-                  <span id = "favorite-button_<%= data.id %>"class="hashtag-image-box-top-favorite">
-                    <%= render 'post_image_favorites/favorite',postimage: data %>
-                  </span>
                 </p>
+                <span class='far fa-comments index-comment-count' id='comment-count_<%= data.id %>' style="color: #777777;">
+                  <%= render 'post_image_comments/comment-count', postimage:data %>
+               </span>
+                <span id = "favorite-button_<%= data.id %>"class="post-box-top-favorite">
+                  <%= render 'post_image_favorites/favorite',postimage: data %>
+                </span>
                 <%= link_to post_image_path(data),data: {"turbolinks" => false}  do %>
-                  <ul class="seslider">
+                  <ul class="slider">
                     <% data.post_image_images.each do |post| %>
                       <li>
-                        <%= attachment_image_tag post, :image ,size:'250x200', format:'jpg',class:"image" %>
+                        <%= attachment_image_tag post, :image ,size:'430x360', format:'jpg',class:"image" %>
                       </li>
                     <% end %>
                 </ul>
@@ -92,6 +95,13 @@
                   </span>
                 <% end %>
               </p>
+               <div class="image-show-body-hash" style="padding:2%">
+                  <%= simple_format(data.body.truncate(50))%>
+                  <% if data.body.length > 50 %>
+                    <span class="text-prev"><%= link_to '続きを読む', post_image_path(data), data: {"turbolinks" => false} %>
+                    </span>
+                  <% end %>
+                 </div>
             </div>
           <% end %>
         </div>
@@ -132,10 +142,10 @@
                 <div class="image-show-body-hash" style="padding:2%">
                   <%= simple_format(data.body.truncate(50))%>
                   <% if data.body.length > 50 %>
-                    <span class="text-prev"><%= link_to '続きを読む', post_image_path(image), data: {"turbolinks" => false} %>
-              </span>
-            <% end %>
-          </div>
+                    <span class="text-prev"><%= link_to '続きを読む', post_image_path(data), data: {"turbolinks" => false} %>
+                    </span>
+                  <% end %>
+                 </div>
               </div>
             <% end %>
           </div>

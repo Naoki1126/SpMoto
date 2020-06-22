@@ -7,8 +7,10 @@
         <%= select_tag 'search[how]',options_for_select({"完全一致" => "match","部分一致" => "partical"}) %>
           <%= submit_tag '検索', class:"btn btn-default" %>
       <% end %>
-      <p>※ハッシュタグ検索をされる場合は「#」を抜いたワードを入力お願いします</p>
+
     </div>
+      <p class="search-message">※ハッシュタグ検索をされる場合は「#」を抜いたワードを入力お願いします</p>
+    
 
     <% if @model == nil %>
 
@@ -101,29 +103,39 @@
         <% else %>
           <div class="flex-box">
             <% @datas.post_images.each do |data| %>
-              <div class= "hashtag-image-box">
-                  <p class= hashtag-image-box-top>
+              <div class= "post-image-index-post-box">
+                  <p class= "index-post-box-top">
                     <%= data.created_at.strftime("%Y/%m/%d") %>
-                    <span id = "favorite-button_<%= data.id %>"class="hashtag-image-box-top-favorite">
+                  </p>
+                    <span class='far fa-comments index-comment-count' id='comment-count_<%= data.id %>' style="color: #777777;">
+                      <%= render 'post_image_comments/comment-count', postimage:data %>
+                    </span>
+                    <span id = "favorite-button_<%= data.id %>"class="post-box-top-favorite">
                       <%= render 'post_image_favorites/favorite',postimage: data %>
                     </span>
-                  </p>
                   <%= link_to post_image_path(data),data: {"turbolinks" => false}  do %>
-                    <ul class="seslider">
+                    <ul class="slider">
                       <% data.post_image_images.each do |post| %>
                         <li>
-                          <%= attachment_image_tag post, :image ,size:'250x200', format:'jpg',class:"image" %>
+                          <%= attachment_image_tag post, :image ,size:'430x360', format:'jpg',class:"image" %>
                         </li>
                       <% end %>
                     </ul>
                   <% end %>
-                <p class="hashtag-post-box-name">
+                <p class="index-post-box-name">
                   <%= link_to user_path(data.user),data: {"turbolinks" => false} do %>
                     <%= attachment_image_tag data.user, :profile_image,size:'30x30', format:'jpg',fallback:'no_image.jpg',class:'min-image' %>
                     <span class="index-post-box-user"><%= data.user.name %>
                     </span>
                   <% end %>
                 </p>
+                <div class="image-show-body-hash" style="padding:2%">
+                  <%= simple_format(data.body.truncate(50))%>
+                  <% if data.body.length > 50 %>
+                    <span class="text-prev"><%= link_to '続きを読む', post_image_path(image), data: {"turbolinks" => false} %>
+              </span>
+            <% end %>
+          </div>
               </div>
             <% end %>
           </div>

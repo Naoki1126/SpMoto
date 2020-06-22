@@ -1,24 +1,24 @@
 <div class= "row">
 	<%= form_for(@user) do |f| %>
 	<!-- プロフィール左側 -->
-	<div class= "col-lg-2 col-md-2">
+	<div class= "col-lg-1 col-md-1">
 	</div>
-	<div class= "col-xs-12 col-lg-4 col-md-4 col-sm-12">
+	<div class= "col-xs-12 col-lg-5 col-md-5 col-sm-12">
 		<div class= "user-edit-box">
 			<%= attachment_image_tag @user, :profile_image, size:'250x250', format:'jpg',fallback: "no_image.jpg" %>
 			<%= f.attachment_field :profile_image, class:"edit-profile-image" %>
 			<table class="table table-hover table-inverse user-edit-table">
 				<tr>
-					<td class="edit-name">name:<span><%= f.text_field :name %></span></td>
+					<td class="edit-name">Name:<span><%= f.text_field :name %></span></td>
 				</tr>
 				<tr>
-					<td class="edit-prefecture">所属:<span><%= f.collection_select :prefecture_name, JpPrefecture::Prefecture.all,:name,:name, include_blank: true %></span></td>
+					<td class="edit-prefecture">Prefecture:<span><%= f.collection_select :prefecture_name, JpPrefecture::Prefecture.all,:name,:name, include_blank: true %></span></td>
 				</tr>
 			</table>
 		</div>
 	</div>
 		<!-- プロフィール右側 -->
-	<div class= "col-xs-12 col-lg-4 col-md-4 col-sm-12">
+	<div class= "col-xs-12 col-lg-5 col-md-5 col-sm-12">
 		<div class="user-introduction-edit">
 			<%= f.text_area :introduction, :size => "55x15"%>
 			<div class= "user-edit-sub-mit">
@@ -30,6 +30,6 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-lg-2 col-md-2">
+	<div class="col-lg-1 col-md-1">
 	</div>
 </div>

@@ -103,7 +103,9 @@
   margin-top:2%;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
+
 
 .user-introduction{
   border:1px solid #EEEEEE;
@@ -116,6 +118,7 @@
 #user-profile{
   margin-bottom:10px;
   margin-top:10px;
+  text-align: center;
 }
 
 .user-button{
@@ -299,6 +302,18 @@ textarea{
 .field input[autocomplete="new-password"]{
   width: 100%;
 }
+
+.user-box img{
+  display: block;
+  margin: 0 auto;
+}
+
+.user-edit-box img{
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+}
+
 
 
 

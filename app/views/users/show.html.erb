@@ -5,11 +5,11 @@
 			<%= attachment_image_tag @user, :profile_image, size:'250x250', format:'jpg',fallback: "no_image.jpg" %>
 			<table class="table table-hover table-inverse" id="user-profile">
 				<tr>
-					<td class="profile-name">name:<span><%= @user.name %></span></td>
+					<td class="profile-name"><span><%= @user.name %></span></td>
 				</tr>
 				<% unless @user.prefecture_name == nil %>
 				<tr class="profile-prefecture-tr">
-					<td class="profile-prefecture">所属:<span><%= @user.prefecture_name %></span></td>
+					<td class="profile-prefecture"><span><%= @user.prefecture_name %></span></td>
 				</tr>
 				<% end %>
 			</table>

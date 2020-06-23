@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :user do
+  factory :user, class:User do
     name { Faker::Lorem.characters(number:10) }
   	sequence(:email) { |n| "other#{n}@example.com" }
     introduction { Faker::Lorem.characters(number:10) }

@@ -5,9 +5,11 @@
 		<div class="image-show-form">
 			<div class="image-show-day-edit" style="margin-top:5px;">
 				<p><%= @postimage.created_at.strftime("%Y-%m-%d(%a)")%>
-					<span class="editlink">
+					<% if @user == current_user %>
+						<span class="editlink">
 						<%= link_to "編集する",edit_post_image_path(@postimage), class:"glyphicon glyphicon-wrench"%>
-					</span>
+						</span>
+					<% end %>
 				</p>
 			</div>
 			<div class= "image-show-image">

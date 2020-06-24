@@ -4,6 +4,7 @@ class PostImage < ApplicationRecord
   #下記２行複数画像の保存に必要な記載
   has_many :post_image_images, dependent: :destroy
   accepts_attachments_for :post_image_images, attachment: :image
+  #ハッシュタグ
   has_many :hashtag_post_images
   has_many :hashtags, through: :hashtag_post_images
   belongs_to :user

@@ -53,6 +53,7 @@ $(document).ready(function(){
 $(document).ready(function(){
 	$('.fa-bars').click(function(){
 		$('.head-nav').slideToggle(true);
+		
 	});
 
 	$('.fa-user').click(function(){
@@ -71,7 +72,16 @@ $(document).ready(function(){
 });
 
 
+$(document).ready(function(){
+	$('.fa-bars').click(function(){
+		$('body, html').animate({ scrollTop: 0 }, 500, 'linear');
+	});
+});
 
-
+$(document).ready(function(){
+	$('.fa-user').click(function(){
+		$('body, html').animate({ scrollTop: 0 }, 500, 'linear');
+	});
+});
 
 

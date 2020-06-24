@@ -13,23 +13,24 @@
     				</ul>
   				</div>
 			<% end %>
-		<h3>投稿編集</h3>
-		<% @postimages.each do |postimage| %>
-			  <%= attachment_image_tag postimage, :image,size:'200x180' %>
-		<% end %>
-		<%= form_with model:@postimage, local: true do |f| %>
-			<%= f.text_area :body, size:"55x12" %>
-			<br>
-			<p>ハッシュタグ入力欄</p>
-			<%= f.text_area :hashbody, size:"55x3" %>
-			<div class="postimage-update">
-				<%= f.submit "保存",class:"btn btn-default"%>
-			</div>
-		<% end %>
-		<div class = "postimage-destroy-button">
-			<%= link_to post_image_path(@postimage),method: :delete,class:"btn btn-danger" do %>
-				<p>削除</p>
+			<h3>投稿編集</h3>
+			<% @postimages.each do |postimage| %>
+				  <%= attachment_image_tag postimage, :image,size:'200x180' %>
 			<% end %>
+			<%= form_with model:@postimage, local: true do |f| %>
+				<%= f.text_area :body, size:"55x12" %>
+				<br>
+				<p>ハッシュタグ入力欄</p>
+				<%= f.text_area :hashbody, size:"55x3" %>
+				<div class="postimage-update">
+					<%= f.submit "保存",class:"btn btn-default"%>
+				</div>
+			<% end %>
+			<div class = "postimage-destroy-button">
+				<%= link_to post_image_path(@postimage),method: :delete,class:"btn btn-danger" do %>
+					<p>削除</p>
+				<% end %>
+			</div>
 		</div>
 	</div>
 	<div class= "col-lg-2 col-md-2">

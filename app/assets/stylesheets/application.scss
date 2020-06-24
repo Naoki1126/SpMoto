@@ -153,7 +153,7 @@ line-height: 45px;
 	z-index: 150;
 	position: fixed;
 	left:130%;
-	top:5px;
+	top:53px;
 	height: auto !important;
 
 
@@ -163,6 +163,9 @@ line-height: 45px;
 	margin:0;
 }
 
+.menu-top {
+	border-top: 1px solid white;
+}
 .user-info-menu a{
 
 	display: block;

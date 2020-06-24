@@ -24,17 +24,18 @@
                 </ul>
               </nav>
             </div>
-          <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-          </div>
-          <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5 bar-right">
-             <i class="fas fa-bars"></i>
-             <% if user_signed_in? %>
-              <span class="far fa-user" style="color:white"></span>
-            <% end %>
+            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+            </div>
+            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5 bar-right">
+               <i class="fas fa-bars"></i>
+               <% if user_signed_in? %>
+                <span class="far fa-user" style="color:white"></span>
+              <% end %>
+            </div>
           </div>
         </div>
-      </div>
       </header>
+      <div>
        <% if user_signed_in? %>
           <div class="head-nav nav">
              <span class="far fa-caret-square-down" style="color:white"></span>
@@ -86,6 +87,7 @@
          
 
           <% end %>
+        </div>
            
 
     <div class="container">

@@ -111,7 +111,6 @@ display: none;
 background-color: black;
 height: 50px;
 margin: 0 0 0px;
-padding-top: 2%;
 
 }
 
@@ -120,8 +119,12 @@ color: white;
 display: block;
 height: 100%;
 border-bottom: 1px solid white;
-padding-top: 3%;
 font-weight: bold;
+line-height: 45px;
+}
+
+.nav-link p{
+	margin:0;
 }
 
 
@@ -156,8 +159,8 @@ font-weight: bold;
 
         /* コンテンツ部分の高さが画面より低い場合は画面の高さに合わせる*/
 }
-
-.user-info-menu{
+.user-info p{
+	margin:0;
 }
 
 .user-info-menu a{
@@ -167,8 +170,7 @@ font-weight: bold;
 	width: 100%;
 	border-bottom: 1px solid white;
 	color: white;
-	padding-top: 4%;
-
+	line-height: 52px;
 }
 
 .user-info-menu a:hover{
@@ -202,6 +204,7 @@ font-weight: bold;
 	.nav-link{
 		background-color: black;
 		display: block;
+		padding-top: 0;
 	}
 
 	.nav-link a{
@@ -209,8 +212,9 @@ font-weight: bold;
 	display: block;
 	height: 100%;
 	border-bottom: 1px solid white;
-	padding-top: 3%;
+	padding-top: 0;
 	font-weight: bold;
+	line-height: 45px;
 	}
 
 	.fa-caret-square-down{
@@ -250,8 +254,14 @@ font-weight: bold;
 	color:white;
 	font-weight: bold;
 	text-align: center;
-	position: static;
+	position: absolute;
 	display: none;
+	top: 59px;
+	left: 0;
+	}
+
+	.user-info p{
+		margin: 0;
 	}
 
 	.user-info-menu{
@@ -264,11 +274,9 @@ font-weight: bold;
 	color: white;
 	border-style: none;
 	border-bottom: 1px solid white;
+	line-height: 42px;
 	}
 
-	.menu-top{
-		padding-top: 60px;
-	}
 }
 
 @media screen and (max-width:768px) {
@@ -333,9 +341,16 @@ font-weight: bold;
 	color:white;
 	font-weight: bold;
 	text-align: center;
-	position: static;
+	position: absolute;
 	display: none;
+	top: 59px;
+	left: 0;
 	}
+
+	.user-info p{
+		margin: 0;
+	}
+
 
 	.user-info-menu{
 	}
@@ -347,12 +362,9 @@ font-weight: bold;
 	color: white;
 	border-style: none;
 	border-bottom: 1px solid white;
-	padding-top:1%;
 	}
 
-	.menu-top{
-		padding-top: 60px;
-	}
+
 }
 
 

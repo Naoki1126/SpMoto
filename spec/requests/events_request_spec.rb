@@ -12,35 +12,35 @@ RSpec.describe "Events", type: :request do
 			it 'events/newにアクセス出来ること' do
 
 				get new_event_path
-				expect(response).to have_http_status(200)
+				expect(response).to have_http_status(:success)
 			end
 		end
 
 		context 'events#index' do
 			it 'events/indexにアクセス出来ること' do
 				get events_path
-				expect(response).to have_http_status(200)
+				expect(response).to have_http_status(:success)
 			end
 		end
 
 		context 'events#edit' do
 			it 'events/editにアクセス出来ること' do
 				get edit_event_path
-				expect(response).to have_http_status(200)
+				expect(response).to have_http_status(:success)
 			end
 		end
 
 		context 'events#show' do
 			it 'events/showにアクセス出来ること' do
 				get event_path(@event)
-				expect(response).to have_http_status(200)
+				expect(response).to have_http_status(:success)
 			end
 		end
 
 		context 'events#create' do
 			it 'eventを作成できること' do
 				post events_path
-				expect(response).to have_http_status(200)
+				expect(response).to have_http_status(:success)
 			end
 		end
 

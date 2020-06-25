@@ -17,10 +17,16 @@
 	width: 100%;
 	height: 660px;
 	background-image: image-url("image-425.jpg");
- 	background-size:cover;
- 	background-position:left center;
+ 	background-position:center;
+ 	background-size: cover;
  	background-color: black;
 	}
+
+	.home-message{
+		display: none;
+		visibility: hidden;
+	}
+
 
 
 }

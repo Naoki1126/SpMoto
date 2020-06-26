@@ -28,7 +28,7 @@ $(document).ready(function(){
 					</span>
 				</p>
 			</div>
-			<div id = "messages", data-room_id="<%= @room.id %>"> 
+			<div id = "messages" class="room-message", data-room_id="<%= @room.id %>"> 
 				<%= render @messages %>
 			</div>
 			<div class="message-text">

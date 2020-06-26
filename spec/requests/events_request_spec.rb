@@ -2,53 +2,44 @@ require 'rails_helper'
 
 RSpec.describe "Events", type: :request do
 	describe 'httpレスポンスのテスト' do
+		let!(:user) { create(:user) }
 
 		before do
-			@user = FactoryBot.create(:user)
 			@event = FactoryBot.create(:event)
-			allow_any_instance_of(ApplicationController).to receive(:current_user) { @user }
 		end
-		context 'events#new' do
-			it 'events/newにアクセス出来ること' do
-
+		context 'ログインなしでアクセス出来ないこと' do
+			it ' events/new' do
 				get new_event_path
-				expect(response).to have_http_status(:success)
+				expect(response).to have_http_status 302
 			end
-		end
 
-		context 'events#index' do
-			it 'events/indexにアクセス出来ること' do
-				get events_path
-				expect(response).to have_http_status(:success)
+			it 'events/edit' do
+				get edit_event_path(1)
+				expect(response).to have_http_status 302
 			end
-		end
 
-		context 'events#edit' do
-			it 'events/editにアクセス出来ること' do
-				get edit_event_path
-				expect(response).to have_http_status(:success)
+			it 'events/show' do
+				get event_path(1)
+				expect(response).to have_http_status 302
 			end
-		end
 
-		context 'events#show' do
-			it 'events/showにアクセス出来ること' do
-				get event_path(@event)
-				expect(response).to have_http_status(:success)
-			end
-		end
-
-		context 'events#create' do
-			it 'eventを作成できること' do
+			it 'events/create' do
 				post events_path
-				expect(response).to have_http_status(:success)
+				expect(response).to have_http_status 302
+			end
+
+			it 'event/update' do
+				patch event_path(1)
+				expect(response).to have_http_status 302
 			end
 		end
 
-		context 'events#update' do
-			it 'eventを更新できること' do
-				patch event_path
-				expect(response).to have_http_status(:success)
+		context 'ログインなしでアクセスできること' do
+			it 'events/index' do
+				get events_path
+				expect(response).to have_http_status 200
 			end
 		end
+
 	end
 end

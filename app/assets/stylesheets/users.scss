@@ -330,6 +330,9 @@ textarea{
   #edit-destroy-button{
     margin-left: 0;
   }
+  .follow-message{
+      font-size:10px;
+  }
 }
 
 .passmessage{
@@ -344,6 +347,18 @@ textarea{
   width: 80%;
 }
 
+.user-table-message{
+  margin-top: 70px;
+  text-align: center;
+  font-weight: bold;
+  font-size:20px;
+}
+
+.follow-message{
+
+  position: absolute;
+  color:navy;
+}
 
 
 

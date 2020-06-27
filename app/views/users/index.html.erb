@@ -40,7 +40,11 @@
 								<% end %>
 								<%= link_to user.prefecture_name, users_path(prefecture_code: user.prefecture_code ) %></td>
 						<% else %>
-							<td></td>
+							<td>
+								<% if current_user.followers.where(id: user.id).exists? %>
+									<br>
+								<% end %>
+							</td>
 						<% end %>
 						<td id="follow-button_<%= user.id %>">
 							<%= render 'relationships/followbutton', user: user %>

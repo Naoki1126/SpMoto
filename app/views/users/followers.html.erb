@@ -26,7 +26,11 @@
 							<br>
 							<% end %>
 							<%= link_to user.name, user_path(user),data: {"turbolinks" => false} %></td>
-						<td><%= user.prefecture_name %></td>
+						<td>
+							<% if current_user.followers.where(id: user.id).exists? %>
+								<br>
+							<% end %>
+							<%= user.prefecture_name %></td>
 						<td width="20%"id="follow-button_<%= user.id %>">
 						<%= render 'relationships/followbutton', user: user %>
 						</td>

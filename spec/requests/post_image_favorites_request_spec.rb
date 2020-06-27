@@ -20,7 +20,7 @@ RSpec.describe "PostImageFavorites", type: :request do
 				expect(response).to have_http_status 302
 			end
 
-			it 'post_image_destroy' do
+			it 'post_image_favorite/destroy' do
 				delete post_image_post_image_favorites_path(post_image_id: @postimage)
 				expect(response).to have_http_status 302
 			end

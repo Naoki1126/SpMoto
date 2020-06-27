@@ -1,14 +1,16 @@
-<h3>users</h3>
 <div class= "row">
 	<div class="col-xs-12 col-md-12 col-lg-12 col-sm-12">
+		<% if params[:prefecture_code].nil? %>
+			<p class="user-table-message">All Users</p>
+		<% else %>
+			<p class="user-table-message"><%= "#{@prefecture.prefecture_name}の会員" %>
+			</p>
+		<% end %>
+
 			<table class="table table-hover table-condensed" id="user-all">
 				<thead>
 					<tr>
-						<% if params[:prefecture_code] == nil %>
-							<th>ALL Users</th>
-						<% else %>
-							<th><%= "'#{@prefecture.prefecture_name}'の会員" %></th>
-						<% end %>
+						<th></th>
 						<th>Name</th>
 						<th>Prefecture</th>
 					</tr>
@@ -16,16 +18,27 @@
 				<tbody>
 					<% @users.each do |user| %>
 					<tr>
-						<td><%= link_to user_path(user),data: {"turbolinks" => false} do %>
+
+						<td>
+							<% if @user.followers.where(id: user.id).exists? %>
+							<p class="follow-message">あなたをフォローしています</p>
+							<br>
+							<% end %>
+							<%= link_to user_path(user),data: {"turbolinks" => false} do %>
 								<%= attachment_image_tag user, :profile_image, size:'50x50', format:'jpg',fallback: "no_image.jpg",class:'user-index-image' %>
 						    <% end %>
 						</td>
 						<td>
-							<% if @user.followers.where(id: user.id).exists? %>あなたをフォローしています<br>
+							<% if @user.followers.where(id: user.id).exists? %>
+							<br>
 							<% end %>
 							<%= link_to user.name, user_path(user),data: {"turbolinks" => false} %></td>
 						<% unless user.prefecture_code == nil %>
-							<td><%= link_to user.prefecture_name, users_path(prefecture_code: user.prefecture_code ) %></td>
+							<td>
+								<% if @user.followers.where(id: user.id).exists? %>
+									<br>
+								<% end %>
+								<%= link_to user.prefecture_name, users_path(prefecture_code: user.prefecture_code ) %></td>
 						<% else %>
 							<td></td>
 						<% end %>

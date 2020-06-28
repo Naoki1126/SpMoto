@@ -77,7 +77,7 @@ describe 'ユーザーのテスト' do
       end
       it '編集リンクが表示される' do
         visit user_path(user)
-        expect(page).to have_link '', href: edit_user_path(user)
+        expect(page).to have_link '会員情報編集', href: edit_user_path(user)
       end
       it '投稿件数が表示される' do
         visit user_path(user)
@@ -191,8 +191,66 @@ describe 'ユーザーのテスト' do
         expect(page).to have_css(".profile_image")
       end
     end
-        
+  end
+  describe 'ユーザー一覧のテスト' do
+    context '表示の確認' do
+      before do
+        visit users_path
+      end
 
+      it 'ユーザーの画像が表示される' do
+        expect(page).to have_css(".profile_image")
+      end
+
+      it '自分と他のユーザーの名前が表示される' do
+        expect(page).to have_content(user.name)
+        expect(page).to have_content(test_user2.name)
+      end
+
+      it '自分と他のユーザーの都道府県が表示される' do
+        expect(page).to have_content(user.prefecture_name)
+        expect(page).to have_content(test_user2.prefecture_name)
+      end
+      it 'フォローボタンが表示される' do
+         expect(page).to have_css('.new_relationship')
+      end
+
+      it 'Nameと表示される' do
+         expect(page).to have_content("Name")
+      end
+
+      it 'Prefectureと表示される' do
+        expect(page).to have_content("Prefecture")
+      end
+    end
+  end
+
+  describe '他人の詳細画面' do
+    context '表示項目の確認' do
+      before do
+        visit user_path(test_user2)
+      end
+
+      it '会員情報編集リンクが表示されない' do
+        expect(page).to have_no_link '会員情報編集', href: edit_user_path(test_user2)
+      end
+
+      it '他人の通知リンクが表示されない' do
+        expect(page).to have_no_css('button.notifications')
+      end
+
+      it 'DM一覧リンクが表示されない' do
+        expect(page).to have_no_link '会員情報編集', href: rooms_path
+      end
+
+      it 'カレンダーが表示されない' do
+        expect(page).to have_no_css('.simple-calendar')
+      end
+
+      it 'フォローボタンが表示される' do
+        expect(page).to have_css('.new_relationship')
+      end
+    end
   end
 end
 

@@ -155,14 +155,14 @@ describe 'イベントシステムのテスト' do
   			it 'イベント概要フォームに概要が表示される' do
   				expect(page).to have_field 'event[body]', with: event.body
   			end
-  			it '開催エリアに開催エリアが表示される' do
-  				expect(page).to have_select 'event[prefecture_code]', with: event.prefecture_code
+  			it '開催エリアフォームが表示される' do
+  				expect(page).to have_select 'event[prefecture_code]'
   			end
   			it '開催日時フォームに開催日時が表示される' do
-  				expect(page).to have_field 'event[date_and_time]', with: event.date_and_time
+  				expect(page).to have_css('#event_date_and_time'), with: event.date_and_time
   			end
   			it '終了時刻フォームに終了時刻が表示される' do
-  				expect(page).to have_field 'event[meetingfinishtime]', with: event.meetingfinishtime
+  				expect(page).to have_css("#event_meetingfinishtime"), with: event.meetingfinishtime
   			end
   			it '集合場所に集合場所が表示される' do
   				expect(page).to have_field 'event[meetingplace]', with: event.meetingplace

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe '画像投稿システムのテスト' do
-	let!(:user) { create(:user) }
+	let(:user) { create(:user) }
 	before do
     visit new_user_session_path
     fill_in 'user[email]', with: user.email
@@ -61,18 +61,17 @@ describe '画像投稿システムのテスト' do
   	end
 
   	describe '投稿詳細ページ' do
-  		before do 
-  			@postimage = PostImage.create(
-	 			user_id: user.id,
-	 			body: "ssssss",
-	 			hashbody: "dddddd",
-	 			post_image_images_images: ['teetere'])
 
-	 	end
 
 	 	context '表示の確認' do
 	 		it '投稿日付が表示されること' do
-	 			visit post_image_path(@postimage)
+	 			visit new_post_image_path
+	 			fill_in 'post_image_post_image_images_images',with: 'fwohewihfoifijiohif'
+	 			fill_in 'post_image[body]',with: 'aaaaaaaa'
+	 			fill_in 'post_image[hashbody]',with: '#aaaaaaaa'
+	 			click_button '新規投稿'
+	 			visit user_path(user)
+	 			click_link post_image_path
 	 			expect(page).to have_css('.image-show-day-edit')
 	 		end
 
@@ -83,4 +82,22 @@ describe '画像投稿システムのテスト' do
 	 	end
 
 	end
+
+	describe '一覧画面の表示' do
+		it '全投稿リンクが表示、リンク先が正しいこと' do
+			visit post_images_path
+			expect(page).to have_link '全投稿', href: post_images_path
+			click_link '全投稿'
+			expect(current_path).to eq(post_images_path)
+
+		end
+
+		it 'フォローリンクが表示、リンク先が正しいこと' do
+			visit post_images_path
+			expect(page).to have_link 'フォロー', href: post_images_path(user_id: user)
+			click_link 'フォロー'
+			expect(current_path).to eq(post_images_path)
+		end
+	end
+
 end

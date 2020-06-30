@@ -81,9 +81,13 @@ class EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
     @event.user_id = current_user.id
-    if @event.update(event_params)
+    @event.update(event_params)
+    if @event.save
       redirect_to events_path
     else
+      @latitude = @event.latitude
+      @longitude = @event.longitude
+      @user = @event.user
       render("events/edit")
     end
   end

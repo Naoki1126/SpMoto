@@ -115,6 +115,8 @@ describe 'イベントシステムのテスト' do
 
   	describe 'イベントの編集' do
   		let!(:event) {create(:event,user: user)}
+  		let!(:test_user2) {create(:test_user2)}
+  		let!(:test_event2) {create(:test_event2,user:test_user2)}
   		before do
   			visit edit_event_path(event)
   		end
@@ -179,7 +181,166 @@ describe 'イベントシステムのテスト' do
   			it '地図が表示される' do
   				expect(page).to have_css('#map')
   			end
+  			it '変更を保存するボタンが表示される' do
+  				expect(page).to have_button('変更を保存する')
+  			end
+  			it 'このイベントを削除するボタンが表示される' do
+  				expect(page).to have_link('このイベントを削除する')
+  			end
+  		end
 
+  		context 'イベント編集アクション' do
+  			it 'イベント編集成功' do
+  				click_on '変更を保存する'
+  				expect(current_path).to eq(events_path)
+  			end
+  			it 'イベント編集失敗' do
+  				fill_in 'event[title]',with: ''
+  				click_on '変更を保存する'
+  				expect(page).to have_content('エラー')
+  			end
+  			it 'このイベントを削除するリンクが正しい' do
+  				click_on 'このイベントを削除する'
+  				expect(current_path).to eq(event_destroy_path(event))
+  			end
+  		end
+
+  		context '他人のイベント編集ページへのアクセス' do
+  			it 'アクセスできない' do
+  				visit edit_event_path(test_event2)
+  				expect(current_path).to eq(root_path)
+  			end
+  		end
+  	end
+
+  	describe 'イベント一覧ページ' do
+  		let!(:event) {create(:event,user: user)}
+  		let!(:test_user2) {create(:test_user2)}
+  		before do
+  			visit events_path
+  		end
+  		context '表示の確認' do
+  			it 'レスポンシブ用のボタンが表示される' do
+  				expect(page).to have_css('.which-pc')
+  				expect(page).to have_css('.which-smart')
+  			end
+  			it '開催予定のイベントリンクのリンク先が正しい' do
+  				expect(page).to have_link('開催予定のイベント')
+  				click_link '開催予定のイベント'
+  				expect(current_path).to eq(evnts_path(event_case:"now"))
+  			end
+  			it '終了したイベントリンクのリンク先が正しい' do
+  				expect(page).to have_link('終了したイベント') 
+  				click_link '終了したイベント'
+  				expect(current_path).to eq(evnts_path(event_case:"log"))
+  			end
+  			it 'イベント作成のリンク先が正しい' do
+  				expect(page).to have_link('イベント作成')
+  				click_link 'イベント作成'
+  				expect(current_path).to eq(new_event_path)
+  			end
+  			it 'カレンダーが表示される' do
+  				expect(page).to have_css('.calender')
+  			end
+  			it '目的が表示される' do
+  				expect(page).to have_content('目的')
+  				expect(page).to have_content(event.title)
+  			end
+  			it '開催日時が表示される' do
+  				expect(page).to have_content('開催日時')
+  				expect(page).to have_content(event.date_and_time.strftime("%Y/%m/%d"))
+  			end
+  			it '終了日時が表示される' do
+  				expect(page).to have_content('終了日時')
+  				expect(page).to have_content(event.meetingfinishtime.strftime("%Y/%m/%d"))
+  			end
+  			it '都道府県が表示されリンク先が正しい' do
+  				expect(page).to have_content('都道府県')
+  				expect(page).to have_link event.prefecture_name,href: events_path(event_prefecture: 'name',prefecture_code: event.prefecture_code)
+  			end
+  			it '定員が表示される' do
+  				expect(page).to have_content('定員')
+  				expect(page).to have_content("#{event.capacity}人")
+  			end
+  			it '現在の参加人数が表示される' do
+  				expect(page).to have_content('現在の参加人数')
+  				expect(page).to have_content("#{event.event_participates.count}人")
+  				click_on '0人'
+  				expect(current_path).to eq(event_event_paricipates_path(event))
+  			end
+  			it '詳細リンクが表示されリンク先が正しい' do
+  				expect(page).to have_content('詳細')
+  				click_on '詳細'
+  				expect(current_path).to eq(event_path(event))
+  			end
+
+  		end
+  	end
+
+  	describe 'イベント詳細ページ' do
+  		let!(:event) {create(:event,user: user)}
+  		let!(:test_user2) {create(:test_user2)}
+  		let!(:test_event2) {create(:test_event2,user:test_user2)}
+  		before do
+  			visit event_path(event)
+  		end
+
+  		context '表示の確認' do
+  			it 'Titleが表示される' do
+  				expect(page).to have_content('Title')
+  				expect(page).to have_content(event.title)
+  			end
+  			it 'イベント概要が表示される' do
+  				expect(page).to have_content('イベント概要')
+  				expect(page).to have_content(event.body)
+  			end
+  			it '主催者が表示され、リンク先が正しい' do
+  				expect(page).to have_content('主催者')
+  				expect(page).to have_content(user.profile_image)
+  				expect(page).to have_content(user.name)
+  				click_on user.name
+  				expect(current_path).to eq(user_path(user))
+  			end
+  			it '開催エリアが表示される' do
+  				expect(page).to have_content('開催エリア')
+  				expect(page).to have_content(event.prefecture_name)
+  			end
+  			it '集合場所が表示される' do
+  				expect(page).to have_content('集合場所')
+  				expect(page).to have_content(event.meetingplace)
+  			end
+  			it '開催日時が表示される' do
+  				expect(page).to have_content('開催日時')
+  				expect(page).to have_content(event.date_and_time.strftime("%Y年%m月%d日%H時%M分"))
+  			end
+  			it '終了日時が表示される' do
+  				expect(page).to have_content('終了日時')
+  				expect(page).to have_content(event.meetingfinishtime.strftime("%Y年%m月%d日%H時%M分"))
+  			end
+  			it '定員が表示される' do
+  				expect(page).to have_content('定員')
+  				expect(page).to have_content(event.capacity)
+  			end
+  			it '現在の参加人数が表示される' do
+  				expect(page).to have_content('現在の参加人数')
+  				expect(page).to have_content(event.event_participates.count)
+  				click_on '現在の参加人数'
+  				expect(current_path).to eq(event_event_paricipates_path(event))
+  			end
+  			it '地図が表示される' do
+  				expect(page).to have_css('#map')
+  			end
+  			it 'このイベントを編集するリンクが表示され、リンク先が正しい' do
+  				expect(page).to have_link('このイベントを編集する')
+  				click_on 'このイベントを編集する'
+  				expect(current_path).to eq(edit_event_path(event))
+  			end
+
+  			it 'コメント欄とコメントフォーム表示される' do
+  				expect(page).to have_content('コメントフォーム')
+  				expect(page).to have_content('infomation')
+  				expect(page).to have_field 'event_comment[comment]'
+  			end
   		end
   	end
 end

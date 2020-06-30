@@ -90,6 +90,7 @@ class EventsController < ApplicationController
 
   def destroy_page
     @event = Event.find(params[:event_id])
+
   end
 
   def destroy
@@ -109,5 +110,5 @@ class EventsController < ApplicationController
     if current_user != event.user
       redirect_to root_path
     end
-    end
+  end
 end

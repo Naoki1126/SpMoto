@@ -343,4 +343,39 @@ describe 'イベントシステムのテスト' do
   			end
   		end
   	end
+
+  	describe 'イベント削除ページ' do
+  		let!(:event) {create(:event,user: user)}
+  		let!(:test_user2) {create(:test_user2)}
+  		let!(:test_event2) {create(:test_event2,user:test_user2)}
+  		before do 
+  			visit event_destroy_path(event)
+  		end
+  		context '表示の確認' do
+  			it 'メッセージが表示される' do
+  				expect(page).to have_content('このイベントを本当に削除しますか')
+  			end
+  			it '削除するボタンが表示される' do
+  				expect(page).to have_link('削除する')
+  			end
+  			it '編集画面へ戻るボタンが表示され、リンク先が正しい' do
+  				expect(page).to have_link('編集画面へ戻る')
+  				click_on '編集画面へ戻る' 
+  				expect(current_path).to eq(edit_event_path(event))
+  			end
+  		context 'イベントを削除することができる'
+  			it '削除に成功する' do
+  				click_on '削除する'
+  				expect(current_path).to eq(events_path)
+  				expect(page).to have_no_content(event.title)
+  			end
+  		end
+  		context '他人のイベント削除' do
+  			it '削除できない' do
+  				visit event_destroy_path(test_event2)
+  				click_on '削除する'
+  				expect(current_path).to eq(root_path)
+  			end
+  		end
+  	end
 end

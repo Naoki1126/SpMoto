@@ -68,7 +68,7 @@ class PostImagesController < ApplicationController
     if @postimagenew.save
       redirect_to post_images_path
     else
-      render 'post_images/new'
+      render('post_images/new')
     end
   end
 
@@ -76,7 +76,12 @@ class PostImagesController < ApplicationController
     @postimage = PostImage.find(params[:id])
     @postimage.user_id = current_user.id
     @postimage.update(update_params)
-    redirect_to post_image_path(@postimage)
+    if @postimage.save
+       redirect_to post_image_path(@postimage)
+    else
+     @postimages = @postimage.post_image_images
+      render("post_images/edit")
+    end
   end
 
   def destroy

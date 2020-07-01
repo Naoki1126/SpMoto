@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 2020_06_02_045109) do
     t.float "longitude"
   end
 
-  create_table "hashtag_post_images", id: false, force: :cascade do |t|
+  create_table "hashtag_post_images", force: :cascade do |t|
     t.integer "post_image_id"
     t.integer "hashtag_id"
     t.index ["hashtag_id"], name: "index_hashtag_post_images_on_hashtag_id"

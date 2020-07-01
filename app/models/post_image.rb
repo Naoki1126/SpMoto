@@ -5,7 +5,7 @@ class PostImage < ApplicationRecord
   has_many :post_image_images, dependent: :destroy
   accepts_attachments_for :post_image_images, attachment: :image
   #ハッシュタグ
-  has_many :hashtag_post_images
+  has_many :hashtag_post_images, dependent: :destroy
   has_many :hashtags, through: :hashtag_post_images
   belongs_to :user
   has_many :post_image_comments, dependent: :destroy

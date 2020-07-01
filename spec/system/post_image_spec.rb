@@ -236,7 +236,7 @@ describe '画像投稿システムのテスト' do
 		context '削除のテスト' do
 			it '削除に成功する' do
 				click_on '削除'
-				expect(page).to have_no_content('ssssss')
+				expect(current_path).to eq(post_images_path)
 			end
 		end
 	end

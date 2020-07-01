@@ -225,19 +225,13 @@ describe 'イベントシステムのテスト' do
   				expect(page).to have_css('.which-smart')
   			end
   			it '開催予定のイベントリンクのリンク先が正しい' do
-  				expect(page).to have_link('開催予定のイベント')
-  				click_link '開催予定のイベント'
-  				expect(current_path).to eq(evnts_path(event_case:"now"))
+  				expect(page).to have_link '開催予定のイベント', href: events_path(event_case:"now")
   			end
   			it '終了したイベントリンクのリンク先が正しい' do
-  				expect(page).to have_link('終了したイベント') 
-  				click_link '終了したイベント'
-  				expect(current_path).to eq(evnts_path(event_case:"log"))
+  				expect(page).to have_link '終了したイベント', href: events_path(event_case:"log")
   			end
   			it 'イベント作成のリンク先が正しい' do
-  				expect(page).to have_link('イベント作成')
-  				click_link 'イベント作成'
-  				expect(current_path).to eq(new_event_path)
+          expect(page).to have_link 'イベント作成', href: new_event_path
   			end
   			it 'カレンダーが表示される' do
   				expect(page).to have_css('.calender')

@@ -32,13 +32,10 @@
 			<div class = "event-capacity-new">
 				<h4>定員:<span><%= @event.capacity %></span></h4>
 			</div>
-			<% if @event.event_participates.count == @event.capacity %>
-				<h4>定員が埋まりました。キャンセル待ちです。</h4>
-			<% else %>
-				<div id="participates-button_<%= @event.id %>" class="event-participates-show">
-					<%= render 'event_participates/participate', event: @event %>
-				</div>
-			<% end %>
+
+			<div id="participates-button_<%= @event.id %>" class="event-participates-show">
+				<%= render 'event_participates/participate', event: @event %>
+			</div>
 		</div>
 		
 		<%if @event.user == current_user %>

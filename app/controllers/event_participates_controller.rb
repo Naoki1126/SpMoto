@@ -7,8 +7,12 @@ class EventParticipatesController < ApplicationController
 
   def create
     @event = Event.find(params[:event_id])
+    if @event.event_participates.count >= @event.capacity.to_i
+      render ('events/show')
+    else
     @participate = current_user.event_participates.new(event_id: @event.id)
     @participate.save
+    end
     #通知作成
     @event.create_notification_participate!(current_user)
   end

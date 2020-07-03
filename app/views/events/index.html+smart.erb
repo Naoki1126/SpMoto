@@ -1,0 +1,42 @@
+<div class="smart">
+	<div class= "row">
+		<div class="col-xs-12">
+			<div class="event-buttons">
+				<% if user_signed_in? %>
+					<button class="event-button newevent"><%= link_to "イベント作成", new_event_path %></button>
+				<% end %>
+				<br>
+				<button class="event-button future"><%= link_to "開催予定のイベント", events_path(event_case: "now") %></button>
+				<button class="event-button log"><%= link_to "終了したイベント", events_path(event_case: "log") %></button>
+			</div>
+			<div class="event-smart-index">
+				<% @events.each do |event| %>
+					<%= link_to event_path(event) do %>
+					<div class= "event-smart-box">
+						<div class="event-smart-title">
+							<p><%= event.prefecture_name %>
+								<span><%= event.title %></span>
+							</p>
+						</div>
+						<div class="event-smart-time">
+							<p><%= "#{event.date_and_time.strftime("%Y/%m/%d")}〜#{event.meetingfinishtime.strftime("%Y/%m/%d")}" %>
+							</p>
+						</div>
+						<div class="event-smart-capacitys">
+							<p class="event-smart-capacity">
+							<%= "定員#{event.capacity}人" %>
+							<br>
+								<span class="event-smart-capacity-count"><%= "現在#{event.event_participates.count}人が参加中" %> 
+								</span>
+								<% if event.event_participates.where(user_id: current_user).exists? %>
+									<span class="participate-smart-message">参加予定</span>
+								<% end %>
+							</p>
+						</div>
+					</div>
+					<% end %>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>

@@ -25,6 +25,9 @@ describe '未ログイン時のヘッダーのテスト' do
     it 'ログインと表示される' do
       expect(page).to have_link 'ログイン', href: new_user_session_path
     end
+    it 'フッダーに文字が表示される' do
+      expect(page).to have_content('@SpMoto')
+    end
   end
 end
 

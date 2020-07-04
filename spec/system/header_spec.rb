@@ -6,6 +6,10 @@ describe '未ログイン時のヘッダーのテスト' do
   end
 
   context '表示項目' do
+
+    it 'ロゴが表示され、リンク先が正しい' do
+      expect(page).to have_link 'SpMoto', href: root_path
+    end
     it 'トップリンクが表示される' do
       expect(page).to have_link 'トップ' , href: root_path
     end
@@ -32,6 +36,12 @@ describe 'ログイン後のヘッダー表示のテスト' do
     fill_in 'user[password]', with: user.password
     click_button 'Log in'
   end
+  context 'ロゴが表示され、リンク先が正しい' do
+    it '正しい' do
+      expect(page).to have_link 'SpMoto', href:root_path
+    end
+  end
+
   context 'ユーザー項目の確認' do
     it '主催イベントリンクが表示される' do
       expect(page).to have_link '主催イベント', href: events_path(event_case: "now",user_id: user.id)

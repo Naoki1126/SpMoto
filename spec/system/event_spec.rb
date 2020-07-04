@@ -83,7 +83,6 @@ describe 'イベントシステムのテスト' do
 
   		context '作成アクション' do
   			it '作成に成功する' do
-  				visit new_event_path
   				fill_in 'event[title]',with: event.title
   				fill_in 'event[body]',with: event.body
   				select '北海道', from: 'event_prefecture_code'
@@ -93,7 +92,7 @@ describe 'イベントシステムのテスト' do
   				fill_in 'event[capacity]', with: event.capacity
   				fill_in 'event[latitude]', with: event.latitude
   				fill_in 'event[longitude]', with: event.longitude
-  				click_on '上記内容で新規イベントを作成'
+  				click_button '上記内容で新規イベントを作成'
   				expect(current_path).to eq(events_path)
   			end
 
@@ -107,8 +106,8 @@ describe 'イベントシステムのテスト' do
   				fill_in 'event[capacity]', with: event.capacity
   				fill_in 'event[latitude]', with: event.latitude
   				fill_in 'event[longitude]', with: event.longitude
-  				click_on '上記内容で新規イベントを作成'
-  				expect(current_path).to eq(new_event_path)
+  				click_button '上記内容で新規イベントを作成'
+  				expect(page).to have_content("エラー")
   			end
   		end
   	end

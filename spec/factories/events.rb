@@ -5,9 +5,9 @@ FactoryBot.define do
     body { Faker::Lorem.characters(number:20) }
     prefecture_code { 2 }
     capacity { 5 }
-    date_and_time{ Time.now }
+    date_and_time{ DateTime.now }
     meetingplace{ "11111" }
-    meetingfinishtime{ Time.now }
+    meetingfinishtime{ DateTime.tomorrow }
     latitude{ -34.397 }
     longitude{ 150.644 }
 
@@ -19,9 +19,9 @@ FactoryBot.define do
     body { Faker::Lorem.characters(number:20) }
     prefecture_code { 2 }
     capacity { 5 }
-    date_and_time{ Time.now }
+    date_and_time{ DateTime.now }
     meetingplace{ "11111" }
-    meetingfinishtime{ Time.now }
+    meetingfinishtime{ DateTime.tomorrow }
     latitude{ -34.397 }
     longitude{ 150.644 }
 

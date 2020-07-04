@@ -281,7 +281,6 @@
 }
 
 .pc-tab{
-	display: none;
 }
 
 .smart{
@@ -302,6 +301,7 @@
 	margin: 5px;
 	border: 1px solid #CCCCCC;
 	font-size: 18px;
+	display: none;
 
 }
 
@@ -310,6 +310,18 @@
 	color:white;
 	font-weight: bold;
 	transition: all 2S;
+
+}
+
+@media screen and (max-width:780px) {
+	.pc-tab{
+		display: none;
+	}
+
+	.smart{
+	margin-top: 80px;
+	display: block;
+	}
 
 }
 

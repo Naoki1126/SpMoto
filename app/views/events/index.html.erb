@@ -2,9 +2,17 @@
 	<% if params[:event_case].nil? %>
 		<h4 class="event_title">全てのイベント</h4>
 	<% elsif params[:event_case] == "now" %>
-		<h4 class="event_title">開催予定のイベント</h4>
+		<% if params[:user_id].nil? %>
+			<h4 class="event_title">開催予定のイベント</h4>
+		<% else %>
+			<h4 class="event_title"><%= link_to @user.name,user_path(@user) %><br>の開催予定のイベント</h4>
+		<% end %>
 	<% elsif params[:event_case] == 'log' %>
-		<h4 class="event_title">終了したイベント</h4>
+		<% if params[:user_id].nil? %>
+			<h4 class="event_title">終了したイベント</h4>
+		<% else %>
+			<h4 class="event_title"><%= link_to @user.name,user_path(@user) %><br>の終了したイベント</h4>
+		<% end %>
 	<% end %>
 </div>
 <div class="pc-tab">

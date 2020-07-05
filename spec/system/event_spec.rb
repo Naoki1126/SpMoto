@@ -81,6 +81,7 @@ describe 'イベントシステムのテスト' do
   			end
   		end
 
+
   		context '作成アクション' do
   			it '作成に成功する' do
   				fill_in 'event[title]',with: event.title
@@ -107,7 +108,7 @@ describe 'イベントシステムのテスト' do
   				fill_in 'event[latitude]', with: event.latitude
   				fill_in 'event[longitude]', with: event.longitude
   				click_button '上記内容で新規イベントを作成'
-  				expect(page).to have_content("エラー")
+  				expect(current_path).to eq(new_event_path)
   			end
   		end
   	end

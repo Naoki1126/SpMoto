@@ -267,7 +267,17 @@ describe 'イベントシステムのテスト' do
   				click_on '詳細'
   				expect(current_path).to eq(event_path(event))
   			end
-
+        it '全てのイベントと表示される' do
+          expect(page).to have_content('全てのイベント')
+        end
+        it '開催予定のイベントをクリック後、開催予定のイベントと表示される' do
+          find('.event-navs',text: '開催予定のイベント').click 
+          expect(page).to have_content('開催予定のイベント')
+        end
+        it '終了したイベントをクリック後、終了したイベントと表示される' do
+          find('.event-navs',text: '終了したイベント').click
+          expect(page).to have_content('終了したイベント')
+        end
   		end
   	end
 

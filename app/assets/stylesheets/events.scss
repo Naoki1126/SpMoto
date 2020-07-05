@@ -2,9 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.event-top{
-	margin-top:60px;
-}
+
 
 .event-title-new{
 	border-bottom: 1px solid;
@@ -284,7 +282,6 @@
 }
 
 .smart{
-	margin-top: 80px;
 	display: none;
 }
 
@@ -319,9 +316,23 @@
 	}
 
 	.smart{
-	margin-top: 80px;
 	display: block;
 	}
 
+
+}
+
+.event_title{
+	
+}
+
+.event_case_title{
+	text-align: center;
+	border: 1px solid;
+	width: 200px;
+	margin: 60px auto;
+	margin-bottom: 20px;
+
+	
 }
 

@@ -30,14 +30,17 @@ class EventsController < ApplicationController
 
       else
         @events = Event.where(user_id: params[:user_id]).where("Date(date_and_time) >= '#{Date.today}'").order(date_and_time: "DESC")
+        @user = User.find(params[:user_id])
 
-          end
+
+        end
       # 今日より過去のイベント情報の表示
     when "log"
       if params[:user_id].nil?
         @events = Event.where("Date(meetingfinishtime) <= '#{Date.today}'").order(meetingfinishtime: "DESC")
       else
         @events = Event.where(user_id: params[:user_id]).where("Date(meetingfinishtime) <= '#{Date.today}'").order(meetingfinishtime: "DESC")
+        @user = User.find(params[:user_id])
       end
       # 全てのイベント情報の取得
     when ""

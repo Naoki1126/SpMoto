@@ -1,3 +1,12 @@
+<div class="event_case_title">
+	<% if params[:event_case].nil? %>
+		<h4 class="event_title">全てのイベント</h4>
+	<% elsif params[:event_case] == "now" %>
+		<h4 class="event_title">開催予定のイベント</h4>
+	<% elsif params[:event_case] == 'log' %>
+		<h4 class="event_title">終了したイベント</h4>
+	<% end %>
+</div>
 <div class="pc-tab">
 	<div class="row">
 		<div class="col-lg-12 col-md-12 col-sm-12">

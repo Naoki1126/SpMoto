@@ -85,7 +85,7 @@ describe 'ログイン後のヘッダー表示のテスト' do
       expect(page).to have_link '検索', href: search_path(search:"header")
     end
     it 'ハッシュタグリンクが表示される' do
-      expect(page).to have_link '#', href: post_image_hashtag_path
+      expect(page).to have_link '#ハッシュタグ', href: post_image_hashtag_path
     end
     it 'ログアウトリンクが表示される' do
       expect(page).to have_link 'ログアウト', href: destroy_user_session_path

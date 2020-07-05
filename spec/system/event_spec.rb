@@ -81,6 +81,7 @@ describe 'イベントシステムのテスト' do
   			end
   		end
 
+
   		context '作成アクション' do
   			it '作成に成功する' do
   				fill_in 'event[title]',with: event.title
@@ -107,7 +108,7 @@ describe 'イベントシステムのテスト' do
   				fill_in 'event[latitude]', with: event.latitude
   				fill_in 'event[longitude]', with: event.longitude
   				click_button '上記内容で新規イベントを作成'
-  				expect(page).to have_content("エラー")
+  				expect(current_path).to eq(new_event_path)
   			end
   		end
   	end
@@ -266,7 +267,17 @@ describe 'イベントシステムのテスト' do
   				click_on '詳細'
   				expect(current_path).to eq(event_path(event))
   			end
-
+        it '全てのイベントと表示される' do
+          expect(page).to have_content('全てのイベント')
+        end
+        it '開催予定のイベントをクリック後、開催予定のイベントと表示される' do
+          find('.event-navs',text: '開催予定のイベント').click 
+          expect(page).to have_content('開催予定のイベント')
+        end
+        it '終了したイベントをクリック後、終了したイベントと表示される' do
+          find('.event-navs',text: '終了したイベント').click
+          expect(page).to have_content('終了したイベント')
+        end
   		end
   	end
 

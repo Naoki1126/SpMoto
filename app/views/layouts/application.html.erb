@@ -39,18 +39,18 @@
        <% if user_signed_in? %>
           <div class="head-nav nav">
              <span class="far fa-caret-square-down" style="color:white"></span>
-              <p class="nav-link"><%=link_to "マイページ", user_path(current_user),data: {"turbolinks" => false} %></p>
               <p class="nav-link"><%=link_to "投稿一覧", post_images_path,data: {"turbolinks" => false} %></p>
               <p class="nav-link"><%=link_to "会員一覧", users_path %></p>
               <p class="nav-link"><%=link_to "イベント", events_path,data: {"turbolinks" => false} %></p>
               <p class="nav-link"><%=link_to "新規投稿", new_post_image_path %></p>
               <p class="nav-link"><%=link_to "検索", search_path(search:"header") %></p>
-              <p class="nav-link"><%= link_to "#",post_image_hashtag_path %></p>
+              <p class="nav-link"><%= link_to "#ハッシュタグ",post_image_hashtag_path %></p>
               <p class="nav-link"><%=link_to "ログアウト",destroy_user_session_path,method: :delete %></p>
           </div>
            <i class="fa fa-user-circle-o off" aria-hidden="true"></i>
             <div class="user-info">
-                  <p class="user-info-menu menu-top">
+               <p class="user-info-menu menu-top"><%=link_to "マイページ", user_path(current_user),data: {"turbolinks" => false} %></p>
+                  <p class="user-info-menu">
                     <%= link_to "主催イベント", events_path(event_case: "now",user_id: current_user.id) %>
                   </p>
                   <p class="user-info-menu">

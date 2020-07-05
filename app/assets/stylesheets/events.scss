@@ -336,3 +336,17 @@
 	
 }
 
+.event-smart-edit{
+	display: none
+}
+
+@media screen and (max-width:991px) {
+	.event-smart-edit{
+		display: block;
+		margin-top: 10px;
+	}
+	.pc-event-edit{
+		display: none;
+	}
+}
+

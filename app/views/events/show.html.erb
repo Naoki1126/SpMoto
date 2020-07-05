@@ -39,7 +39,7 @@
 		</div>
 		
 		<%if @event.user == current_user %>
-			<div class="event-show-edit-button">
+			<div class="event-show-edit-button pc-event-edit">
 				<%= link_to edit_event_path(@event),class:"btn btn-default" do %>
 					<span>このイベントを編集する</span>
 				<% end %>
@@ -76,10 +76,18 @@
 				</script>
 				<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY'] %>&callback=initMap" async defer></script>
 		</div>
+		<%if @event.user == current_user %>
+			<div class="event-show-edit-button event-smart-edit">
+				<%= link_to edit_event_path(@event),class:"btn btn-default" do %>
+					<span>このイベントを編集する</span>
+				<% end %>
+			</div>
+		<% end %>
 		<div class="comment-icon" id="event-comment-count_<%= @event.id %>">
 			<%= render 'event_comments/comments-count', event:@event %>
 		</div>
 	</div>
+
 	<div class="col-xs-12 col-lg12 col-md-12 col-sm-12">
 		<div class="event-comment-all">
 			<div class="event-comment-form">

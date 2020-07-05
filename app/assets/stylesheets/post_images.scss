@@ -85,6 +85,12 @@
 	transition: all 2S;
 }
 
+@media screen and (max-width:900px) {
+	.post_image_image{
+		height: auto;
+	}
+}
+
 @media screen and (max-width:768px) {
 	#post_image_body{
 		width: 100%;
@@ -93,6 +99,7 @@
 	#post_image_hashbody{
 		width: 100%;
 	}
+
 }
 
 @media screen and (max-width:480px) {
@@ -103,6 +110,8 @@
 	#post_image_hashbody{
 		width: 100%;
 	}
+
+
 }
 .attachment-field{
 	height:30px;

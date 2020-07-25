@@ -61,6 +61,5 @@ Rails.application.routes.draw do
     post '/', to: 'users/session#new_guest'
   end
 
-  get  '*unmatched_route', to: 'application#not_found', format: false
 
 end

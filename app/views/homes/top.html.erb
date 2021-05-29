@@ -19,6 +19,11 @@
                     </button>
                     <button type="button" class="bt session">
                         <%= link_to new_user_session_path do %>
+                        <%
+                            if @user
+                            else
+                            end
+                        %>
                         <span class="text">ログイン</span>
                         <% end %>
                     </button>

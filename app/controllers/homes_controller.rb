@@ -10,4 +10,8 @@ class HomesController < ApplicationController
   	sign_in user
   	redirect_to post_images_path, notice: 'ゲストユーザーとしてログインしました'
   end
+
+  def queri_test
+	@post_images = PostImage.all
+  end
 end

@@ -1,0 +1,4 @@
+<% @post_images = PostImage.all.pluck(:id) %>
+<% @post_images.each_with_index do |post,i|%>
+    <%= i %>
+<% end %>

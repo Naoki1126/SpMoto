@@ -60,6 +60,6 @@ Rails.application.routes.draw do
   devise_scope :user do
     post '/', to: 'users/session#new_guest'
   end
-
+  get '/queri_test', to: 'homes#queri_test'
 
 end

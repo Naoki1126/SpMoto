@@ -42,6 +42,7 @@ class PostImagesController < ApplicationController
       @postimage = PostImage.all.page(params[:page]).per(24).reverse_order
     else
       @postimage = PostImage.where(user_id: current_user.followings).page(params[:page]).per(24).reverse_order
+      @postimage = PostImage.all
 
     end
   end
